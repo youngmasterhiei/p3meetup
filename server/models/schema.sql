@@ -1,0 +1,4 @@
+
+
+DROP DATABASE IF EXISTS meetup_db;
+CREATE DATABASE meetup_db;
