@@ -11,7 +11,35 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-  
+    app.get("/api/profile", function (req, res) {
+        db.Profile.findOne({
+          where: { UserId: uID },
+          include: [db.User]
+        }).then(function (dbProfile) {
+          res.json(dbProfile);
+        });
+      });
+
+      app.get("/api/user", function (req, res) {
+        db.Profile.findOne({
+          where: { UserId: uID },
+          include: [db.User]
+        }).then(function (dbProfile) {
+          res.json(dbProfile);
+        });
+      });
+
+      app.post("/api/user", function (req, res) {
+          console.log(req.body)
+        db.User.create({
+          email: req.body.userEmail,
+          password: req.body.userPassword
+    
+        })
+          .then(function (dbUser) {
+            res.json(dbUser);
+          });
+      });
 
 };
 

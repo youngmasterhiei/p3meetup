@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Bootstrap from 'bootstrap-4-grid';
+import LoginForm from "./components/login/LoginForm";
 
+import Bootstrap from 'bootstrap-4-grid';
+// import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 class App extends Component {
   render() {
     return (
@@ -11,17 +13,14 @@ class App extends Component {
       <div className="col-md-6">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title"></h1>
         </header>
         </div>
         <div className="col-md-6">
-        <h1>hellowrold</h1>
+        <LoginForm />
         </div>
         </div>
  
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
         
       </div>
     );

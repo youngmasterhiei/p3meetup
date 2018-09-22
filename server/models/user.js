@@ -12,8 +12,7 @@ module.exports = function (sequelize, DataTypes) {
           isEmail: true
         }
       },
-      password: DataTypes.STRING,
-      verifyPassword: DataTypes.STRING
+      password: DataTypes.STRING
   
   
   
