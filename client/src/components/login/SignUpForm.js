@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
 
@@ -77,4 +77,4 @@ let userInfo = {
   }
 }
 
-export default LoginForm;
+export default SignUpForm;
