@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SignUpForm from "./components/login/SignUpForm";
-import DropDown from "./components/features/DropDown";
-import DisplayEvents from "./components/event/DisplayEvents";
-import 'bootstrap-4-grid';
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
 
 
-// import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
-
+import {BrowserRouter as Router,} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
-      <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-            </header>
-        <div className="row">
-          <div className="col-md-8">
-            
-          </div>
-          <div className="col-md-4">
-            <SignUpForm />
-          </div>
-        </div>
-        <div className="row">
-        <DropDown />
-        </div>
-        <div className="row">
-        <DisplayEvents />
-        </div>
+      <Route path="/home" exact render={
+        ()=> {
+          return (<Home />);
+        }
+      }/>
+
+      <Route path="/" exact render={
+        ()=> {
+          return (<Home />);
+        }
+      }/>
+      <Route path="/about" exact render={
+        ()=> {
+          return (<About />);
+        }
+      }/>
+      <Route path="/events" render={
+        ()=> {
+          return (<Home />);
+        }
+      }/>
+      <Route path="/Forum" render={
+        ()=> {
+          return (<Home />);
+        }
+      }/>
+        
 
       </div>
+      </Router>
     );
   }
 }

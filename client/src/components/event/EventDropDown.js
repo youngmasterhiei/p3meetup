@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import CreateEventForm from "../event/CreateEventForm";
 
 
-class DropDown extends Component {
+class EventDropDown extends Component {
   constructor(props) {
     super(props);
 
@@ -44,9 +44,8 @@ handleClickOutside(){
   }
 }
 
-export default DropDown;
+export default EventDropDown;
 
-// //click for dropdown
 
 
 
