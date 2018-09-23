@@ -57,6 +57,12 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/events", function(req, res) {
+      db.Event.findAll({}).then(function(dbEvent) {
+        res.json(dbEvent);
+      });
+    });
+
 };
 
 
