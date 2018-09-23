@@ -41,6 +41,22 @@ module.exports = function (app) {
           });
       });
 
+      app.post("/api/events", function (req, res) {
+        console.log(req.body)
+      db.Event.create({
+        title: req.body.title,
+        description: req.body.description,
+        date: req.body.date,
+        time: req.body.time,
+        address: req.body.address,
+        name: req.body.name
+
+      })
+        .then(function (dbEvent) {
+          res.json(dbEvent);
+        });
+    });
+
 };
 
 

@@ -1,0 +1,54 @@
+
+import React, { Component } from 'react';
+import CreateEventForm from "../event/CreateEventForm";
+
+
+class DropDown extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        listOpen: false
+    };
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+
+  }
+  
+handleClickOutside(){
+    this.setState({
+      listOpen: false
+    })
+  };
+
+  //sets list open state to true or false on click
+  toggleList(){
+    
+    this.setState(prevState => ({
+      listOpen: !prevState.listOpen
+    }))
+  }
+
+  render() {
+ 
+
+    return (
+      <div className="dropdown">
+        <button onClick={() => this.toggleList()}>Create an Event</button>
+        <div className="showItems">{this.state.listOpen && <CreateEventForm toggleList={this.toggleList.bind(this)} /> }</div>
+
+
+      </div>
+
+    );
+  }
+}
+
+export default DropDown;
+
+// //click for dropdown
+
+
+
+
+
