@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventCard from "./EventCard";
 import axios from 'axios';
 
+
 class DisplayEvents extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,15 @@ componentDidMount(){
   })
 }
 
+updateEventList(){
+  axios.get("api/events")
+  .then(res => {
+    console.log(res.data);
+    this.setState({event: res.data});
+  })
+};
+
+
   render() {
  
 
@@ -35,7 +45,8 @@ componentDidMount(){
         
 
         <ul> {this.state.event.map((event) => {
-          return <EventCard event={event} key={event.id}/ >
+          return <EventCard event={event} key={event.id} 
+          / >
         })
 
       }

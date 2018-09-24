@@ -35,7 +35,7 @@ handleClickOutside(){
     return (
       <div className="dropdown">
         <button onClick={() => this.toggleList()}>Create an Event</button>
-        <div className="showItems">{this.state.listOpen && <CreateEventForm toggleList={this.toggleList.bind(this)} /> }</div>
+        <div className="showItems">{this.state.listOpen && <CreateEventForm toggleList={this.toggleList.bind(this)}  /> }</div>
 
 
       </div>

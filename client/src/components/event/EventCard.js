@@ -5,7 +5,7 @@ class EventCard extends Component {
    
  
 
-     
+    
 
 
     render() {

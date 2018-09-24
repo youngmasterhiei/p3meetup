@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 class CreateEventForm extends Component {
   constructor(props) {
     super(props);
