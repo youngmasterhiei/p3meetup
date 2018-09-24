@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class SignUpForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      password: "",
-      verifyPassword: ""
+      password: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,28 +23,26 @@ class SignUpForm extends Component {
   }
   handleSubmit = event => {
     event.preventDefault();
-let userInfo = {
-     userEmail : this.state.email,
-     userPassword : this.state.password
-};
-    console.log(userInfo.userEmail);
+    let userInfo = {
+      email: this.state.email,
+      userPassword: this.state.password
+    };
+    console.log(userInfo.email);
     console.log(userInfo.userPassword);
-    axios({
-      method: 'post',
-      url: '/api/user',
-      data: userInfo,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}
-      })
-      .then(function (response) {
-          //handle success
-          console.log(response);
-      })
-      .catch(function (response) {
-          //handle error
-          console.log(response);
-      });
-  }
+    axios.get("api/User/" + userInfo.email)
+            .then(res => {
+                console.log(res.data);
 
+            })
+            .then(function (response) {
+                //handle success
+                console.log(response);
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
+    }
 
 
 
@@ -53,11 +50,11 @@ let userInfo = {
   render() {
     return (
       <div className="App">
-      <h1>SignUp</h1>
+        <h1>Login</h1>
 
         <form onSubmit={this.handleSubmit}>
 
-          <label>Email: </label>
+          <label>Username: </label>
           <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
           <p />
 
@@ -65,11 +62,6 @@ let userInfo = {
           <label>Password: </label>
           <input className="InputField" type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
 
-          <p />
-
-
-          <label>Verify Password: </label>
-          <input type="password" name="verifyPassword" value={this.state.verifyPassword} onChange={this.handleChange}></input>
           <p />
 
           <button type="submit" >Submit</button>
@@ -80,4 +72,4 @@ let userInfo = {
   }
 }
 
-export default SignUpForm;
+export default LoginForm;

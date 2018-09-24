@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from '../../logo.svg';
 import '../../App.css';
 import SignUpForm from "../login/SignUpForm";
+import LoginForm from "../login/LoginForm";
+
 import EventDropDown from "../event/EventDropDown";
 import DisplayEvents from "../event/DisplayEvents";
 import Navbar from "../nav/Navbar";
@@ -25,6 +27,8 @@ class Home extends Component {
         </div>
           </div>
           <div className="col-md-4">
+            <LoginForm />
+            <br />
             <SignUpForm />
           </div>
         </div>

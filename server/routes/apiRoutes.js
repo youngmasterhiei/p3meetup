@@ -20,12 +20,12 @@ module.exports = function (app) {
         });
       });
 
-      app.get("/api/user", function (req, res) {
-        db.Profile.findOne({
-          where: { UserId: uID },
-          include: [db.User]
-        }).then(function (dbProfile) {
-          res.json(dbProfile);
+      app.get("/api/user/:email", function (req, res) {
+        db.User.findOne({
+          where: { email: req.params.email }
+         
+        }).then(function (dbUser) {
+          res.json(dbUser);
         });
       });
 
