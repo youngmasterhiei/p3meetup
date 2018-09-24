@@ -5,9 +5,13 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        title: DataTypes.STRING
-        ,
-        date: DataTypes.STRING
+        title: DataTypes.STRING,
+        description: DataTypes.STRING,
+        date: DataTypes.STRING,
+        time: DataTypes.STRING,
+        address: DataTypes.STRING,
+        name: DataTypes.STRING
+
 
 
 
@@ -23,3 +27,4 @@ module.exports = function (sequelize, DataTypes) {
     //   };
     return Event;
 };
+

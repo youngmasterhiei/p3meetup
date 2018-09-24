@@ -57,7 +57,7 @@ let userInfo = {
         <form onSubmit={this.handleSubmit}>
 
           <label>Signup: </label>
-          <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="hello"></input>
+          <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
           <p />
 
 

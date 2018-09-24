@@ -63,6 +63,14 @@ module.exports = function (app) {
       });
     });
 
+    app.get("/api/events/:title", function(req, res) {
+      db.Event.findAll({
+        where: { title: req.params.title }
+      }).then(function(dbEvent) {
+        res.json(dbEvent);
+      });
+    });
+
 };
 
 

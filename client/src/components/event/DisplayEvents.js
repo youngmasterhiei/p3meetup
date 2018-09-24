@@ -35,7 +35,7 @@ componentDidMount(){
         
 
         <ul> {this.state.event.map((event) => {
-          return <EventCard event={event}/ >
+          return <EventCard event={event} key={event.id}/ >
         })
 
       }

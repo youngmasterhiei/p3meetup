@@ -6,6 +6,7 @@ import EventDropDown from "../event/EventDropDown";
 import DisplayEvents from "../event/DisplayEvents";
 import Navbar from "../nav/Navbar";
 import 'bootstrap-4-grid';
+import HeroSearch from "../features/HeroSearch";
 
 
 class Home extends Component {
@@ -19,6 +20,9 @@ class Home extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Navbar />
         </header>
+        <div className="row App-header">
+        <HeroSearch />
+        </div>
           </div>
           <div className="col-md-4">
             <SignUpForm />
