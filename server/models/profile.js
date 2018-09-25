@@ -1,13 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
     var Profile = sequelize.define("Profile", {
       firstName: DataTypes.STRING,
-      lastName: DataTypes.INTEGER,
-      city: DataTypes.INTEGER,
-      state: DataTypes.INTEGER,
+      lastName: DataTypes.STRING,
+      city: DataTypes.STRING,
+      state: DataTypes.STRING,
       age: DataTypes.INTEGER,
-      gender: DataTypes.INTEGER,
-      gitHub: DataTypes.INTEGER,
-      linkedIn: DataTypes.INTEGER,
+      gender: DataTypes.STRING,
+      gitHub: DataTypes.STRING,
+      linkedIn: DataTypes.STRING,
 
 
       

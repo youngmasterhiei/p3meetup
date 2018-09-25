@@ -5,31 +5,29 @@ class EditProfile extends Component {
     super(props);
 
     this.state = {
-        profile: {
-          firstName: "",
-          lastName: "",
-            address: {
-                city: "",
-                state: ""
-            },
-            age: "",
-            gender: "",
-            gitHub: "",
-            linkedIn: "",
-            // events: {
-            //     attended: "",
-            //     registered: ""
-            // }
-        }
+
+      firstName: "",
+      lastName: "",
+      city: "",
+      state: "",
+      age: "",
+      gender: "",
+      gitHub: "",
+      linkedIn: ""
+      // events: {
+      //     attended: "",
+      //     registered: ""
+      // }
+
     };
- 
-    this.handleEventChange = this.handleEventChange.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
     this.handleEventSubmit = this.handleEventSubmit.bind(this);
     // this.onClick = this.onClick.bind(this);
 
   }
   //handles input values of form
-  handleEventChange = event => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
 
@@ -39,16 +37,16 @@ class EditProfile extends Component {
   //Form submit and axios post to DB
   handleEventSubmit = event => {
     event.preventDefault();
-    
+
     let profileInfo = {
-      firstName: this.state.profile.firstName,
-      lastName: this.state.profile.lastName,
-      city: this.state.profile.address.city,
-      state: this.state.profile.address.state,
-      age: this.state.profile.age,
-      gender: this.state.profile.gender,
-      gitHub: this.state.profile.gitHub,
-      linkedIn: this.state.profile.linkedIn
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      city: this.state.city,
+      state: this.state.state,
+      age: this.state.age,
+      gender: this.state.gender,
+      gitHub: this.state.gitHub,
+      linkedIn: this.state.linkedIn
 
     };
     console.log(profileInfo);
@@ -67,64 +65,64 @@ class EditProfile extends Component {
         console.log(response);
 
       });
-      // this.props.toggleList();
-      // this.onClick();
+    // this.props.toggleList();
+    // this.onClick();
   };
 
   // onClick() {
   //   const { updateEventList } = this.props
-  
+
   //   updateEventList();
   // }
 
   render() {
- 
+
     return (
       <div className="">
-  
+
         <form onSubmit={this.handleEventSubmit} >
           <h1>Edit Profile</h1>
           <label>First Name: </label>
-          <input className="InputField" type="text" name="firstName" value={this.state.profile.firstName} onChange={this.handleEventChange} placeholder="hello"></input>
+          <input className="InputField" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}></input>
           <p />
 
           <label>Last Name: </label>
-          <input className="InputField" type="text" name="lastName" value={this.state.profile.lastName} onChange={this.handleEventChange} placeholder="hello"></input>
+          <input className="InputField" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
           <p />
 
           <label>City: </label>
-          <input className="InputField" type="text" name="city" value={this.state.profile.address.city} onChange={this.handleEventChange} placeholder="hello"></input>
+          <input className="InputField" type="text" name="city" value={this.state.city} onChange={this.handleChange}></input>
           <p />
 
           <label>State: </label>
-          <input className="InputField" type="text" name="state" value={this.state.profile.address.state} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="state" value={this.state.state} onChange={this.handleChange}></input>
 
           <p />
 
           <label>Age: </label>
-          <input className="InputField" type="text" name="age" value={this.state.profile.age} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="age" value={this.state.age} onChange={this.handleChange}></input>
 
           <p />
 
           <label>Gender: </label>
-          <input className="InputField" type="text" name="gender" value={this.state.profile.gender} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="gender" value={this.state.gender} onChange={this.handleChange}></input>
 
           <p />
 
           <label>Github: </label>
-          <input className="InputField" type="text" name="gitHub" value={this.state.profile.gitHub} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="gitHub" value={this.state.gitHub} onChange={this.handleChange}></input>
 
           <p />
 
           <label>LinkedIn: </label>
-          <input className="InputField" type="text" name="LinkedIn" value={this.state.profile.linkedIn} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="linkedIn" value={this.state.linkedIn} onChange={this.handleChange}></input>
 
           <p />
 
           <button type="submit" >Submit</button>
         </form>
       </div>
-      
+
 
     );
   }

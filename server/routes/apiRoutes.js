@@ -77,18 +77,18 @@ module.exports = function (app) {
     console.log(req.body)
     db.Profile.create({
       firstName: req.body.firstName,
-      lastName: req.body.description,
-      city: req.body.date,
-      state: req.body.time,
-      age: req.body.address,
-      gender: req.body.name,
-      gitHub: req.body.name,
-      linkedIn: req.body.name
+      lastName: req.body.lastName,
+      city: req.body.city,
+      state: req.body.state,
+      age: req.body.age,
+      gender: req.body.gender,
+      gitHub: req.body.gitHub,
+      linkedIn: req.body.linkedIn
 
 
     })
       .then(function (dbProfile) {
-        res.json(dbEvent);
+        res.json(dbProfile);
       });
   });
 };
