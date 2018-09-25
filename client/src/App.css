@@ -51,11 +51,14 @@ ul {
 .Nav-links {
   display: inline;
   padding-right: 0.375em;
+  color: white;
   
 }
 
-a{
-  color: white;
+.discussion{
+  display: inline;
+  padding-right: 0.375em;
+  color: black;
 }
 
 * {
