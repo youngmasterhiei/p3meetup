@@ -38,7 +38,7 @@ class DisplayProfile extends Component {
             <div className="">
                 <div className="container">
                     <div className="row">
-                    
+
                         <li>
                             First Name: {this.state.profile.firstName}
                             <br /> Last Name: {this.state.profile.lastName}

@@ -6,19 +6,19 @@ class EditProfile extends Component {
 
     this.state = {
 
-      profile:{
-      firstName: "",
-      lastName: "",
-      city: "",
-      state: "",
-      age: "",
-      gender: "",
-      gitHub: "",
-      linkedIn: ""
-      // events: {
-      //     attended: "",
-      //     registered: ""
-      // }
+      profile: {
+        firstName: "",
+        lastName: "",
+        city: "",
+        state: "",
+        age: "",
+        gender: "",
+        gitHub: "",
+        linkedIn: ""
+        // events: {
+        //     attended: "",
+        //     registered: ""
+        // }
       }
     };
 

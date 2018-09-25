@@ -24,10 +24,10 @@ class AboutSection extends Component {
                           tortor ut finibus lobortis, dui magna bibendum lectus, sed gravida mauris est in dolor.
                 </p>
                 <img src={logo} style={{ float: 'right' }} height="99" width="99" alt="Image" />
-                   <p> Duis nulla magna, vestibulum vel vehicula id, feugiat eget mi. Morbi dapibus sagittis ultrices.
-                    Donec id ipsum vel est molestie venenatis. Sed eget orci libero. Curabitur non lorem eget eros
-                    venenatis luctus id ac massa. Nunc mi nunc, hendrerit eget scelerisque sit amet, iaculis quis ligula.
-                    Duis a interdum nisi, quis volutpat leo. Aliquam eleifend eget turpis rutrum euismod.
+                <p> Duis nulla magna, vestibulum vel vehicula id, feugiat eget mi. Morbi dapibus sagittis ultrices.
+                 Donec id ipsum vel est molestie venenatis. Sed eget orci libero. Curabitur non lorem eget eros
+                 venenatis luctus id ac massa. Nunc mi nunc, hendrerit eget scelerisque sit amet, iaculis quis ligula.
+                 Duis a interdum nisi, quis volutpat leo. Aliquam eleifend eget turpis rutrum euismod.
                 </p>
 
             </div>

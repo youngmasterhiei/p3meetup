@@ -34,6 +34,8 @@ class Home extends Component {
 
                     </div>
                     <div className="col-md-4">
+                    <br />
+                    <h1>Skills</h1>
 
                     </div>
 
