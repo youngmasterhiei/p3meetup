@@ -22,6 +22,8 @@ class CreateEventForm extends Component {
     
     this.handleEventChange = this.handleEventChange.bind(this);
     this.handleEventSubmit = this.handleEventSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
+
 
   }
   //handles input values of form
@@ -63,10 +65,15 @@ class CreateEventForm extends Component {
 
       });
       this.props.toggleList();
+      this.onClick();
   };
 
 
-
+  onClick() {
+    const { updateEventList } = this.props
+  
+    updateEventList();
+  }
 
 
   render() {
@@ -76,7 +83,7 @@ class CreateEventForm extends Component {
       <div className="">
   
 
-        <form onSubmit={this.handleEventSubmit}>
+        <form onSubmit={this.handleEventSubmit} >
           <h1>Create an Event</h1>
           <label>Title: </label>
           <input className="InputField" type="text" name="title" value={this.state.email} onChange={this.handleEventChange} placeholder="hello"></input>

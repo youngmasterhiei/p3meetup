@@ -1,7 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
     var Profile = sequelize.define("Profile", {
-      name: DataTypes.STRING,
+      firstName: DataTypes.STRING,
+      lastName: DataTypes.INTEGER,
+      city: DataTypes.INTEGER,
+      state: DataTypes.INTEGER,
       age: DataTypes.INTEGER,
+      gender: DataTypes.INTEGER,
+      gitHub: DataTypes.INTEGER,
+      linkedIn: DataTypes.INTEGER,
+
+
       
     });
     Profile.associate = function(models) {
@@ -11,3 +19,4 @@ module.exports = function(sequelize, DataTypes) {
     return Profile;
   };
   
+

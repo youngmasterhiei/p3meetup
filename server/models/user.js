@@ -17,9 +17,9 @@ module.exports = function (sequelize, DataTypes) {
   
   
     });
-//     User.associate = function (models) {
-//       User.hasOne(models.Profile)
-//     };
+    User.associate = function (models) {
+      User.hasOne(models.Profile)
+    };
 //     User.associate = function (models) {
 //       User.hasMany(models.Meal)
 //     };
