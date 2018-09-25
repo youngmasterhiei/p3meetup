@@ -6,6 +6,7 @@ class EditProfile extends Component {
 
     this.state = {
 
+      profile:{
       firstName: "",
       lastName: "",
       city: "",
@@ -18,7 +19,7 @@ class EditProfile extends Component {
       //     attended: "",
       //     registered: ""
       // }
-
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);

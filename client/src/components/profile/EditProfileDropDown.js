@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
-import EditProfile from "../profile/EditProfile";
-
+import EditProfile from "./EditProfile";
 
 class EditProfileDropDown extends Component {
   constructor(props) {

@@ -64,10 +64,10 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/profile", function (req, res) {
+  app.get("/api/profile/:id", function (req, res) {
     db.Profile.findOne({
-      where: { UserId: uID },
-      include: [db.User]
+      where: { id: req.params.id }
+      
     }).then(function (dbProfile) {
       res.json(dbProfile);
     });

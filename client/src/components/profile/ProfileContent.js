@@ -7,21 +7,21 @@ class ProfileContent extends Component {
         super(props);
 
         this.state = {
-            profile: {
-                address: {
-                    city: "",
-                    state: ""
-                },
-                age: "",
-                gender: "",
-                gitHub: "",
-                linkedIn: "",
-                events: {
-                    attended: "",
-                    registered: ""
-                }
-            }
-        };
+
+            firstName: "",
+            lastName: "",
+            city: "",
+            state: "",
+            age: "",
+            gender: "",
+            gitHub: "",
+            linkedIn: ""
+            // events: {
+            //     attended: "",
+            //     registered: ""
+            // }
+      
+          };
 
 
         // this.getEventDetails = this.getEventDetails.bind(this);
@@ -30,21 +30,7 @@ class ProfileContent extends Component {
     //handles input values of form
 
 
-    // componentDidMount() {
-    //     axios.get("api/profile")
-    //         .then(res => {
-    //             console.log(res.data);
-    //             this.setState({ profile: res.data });
-    //         })
-    // }
 
-    // updateEventList() {
-    //     axios.get("api/profile")
-    //         .then(res => {
-    //             console.log(res.data);
-    //             this.setState({ profile: res.data });
-    //         })
-    // };
 
 
     render() {
