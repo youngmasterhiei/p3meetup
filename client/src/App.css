@@ -39,7 +39,9 @@ ul {
   font-size: large;
 }
 
-
+.float {
+  float: left;
+}
 
 
 

@@ -1,9 +1,9 @@
 
 import React, { Component } from 'react';
-import CreateEventForm from "../event/CreateEventForm";
+import EditProfile from "../profile/EditProfile";
 
 
-class EventDropDown extends Component {
+class EditProfileDropDown extends Component {
   constructor(props) {
     super(props);
 
@@ -28,17 +28,17 @@ handleClickOutside(){
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
     }))
-    this.props.updateEventList();
+    // this.props.updateEventList();
   }
 
   render() {
-    const { updateEventList } = this.props;
+    // const { updateEventList } = this.props;
 
 
     return (
       <div className="dropdown">
-        <button onClick={() => this.toggleList()}>Create an Event</button>
-        <div className="showItems">{this.state.listOpen && <CreateEventForm toggleList={this.toggleList.bind(this)} updateEventList={updateEventList}  /> }</div>
+        <button onClick={() => this.toggleList()}>Edit Profile</button>
+        <div className="showItems">{this.state.listOpen && <EditProfile toggleList={this.toggleList.bind(this)}  /> }</div>
 
 
       </div>
@@ -47,7 +47,7 @@ handleClickOutside(){
   }
 }
 
-export default EventDropDown;
+export default EditProfileDropDown;
 
 
 
