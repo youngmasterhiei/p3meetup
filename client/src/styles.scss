@@ -1,4 +1,125 @@
 body {
-  background: green;
+  background: pink;
 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/*body {*/
+/*background: purple;*/
+/*}*/
+
+.App {
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  max-width: 68rem;
+  font-size: 1em;
+  font-family: sans-serif;
+  line-height: 16px;
+  font-weight: 400;
+
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  list-style-position: inside
+}
+
+
+
+.App-logo {
+  animation: App-logo-spin infinite 8s linear;
+  height: 85px;
+}
+
+.App-header {
+  background-color: #222;
+  min-height: 3em;
+  padding: 20px;
+  color: green;
+  margin-top: 5px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.float {
+  float: left;
+}
+
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.Nav-links {
+  display: inline;
+  padding-right: 0.375em;
+  color: white;
+
+}
+
+.discussion{
+  display: inline;
+  padding-right: 0.375em;
+  color: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+
+
+
+
+
+/*  hero image styles   */
+
+.hero-image {
+  background-color: aqua;
+  height: 50%;
+  width: 80%;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-text button:hover {
+  background-color: #555;
+  color: white;
 }
