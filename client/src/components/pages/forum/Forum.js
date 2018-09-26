@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../../logo.svg';
-import '../../../App.css';
+import '../../../styles.scss';
 import DiscussionBoard from "../../forum/DiscussionBoard";
 
 import Navbar from "../../nav/Navbar";
