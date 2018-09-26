@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../App.css";
+import "../../styles.scss";
 import DiscussionLinks from "./DiscussionLinks";
 
 class DiscussionBoard extends Component {
