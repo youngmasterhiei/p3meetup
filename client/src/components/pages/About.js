@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
-import '../../App.css';
+import '../../styles.scss';
 
 import Navbar from "../nav/Navbar";
 import 'bootstrap-4-grid';
