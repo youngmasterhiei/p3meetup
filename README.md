@@ -1,2 +1,5 @@
 # p3meetup
-asdf
+
+## Project Name: codeUp
+### Authors:
+- 
