@@ -1,86 +1,30 @@
-module.exports = function(sequelize, DataTypes) 
-{
-    var Event = sequelize.define("event",
-    {
-        id:
-        {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
-            type: DataTypes.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false
-        },
-        userid_create:
-        {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        title:
-        {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
-        summary:
-        {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        max_attend:
-        {
+module.exports = function (sequelize, DataTypes) {
+    var Event = sequelize.define("Event", {
+        id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            len: [1,100]
+            primaryKey: true,
+            autoIncrement: true
         },
-        age_restrict:
-        {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            values: ['Yes', 'No']
-        },
-        age_min:
-        {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            values: ['Any', '+13', '+18', '+21']
-        },
-        event_date:
-        {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        //might want to change this to string
-        //if string, will ONLY do validation on the front end
-        //need to choose time formatting
-        event_time:
-        {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        location:
-        {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        //need some way to update this when max_attend is hit
-        is_full:
-        {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            defaultValue: 'No',
-            values: ['Yes', 'No']
-        },
-        created_at: 
-        {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        updated_at:  DataTypes.DATE,
-        deleted_at: DataTypes.DATE
-    }, 
-    {
-        underscored: true
-    });
+        title: DataTypes.STRING,
+        description: DataTypes.STRING,
+        date: DataTypes.STRING,
+        time: DataTypes.STRING,
+        address: DataTypes.STRING,
+        name: DataTypes.STRING
 
+
+
+
+    });
+    //     User.associate = function (models) {
+    //       User.hasOne(models.Profile)
+    //     };
+    //     User.associate = function (models) {
+    //       User.hasMany(models.Meal)
+    //     };
+    //     User.associate = function(models) {
+    //       User.hasMany(models.Lifestyle)
+    //   };
     return Event;
-  };
+};
+
