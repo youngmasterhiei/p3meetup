@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import "../../App.css"
+import "../../styles.scss"
 class HeroSearch extends Component {
     constructor(props) {
         super(props);
