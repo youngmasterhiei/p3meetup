@@ -45,22 +45,22 @@ module.exports = function(sequelize, DataTypes)
       },
       city:
       {
-          type: DataTypes.INTEGER,
+          type: DataTypes.TEXT,
           allowNull: true
       },
       state:
       {
-          type: DataTypes.INTEGER,
+          type: DataTypes.TEXT,
           allowNull: true
       },
       zip_code:
       {
-          type: DataTypes.INTEGER,
+          type: DataTypes.TEXT,
           allowNull: true
       },
       country:
       {
-          type: DataTypes.INTEGER,
+          type: DataTypes.TEXT,
           allowNull: true
       },
       github:

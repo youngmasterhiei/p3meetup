@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             allowNull: false
         },
-        title:
+        event_title:
         {
             type: DataTypes.TEXT,
             allowNull: false
@@ -31,6 +31,14 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.INTEGER,
             allowNull: false,
             len: [1,100]
+        },
+        //need some way to update this when max_attend is hit
+        is_full:
+        {
+            type: DataTypes.ENUM,
+            allowNull: false,
+            defaultValue: 'No',
+            values: ['Yes', 'No']
         },
         age_restrict:
         {
@@ -57,18 +65,46 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.DATE,
             allowNull: false
         },
-        location:
+        location_name:
         {
-            type: DataTypes.UUID,
+            type: DataTypes.STRING,
             allowNull: false
         },
-        //need some way to update this when max_attend is hit
-        is_full:
+        addr1:
         {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            defaultValue: 'No',
-            values: ['Yes', 'No']
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        addr2:
+        {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        addr3:
+        {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        city:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+
+        },
+        state:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        zip_code:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        country:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
         },
         created_at: 
         {
