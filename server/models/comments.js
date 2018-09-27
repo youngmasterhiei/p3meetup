@@ -21,11 +21,11 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             allowNull: false
         },
-        commenter_email:
-        {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        // commenter_email:
+        // {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
         title:
         {
             type: DataTypes.TEXT,

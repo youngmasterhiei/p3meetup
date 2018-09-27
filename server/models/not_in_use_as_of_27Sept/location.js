@@ -24,27 +24,27 @@ module.exports = function(sequelize, DataTypes)
         addr2:
         {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         addr3:
         {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         city_state:
         {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             allowNull: false
 
         },
         zip_code:
         {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         country:
         {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         created_at: 
