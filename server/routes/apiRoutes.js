@@ -7,13 +7,13 @@ var db = require("../models");
 // localStorage.setItem('myFirstKey', 'myFirstValue');
 // console.log(localStorage.getItem('myFirstKey'));
 
-
-
 module.exports = function (app) {
 
-
-  //this route should not need to be modified
-  //not sure what this is supposed to be used for though....need clarification
+  ///////////////////////////////
+  //all get routes are here
+  ///////////////////////////////
+  
+  //not sure what this is supposed to be used for though - possibly bring up user profile?
   app.get("/api/user/:email", function (req, res) 
   {
     db.user.findOne(
@@ -25,6 +25,46 @@ module.exports = function (app) {
       res.json(dbuser);
     });
   });
+
+  //list of all events
+  app.get("/api/events", function (req, res) 
+  {
+    db.Event.findAll({})
+    .then(function (dbevent) 
+    {
+      res.json(dbevent);
+    });
+  });
+
+  //get event details by title
+  app.get("/api/events/:title", function (req, res) 
+  {
+    db.Event.findAll(
+      {
+      where: { event_title: req.params.title }
+      })
+    .then(function (dbevent) 
+    {
+      res.json(dbevent);
+    });
+  });
+
+  //get user profile information by id
+  app.get("/api/profile/:id", function (req, res) 
+  {
+    db.profile.findOne(
+      {
+      where: { user_id: req.params.id }
+      })
+    .then(function (dbprofile) 
+    {
+      res.json(dbprofile);
+    });
+  });
+
+  ///////////////////////////////
+  //all post routes are here
+  ///////////////////////////////
 
   //create a user account
   app.post("/api/user", function (req, res) 
@@ -106,41 +146,7 @@ module.exports = function (app) {
       })
   });
 
-  //list of all events
-  app.get("/api/events", function (req, res) 
-  {
-    db.Event.findAll({})
-    .then(function (dbevent) 
-    {
-      res.json(dbevent);
-    });
-  });
-
-  //get event details by title
-  app.get("/api/events/:title", function (req, res) 
-  {
-    db.Event.findAll(
-      {
-      where: { event_title: req.params.title }
-      })
-    .then(function (dbevent) 
-    {
-      res.json(dbevent);
-    });
-  });
-
-  //get user profile information by id
-  app.get("/api/profile/:id", function (req, res) 
-  {
-    db.profile.findOne(
-      {
-      where: { user_id: req.params.id }
-      })
-    .then(function (dbprofile) 
-    {
-      res.json(dbprofile);
-    });
-  });
+  
 
   //create profile details
   app.post("/api/profile", function (req, res) {
