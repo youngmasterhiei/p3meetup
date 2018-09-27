@@ -4,11 +4,9 @@ module.exports = function(sequelize, DataTypes)
     {
         id:
         {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            autoIncrement: true,
             allowNull:false
         },
         name:
@@ -31,10 +29,18 @@ module.exports = function(sequelize, DataTypes)
         created_at: 
         {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
-        updated_at: DataTypes.DATE,
-        deleted_at: DataTypes.DATE
+        updated_at: 
+        {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        deleted_at: 
+        {
+            type: DataTypes.DATE,
+            allowNull: true
+        }
     }, 
     {
         underscored: true
