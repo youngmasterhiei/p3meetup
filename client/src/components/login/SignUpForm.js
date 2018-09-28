@@ -52,7 +52,7 @@ let userInfo = {
 
   render() {
     return (
-      <div className="App">
+      <div className="user-login">
       <h1>SignUp</h1>
 
         <form onSubmit={this.handleSubmit}>

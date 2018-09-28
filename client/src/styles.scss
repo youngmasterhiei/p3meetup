@@ -1,6 +1,310 @@
-body {
-  background: purple;
+@import "./styles/styles.scss";
 
+// For Use With Non NEAT project
+// $fg-column: 102px;
+// $fg-gutter: 48px;
+// $fg-max-columns: 12;
+
+$width-large: 70em;
+$width-small: 40em;
+$width-medium: 50em;
+
+
+// Screen Sizes for Media Queries
+
+$width-tiny: 20em;
+$width-small: 30em;
+$width-medium: 40em;
+$width-tablet: 48em;
+$width-small-screen: 50em;
+$width-medium-screen: 64em;
+$width-large-screen: 76.5em;
+$width-larger-screen: 114em;
+
+
+/*_____________________
+_____________________
+\
+  Font Family Helpers
+/___________________
+____________________ */
+
+
+// Web Fonts
+// Will need additional CSS and/or JS
+
+
+$titillium: "Titillium Web", sans-serif;
+$roboto: 'Roboto', Helvetica, Arial, sans-serif;
+$open-sans: 'Open Sans', Helvetica, Arial, sans-serif;
+
+// Non Web Fonts
+// Can be used without the need for additional CSS or JS
+
+/*_____________________
+_____________________
+\
+  Color Guide
+/___________________
+____________________ */
+
+
+$leco-red: rgb(190,30,45);
+$dark-red: rgb(139,14,26);
+$black: rgb(0,0,0);
+$white: rgb(255,255,255);
+$tan: rgb(228,227,207);
+$grey-1: rgb(102,102,102);
+$grey-2: rgb(153,153,153);
+$grey-3: rgb(204,204,204);
+$grey-4: rgb(230,230,230);
+
+// PythonX Colors
+
+$python-blue: #005384;
+
+// High-level base settings.
+
+$base-font-color: #333 !default;
+
+
+
+/*_____________________
+_____________________
+\
+  Font Sizes and Line Heights
+/___________________
+____________________ */
+
+
+
+
+// High Level Base Settings
+
+$rem-base: 16px !default;
+
+
+/*_____________________
+_____________________
+\
+  Placeholders
+/___________________
+____________________ */
+
+%clearfix {
+  .clearfix:before,
+  .clearfix:after {
+    content: "";
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+  }
+  .clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+  }
+}
+
+%group {
+  .group:before,
+  .group:after {
+    content: "";
+    display: table;
+  }
+  .group:after {
+    clear: both;
+  }
+  .group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+  }
+}
+
+// Be Careful with Use - Can Cause Performance Issues
+%font {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+%word-break {
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+%overflow-container{overflow-y:scroll;-webkit-overflow-scrolling:touch}
+
+
+
+
+/*_____________________
+_____________________
+\
+  Reset
+/___________________
+____________________ */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  @extend %clearfix;
+}
+
+
+
+blockquote, q {
+  quotes: none;
+
+  &:before,&:after {
+    content: '';
+    content: none;
+  }
+
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+html {
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+
+.fluid {
+  clear: both;
+  margin-left: 0;
+  width: 100%;
+  float: left;
+  display: block;
+}
+
+img,canvas,iframe,video,svg{max-width:100%; height: 100%;}
+
+a {
+  background: transparent;
+  text-decoration: none; }
+a:focus {
+  outline: thin dotted; }
+
+ol, ul {
+  list-style: none; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+audio,
+canvas,
+img,
+video {
+  vertical-align: middle; }
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+textarea {
+  resize: vertical; }
+
+/*_____________________
+_____________________
+\
+  Mixins
+/___________________
+____________________ */
+
+
+
+/*===================================================
+=====================================================
+\
+  Author Styles
+  =============
+  Author: $author-name;
+  Date:  $daye;
+  Project: $project-name;
+/====================================================
+===================================================== */
+
+html {
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+body {
+  margin: 0;
+  line-height: 1
+}
+
+
+/*_____________________
+_____________________
+\
+  Font Sizes
+/___________________
+____________________ */
+
+p {
+  @extend %word-break;
+  @include font-size(14px);
+  line-height: 1.4;
+}
+
+
+
+/// Vars for testing
+
+* {
+  @include box-sizing;
+}
+
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+
+
+html {
+
+}
+
+
+body {
+  background: white;
+  @include font-size(16px);
 }
 
 * {
@@ -12,17 +316,12 @@ body {
 /*background: purple;*/
 /*}*/
 
-.App {
-  text-align: center;
-  position: relative;
-  margin: 0 auto;
+.app-container {
   max-width: 68rem;
-  font-size: 1em;
-  font-family: sans-serif;
-  line-height: 16px;
-  font-weight: 400;
-
+  @include font-size(16px);
+  margin: auto;
 }
+
 
 ul {
   list-style: none;

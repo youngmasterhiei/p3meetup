@@ -1,4 +1,5 @@
-# p3meetup
+Project: CodeUp
+Authors: Dylan, James, Amir, Jason
 
 Need:
 -list of all field names/ids used in an axios ajax calls
@@ -19,3 +20,4 @@ POST ROUTES:
 -create post on event details page (DONE)
     -create comment on post on event details page (DONE)
 -create event (DONE)
+

@@ -80,44 +80,36 @@ class CreateEventForm extends Component {
  
 
     return (
-      <div className="">
+      <div className="app-form-container">
   
 
         <form onSubmit={this.handleEventSubmit} >
           <h1>Create an Event</h1>
           <label>Title: </label>
           <input className="InputField" type="text" name="title" value={this.state.email} onChange={this.handleEventChange} placeholder="hello"></input>
-          <p />
 
           <label>Description: </label>
           <input className="InputField" type="text" name="description" value={this.state.description} onChange={this.handleEventChange}></input>
 
-          <p />
-
           <label>Date: </label>
           <input className="InputField" type="text" name="date" value={this.state.date} onChange={this.handleEventChange}></input>
 
-          <p />
 
           <label>Time: </label>
           <input className="InputField" type="text" name="time" value={this.state.time} onChange={this.handleEventChange}></input>
 
-          <p />
 
           <label>Address: </label>
           <input className="InputField" type="text" name="address" value={this.state.address} onChange={this.handleEventChange}></input>
 
-          <p />
 
           <label>Name: </label>
           <input className="InputField" type="text" name="name" value={this.state.name} onChange={this.handleEventChange}></input>
 
-          <p />
 
           <label>image: </label>
           <input className="InputField" type="text" name="image" value={this.state.image} onChange={this.handleEventChange}></input>
 
-          <p />
 
        
 

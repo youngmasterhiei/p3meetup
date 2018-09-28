@@ -9,7 +9,7 @@ import 'bootstrap-4-grid';
 class Home extends Component {
     render() {
         return (
-            <div className="App">
+            <div className="app-container">
 
                 <div className="row">
                     <div className="col-md-8">

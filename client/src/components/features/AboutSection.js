@@ -9,10 +9,11 @@ class AboutSection extends Component {
     render() {
 
         return (
+            <section className="">
             <div >
                 <h2>About the Site</h2>
                 <br />
-                <img src={logo} style={{ float: 'left' }} height="99" width="99" alt="Image" />
+                <img src={logo} style={{ float: 'left' }}  alt="Image" />
                 <p>
 
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget ligula erat.
@@ -31,6 +32,7 @@ class AboutSection extends Component {
                 </p>
 
             </div>
+        </section>
 
 
         );
