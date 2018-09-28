@@ -29,11 +29,20 @@
 }
 
 
-/// Font Weights
-
+/// Font Weight (700)
+/// Header Font
 @mixin fw-header($fw: 700){
   font-weight: $fw;
 }
+
+
+/// Base Font Weight (400)
+/// Base Font Weight
+@mixin fw-base($fw: 400){
+  font-weight: $fw;
+}
+
+
 
 
 
