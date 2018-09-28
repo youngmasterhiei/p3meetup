@@ -15,8 +15,7 @@ import PopularEvents from "../event/PopularEvents";
 class Home extends Component {
   render() {
     return (
-      <div className="App">
-
+      <div className="app-container">
         <div className="row">
           <div className="col-md-8">
             <header className="App-header">
