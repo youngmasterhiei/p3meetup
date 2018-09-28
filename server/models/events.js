@@ -35,16 +35,15 @@ module.exports = function(sequelize, DataTypes)
         //need some way to update this when max_attend is hit
         is_full:
         {
-            type: DataTypes.ENUM,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 'No',
-            values: ['Yes', 'No']
+            defaultValue: false
         },
         age_restrict:
         {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            values: ['Yes', 'No']
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
         },
         age_min:
         {
