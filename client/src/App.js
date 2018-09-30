@@ -4,9 +4,32 @@ import About from "./components/pages/About";
 import Profile from "./components/pages/Profile";
 import Forum from "./components/pages/forum/Forum";
 import ForumEvents from "./components/pages/forum/Forum";
+import Auth from './components/modules/Auth';
 
-import {BrowserRouter as Router,} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from 'react-router-dom'
+import SignUpForm from './components/login/SignUpForm';
+
+
+const LoggedOutRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    Auth.isUserAuthenticated() ? (
+      <Redirect to={{
+        pathname: '/',
+        state: { from: props.location }
+      }}/>
+    ) : (
+      <Component {...props} {...rest} />
+    )
+  )}/>
+)
+
+
 class App extends Component {
   render() {
     return (
@@ -41,8 +64,10 @@ class App extends Component {
         ()=> {
           return (<ForumEvents />);
         }
+
       }/>
-        
+      <LoggedOutRoute path="/signup" component={SignUpForm}/>
+      s
 
       </div>
       </Router>
