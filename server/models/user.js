@@ -14,18 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {
     hooks: {
-      beforeCreate: (User) => {
+      beforeCreate: (user) => {
         const salt = bcrypt.genSaltSync();
-        user.password = bcrypt.hashSync(User.password.plaintext, salt);
+        user.password = bcrypt.hashSync(user.password, salt);
       }
     },
       
     })
     
-    User.prototype.validatePass = function (password, callback) {
+    User.prototype.validatePass = function (userPass, enteredPass, callback) {
       console.log("fuck");
+      console.log(userPass + "   usermodel   " + enteredPass);
+      console.log(User.password);
 
-       return bcrypt.compareSync(password, this.password, callback);
+       return bcrypt.compare(userPass, enteredPass, callback);
 
     };
     

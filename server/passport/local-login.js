@@ -43,7 +43,7 @@ module.exports = new PassportLocalStrategy({
       // }
 
 
-     return db.User.build().validatePass(dataPass, (err, result)=>{
+     return db.User.build().validatePass(userData.password, dataPass, (err, result)=>{
        console.log(err);
        console.log(result);
        if(result== true){
