@@ -62,12 +62,12 @@ class LoginForm extends Component {
 
         // save the token
         Auth.authenticateUser(xhr.response.token);
+        console.log(xhr.response.token);
 
         // update authenticated state
         this.props.toggleAuthenticateStatus()
 
         // redirect signed in user to dashboard
-        this.props.history.push('/dashboard');
       } else {
         // failure
 

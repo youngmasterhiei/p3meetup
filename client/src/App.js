@@ -22,7 +22,7 @@ const LoggedOutRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     Auth.isUserAuthenticated() ? (
       <Redirect to={{
-        pathname: '/',
+        pathname: '/home',
         state: { from: props.location }
       }}/>
     ) : (

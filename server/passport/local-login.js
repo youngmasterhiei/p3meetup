@@ -43,38 +43,18 @@ module.exports = new PassportLocalStrategy({
       // }
 
 
-     return db.User.build().validatePass(userData.password, dataPass, (err, result)=>{
-       console.log(err);
-       console.log(result);
-       if(result== true){
+      return db.User.build().validatePass(userData.password, dataPass, (err, result) => {
+        console.log(err);
+        console.log(result);
+        if (result == true) {
           console.log("Checked password, match.");
-       }
-       else if (!result){
-         console.log("no match")
-
-       }
-     
-        // if (result == true) {
-        //   console.log(err)
-        // } else {
-        //   console.log(result)
-        // }
-        // User.prototype.bcrypt.compare(User.password, this.password, function(err, res) {
-        //   if(res) {
-        //    // Passwords match
-        //   } else {
-        //    // Passwords don't match
-        //   } 
-        // });
+        }
+        else if (!result) {
+          console.log("no match");
+          return done(err);
 
 
-
-
-
-
-
-
-
+        }
 
 
 
@@ -90,9 +70,9 @@ module.exports = new PassportLocalStrategy({
         };
 
         return done(null, token, data);
-      
+
+      });
     });
-});
 });
 
   // find a user by email address
