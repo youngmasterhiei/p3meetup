@@ -3,9 +3,10 @@ const User = require("../models/user.js");
 const PassportLocalStrategy = require('passport-local').Strategy;
 const config = require('../config/config.json');
 var db = require("../models");
-const Promise = require('bluebird')
-const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
-var userPass ="";
+// const Promise = require('bluebird');
+// const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
+// const bcrypt = require("bcrypt-nodejs");
+var userPass = "";
 
 
 /**
@@ -17,7 +18,7 @@ module.exports = new PassportLocalStrategy({
   session: false,
   passReqToCallback: true
 }, (req, email, password, done) => {
-   const userData = {
+  const userData = {
     email: email.trim(),
     password: password.trim()
   };
@@ -32,36 +33,51 @@ module.exports = new PassportLocalStrategy({
       console.log(User.dataValues.password);
       dataPass = User.dataValues.password;
 
-      if (!User) {
-        const error = new Error('Incorrect email or password');
-        error.name = 'IncorrectCredentialsError';
-        console.log("no user")
+      // if (!User) {
+      //   const error = new Error('Incorrect email or password');
+      //   error.name = 'IncorrectCredentialsError';
+      //   console.log("no user")
 
 
-        return done(error);
-      }
+      //   return done(error);
+      // }
+
+
+     return db.User.build().validatePass(dataPass, (err, result)=>{
+       console.log(err);
+       console.log(result);
+       if(result== true){
+          console.log("hello");
+       }
+       else if (!result){
+         console.log("asdfasdf")
+
+       }
+     
+        // if (result == true) {
+        //   console.log(err)
+        // } else {
+        //   console.log(result)
+        // }
+        // User.prototype.bcrypt.compare(User.password, this.password, function(err, res) {
+        //   if(res) {
+        //    // Passwords match
+        //   } else {
+        //    // Passwords don't match
+        //   } 
+        // });
 
 
 
-   
 
 
 
 
-      var isValidPassword = function(userPass, password){
-        return bcrypt.compareSync(userPass, password);
-      }
-        if (!isValidPassword(userPass, password)) {
-          console.log("check hash")
-          const error = new Error('Incorrect email or password');
-          error.name = 'IncorrectCredentialsError';
 
 
-          return done(error);
-        }
-        if (isMatch){
-          console.log("match!")
-        }
+
+
+
 
         const payload = {
           sub: User._id
@@ -74,9 +90,10 @@ module.exports = new PassportLocalStrategy({
         };
 
         return done(null, token, data);
-      });
+      
     });
-
+});
+});
 
   // find a user by email address
 
