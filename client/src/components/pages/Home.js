@@ -12,8 +12,35 @@ import HeroSearch from "../features/HeroSearch";
 import AboutSection from "../features/AboutSection";
 import PopularEvents from "../event/PopularEvents";
 
+import Auth from '../modules/Auth';
+
+
+
+
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      authenticated: false
+    }
+  };
+
+  componentDidMount() {
+    // check if user is logged in on refresh
+    this.toggleAuthenticateStatus()
+  }
+
+  toggleAuthenticateStatus() {
+    // check authenticated status and toggle state based on that
+    this.setState({ authenticated: Auth.isUserAuthenticated() })
+  }
+
   render() {
+
+
+
+    
     return (
       <div className="app-container">
         <div className="row">
@@ -24,6 +51,18 @@ class Home extends Component {
             </header>
             <div className="row App-header">
               <HeroSearch />
+          {Auth.isUserAuthenticated() ? (
+            <h1 style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</h1>
+          ) : (
+            <h1 style={{ fontSize: '16px', color: 'green' }}>You are not logged in.</h1>
+
+            
+          )}
+
+          <div className="">
+
+          <li className="Nav-links"><a href={"/logout"}>Logout</a></li>
+          </div>
             </div>
           </div>
           <div className="col-md-4">

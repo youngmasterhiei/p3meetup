@@ -47,10 +47,10 @@ module.exports = new PassportLocalStrategy({
        console.log(err);
        console.log(result);
        if(result== true){
-          console.log("hello");
+          console.log("Checked password, match.");
        }
        else if (!result){
-         console.log("asdfasdf")
+         console.log("no match")
 
        }
      

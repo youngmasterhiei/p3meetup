@@ -24,8 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     
     User.prototype.validatePass = function (userPass, enteredPass, callback) {
       console.log("fuck");
-      console.log(userPass + "   usermodel   " + enteredPass);
-      console.log(User.password);
+      console.log(userPass + "<db password   usermodel   user entered pass>" + enteredPass);
 
        return bcrypt.compare(userPass, enteredPass, callback);
 
