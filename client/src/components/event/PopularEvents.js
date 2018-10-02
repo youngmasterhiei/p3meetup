@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCard from "./EventCard";
+import EventCards from "./EventCards";
 import axios from 'axios';
 
 
@@ -49,7 +49,7 @@ class PopularEvents extends Component {
                         <br />
 
                         <ul> {this.state.event.map((event) => {
-                            return <EventCard event={event} key={event.id}
+                            return <EventCards event={event} key={event.id}
                             />
                         })
 
