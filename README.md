@@ -17,7 +17,7 @@ GET ROUTES:
 POST ROUTES:
 -user register (DONE)
 -user update profile page (DONE)
--create post on event details page (DONE)
-    -create comment on post on event details page (DONE)
+-create post on event details page
+    -create comment on post on event details page
 -create event (DONE)
 
