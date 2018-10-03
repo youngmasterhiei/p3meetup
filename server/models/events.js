@@ -1,0 +1,113 @@
+module.exports = function(sequelize, DataTypes) 
+{
+    const event = sequelize.define("event",
+    {
+        id:
+        {
+            //there may be an issue if the column is not CHAR (36)
+            //when testing need to see what datatype sequelize actually assigns
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false
+        },
+        creator_user_id:
+        {
+            type: DataTypes.UUID,
+            allowNull: false
+        },
+        event_title:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        summary:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        max_attend:
+        {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            len: [1,100]
+        },
+        //need some way to update this when max_attend is hit
+        is_full:
+        {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        age_restrict:
+        {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+        age_min:
+        {
+            type: DataTypes.ENUM,
+            allowNull: false,
+            values: ['Any', '+13', '+18', '+21']
+        },
+        event_date_time:
+        {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        location_name:
+        {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        addr1:
+        {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        addr2:
+        {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        addr3:
+        {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        city:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+
+        },
+        state:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        zip_code:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        country:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        created_at: 
+        {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        updated_at: DataTypes.DATE,
+        deleted_at: DataTypes.DATE
+    }, 
+    {
+        underscored: true
+    });
+
+    return event;
+  };
