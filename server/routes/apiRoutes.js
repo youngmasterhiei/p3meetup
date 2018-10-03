@@ -61,61 +61,24 @@ module.exports = function (app)
     });
   });
 
-  //get all posts and associated comments for a single user
-  app.get('/posts/event/id:', (req, res) => {  
-    db.user.findAll({
+  //get all posts and associated comments for an event
+  app.get("/api/posts/:id", (req, res) => 
+  {  
+    db.post.findAll(
+    {
+      where: {event_id: req.params.id},
       include: [
         {
-          model: db.post,
-          include: [
-            {
-              model: db.comments
-            }
-          ]
+          model: db.comment
         }
       ]
-    }).then(user => {
-      const resObj = user.map(user => {
-
-        //tidy up the user data
-        return Object.assign(
-          {},
-          {
-            user_id: user.id,
-            posts: user.posts.map(post => {
-
-              //tidy up the post data
-              return Object.assign(
-                {},
-                {
-                  post_id: post.id,
-                  poster_user_id: post.poster_user_id,
-                  title: post.title,
-                  content: post.content,
-                  comments: post.comments.map(comment => {
-
-                    //tidy up the comment data
-                    return Object.assign(
-                      {},
-                      {
-                        comment_id: comment.id,
-                        post_id: comment.post_id,
-                        commenter_user_id: comment.commenter_user_id,
-                        //commenter_email: comment.commenter_email,
-                        title: comment.title,
-                        content: comment.content
-                      }
-                    )
-                  })
-                }
-                )
-            })
-          }
-        )
-      });
-      res.json(resObj);
+    }).then(function (dbpost)
+    {
+      console.log(dbpost.length);
+      res.json(dbpost);
     });
   });
+
   /////////////////////////////// 
 
 
@@ -139,11 +102,12 @@ module.exports = function (app)
   });
 
   //rcreate a post
-  app.post("/api/event_post", function(req, res)
+  app.post("/api/post/:id", function(req, res)
   {
     db.post.create(
       {
-        poster_user_id: req.body.poster_user_id,
+        poster_user_id: req.body.poster_user_id, //this should be the authenticated user
+        event_id: req.params.id, 
         title: req.body.title,
         content: req.body.content,
         status: 'In Review'
@@ -155,12 +119,12 @@ module.exports = function (app)
   });
 
   //create a comment
-  app.post("/api/post_comment", function(req,res)
+  app.post("/api/comment/:id", function(req,res)
   {
     db.comment.create(
     {
-      post_id: req.body.post_id,
-      commenter_user_id: req.body.commenter_user_id,
+      post_id: req.params.id,
+      commenter_user_id: req.body.commenter_user_id, //this should be the authenticated user
       title: req.body.title,
       content: req.body.content,
       status: 'In Review'
@@ -174,17 +138,18 @@ module.exports = function (app)
   //create event
   app.post("/api/events", function (req, res) 
   {
+    console.log('SAMSAWAN lets see some styff')
+    console.log(req.body)
     db.event.create(
       {
-      //creator_user_id: <needs pass in from auth>,
-      event_title: req.body.title,
+      creator_user_id: req.body.creator_user_id,
+      event_title: req.body.event_title,
       summary: req.body.summary,
       max_attend: req.body.max_attend,
-      is_full: rqe.body.is_full,
+      is_full: req.body.is_full,
       age_restrict: req.body.age_restrict,
       age_min: req.body.age_min,
-      event_date: req.body.event_date,
-      event_time: req.body.event_time,
+      event_date_time: req.body.event_date_time,
       location_name: req.body.location_name,
       addr1: req.body.addr1,
       addr2: req.body.addr2,
