@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) 
 {
-    const reputation = sequelize.define("reputation",
+    const comment = sequelize.define("comment",
     {
         id:
         {
@@ -9,22 +9,37 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
-            allowNull:false
+            allowNull: false
         },
-        reviewed_user_id:
+        post_id:
         {
             type: DataTypes.UUID,
             allowNull: false
         },
-        reviewer_user_id:
+        commenter_user_id:
         {
             type: DataTypes.UUID,
-            allowNull: false,
-        },
-        rating:
-        {
-            type: DataTypes.DECIMAL(10,2),
             allowNull: false
+        },
+        // commenter_email:
+        // {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
+        title:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        content:
+        {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        status:
+        {
+            type: DataTypes.ENUM,
+            values: ['Approved', 'Rejected', 'In Review']
         },
         created_at: 
         {
@@ -38,5 +53,5 @@ module.exports = function(sequelize, DataTypes)
         underscored: true
     });
 
-    return reputation;
+    return comment;
   };
