@@ -1,20 +1,22 @@
 module.exports = function(sequelize, DataTypes) 
 {
-    const event_post = sequelize.define("event_post",
+    const user_skill = sequelize.define("user_skill",
     {
         id:
         {
+            //there may be an issue if the column is not CHAR (36)
+            //when testing need to see what datatype sequelize actually assigns
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
             allowNull:false
         },
-        event_id:
+        user_id:
         {
             type: DataTypes.UUID,
             allowNull: false
         },
-        post_id:
+        skill_id:
         {
             type: DataTypes.UUID,
             allowNull: false
@@ -31,5 +33,5 @@ module.exports = function(sequelize, DataTypes)
         underscored: true
     });
 
-    return event_post;
+    return user_skill;
   };

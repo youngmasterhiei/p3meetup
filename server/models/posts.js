@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             allowNull: false
         },
+        event_id:
+        {
+            type: DataTypes.UUID,
+            allowNull: false
+        },
         title:
         {
             type: DataTypes.STRING,

@@ -51,18 +51,10 @@ module.exports = function(sequelize, DataTypes)
             allowNull: false,
             values: ['Any', '+13', '+18', '+21']
         },
-        event_date:
-        {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        //might want to change this to string
-        //if string, will ONLY do validation on the front end
-        //need to choose time formatting
-        event_time:
+        event_date_time:
         {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
         },
         location_name:
         {

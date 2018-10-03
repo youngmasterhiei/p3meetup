@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) 
 {
-    const location = sequelize.define("location",
+    const user_event = sequelize.define("user_event",
     {
         id:
         {
@@ -11,41 +11,33 @@ module.exports = function(sequelize, DataTypes)
             defaultValue: DataTypes.UUIDV4,
             allowNull:false
         },
-        name:
+        user_id:
         {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false
         },
-        addr1:
+        event_id:
         {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false
         },
-        addr2:
+        reg_status:
         {
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.ENUM,
+            allowNull: false,
+            values: ['Not Registered', 'Registered']
         },
-        addr3:
+        attend_status:
         {
-            type: DataTypes.STRING,
-            allowNull: true
+            type: DataTypes.ENUM,
+            allowNull: false,
+            values: ['Attended', 'No Show']
         },
-        city_state:
+        reject_Status:
         {
-            type: DataTypes.INTEGER,
-            allowNull: false
-
-        },
-        zip_code:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        country:
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.ENUM,
+            allowNull: false,
+            values: ['Age', 'Location', 'Missing Skill']
         },
         created_at: 
         {
@@ -59,5 +51,5 @@ module.exports = function(sequelize, DataTypes)
         underscored: true
     });
 
-    return location;
+    return user_event;
   };
