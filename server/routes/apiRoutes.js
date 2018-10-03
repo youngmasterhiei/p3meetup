@@ -135,6 +135,30 @@ module.exports = function (app)
     });
   });
 
+//create profile
+  app.post("/api/profile/", function(req,res)
+  {
+    db.profile.create(
+    {
+      user_id: req.body.user_id,
+      age: req.body.age,
+      gender: req.body.gender,
+      phone: req.body.phone,
+      city: req.body.city,
+      state: req.body.state,
+      zip_code: req.body.zip_code,
+      country: req.body.country,
+      github: req.body.github,
+      linkedin: req.body.linkedin,
+      avatar: req.body.avatar,
+      status: 'Active'
+    })
+    .then(function(dbprofile)
+    {
+      res.json(dbprofile);
+    });
+  });
+
   //create event
   app.post("/api/events", function (req, res) 
   {

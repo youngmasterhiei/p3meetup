@@ -8,7 +8,9 @@ class DisplayProfile extends Component {
         super(props);
 
         this.state = {
-            profile: []
+            profile: [],
+            id: localStorage.getItem('token')
+
         };
 
         //   this.updateEventList = this.updateEventList.bind(this);
@@ -18,47 +20,50 @@ class DisplayProfile extends Component {
     }
 
 
-    componentDidMount() {
-        let id = 2;
-        axios.get("api/profile/" + id)
-            .then(res => {
-                console.log(res.data);
-                console.log(this.state.profile);
+componentDidMount() {
+    let id = this.state.id
+    
+    axios.get("api/profile/" +id)
+        .then(res => {
+            console.log(res.data);
+            console.log(this.state.profile);
 
-                this.setState({ profile: res.data });
-                console.log(this.state.profile);
+            this.setState({ profile: res.data });
+            console.log(this.state.profile);
 
-            })
-    }
+        })
+}
 
-    render() {
+// First Name: {this.state.profile.firstName}
+// <br /> Last Name: {this.state.profile.lastName}
 
-
-        return (
-            <div className="">
-                <div className="container">
-                    <div className="row">
-                    
-                        <li>
-                            First Name: {this.state.profile.firstName}
-                            <br /> Last Name: {this.state.profile.lastName}
-                            <br /> City: {this.state.profile.city}
-                            <br /> State: {this.state.profile.state}
-                            <br /> Age: {this.state.profile.age}
-                            <br /> Gender: {this.state.profile.gender}
-                            <br /> GitHub: {this.state.profile.gitHub}
-                            <br /> LinkedIn: {this.state.profile.linkedIn}
-                        </li>
+render() {
 
 
+    return (
+        <div className="">
+            <div className="container">
+                <div className="row">
 
-                    </div>
+                    <li>
+                       
+                        <br /> City: {this.state.profile.city}
+                        <br /> State: {this.state.profile.state}
+                        <br /> Age: {this.state.profile.age}
+                        <br /> Gender: {this.state.profile.gender}
+                        <br /> GitHub: {this.state.profile.gitHub}
+                        <br /> LinkedIn: {this.state.profile.linkedIn}
+                    </li>
+
+
+
                 </div>
             </div>
+        </div>
 
 
-        );
-    }
+    );
+}
 }
 
 export default DisplayProfile;

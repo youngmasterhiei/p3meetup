@@ -64,11 +64,14 @@ module.exports = new PassportLocalStrategy({
         };
 
         // create a token string
-        const token = jwt.sign(payload, config.jwtSecret);
-        const data = {
-          name: user.name
-        };
+        // const token = jwt.sign(payload, config.jwtSecret);
+        const token = user.dataValues.id
 
+        const data = {
+          email: user.dataValues.email,
+          id: user.dataValues.id
+        }
+        console.log(data);
         return done(null, token, data);
 
       });

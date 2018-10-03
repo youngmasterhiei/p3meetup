@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
+
 class EditProfile extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,8 @@ class EditProfile extends Component {
         //     attended: "",
         //     registered: ""
         // }
-      }
+      },
+      id: localStorage.getItem('token')
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,8 +43,8 @@ class EditProfile extends Component {
     event.preventDefault();
 
     let profileInfo = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      // firstName: this.state.firstName,
+      // lastName: this.state.lastName,
       city: this.state.city,
       state: this.state.state,
       age: this.state.age,
