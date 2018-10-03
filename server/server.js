@@ -1,19 +1,12 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
-<<<<<<< HEAD
 const passport = require('passport');
 const config = require('./config/config.json');
-
-=======
-//var db = require("./models/db.js");
->>>>>>> 8829026f47bd86fc2b04a75d69fb5a54a5772bbf
 
 // var exphbs = require("express-handlebars");           
 
 var db = require("./models");
-
-
 var app = express();
 var PORT = process.env.PORT || 5000;
 // Middleware
@@ -40,7 +33,7 @@ const apiRoutes = require('./routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
-require("./routes/apiRoutes.js")(app);
+// require("./routes/apiRoutes.js")(app);
 // require("./routes/htmlRoutes.js")(app);
 var syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
