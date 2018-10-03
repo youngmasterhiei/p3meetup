@@ -49,7 +49,7 @@ module.exports = function (app)
   });
 
   //get user profile information by user id
-  app.get("/api/profile/:id", function (req, res) 
+  app.get("/auth/api/profile/:id", function (req, res) 
   {
     db.profile.findOne(
       {
@@ -132,6 +132,31 @@ module.exports = function (app)
     .then(function(dbcomment)
     {
       res.json(dbcomment);
+    });
+  });
+
+//create profile
+  app.post("/auth/api/profile/", function(req,res)
+  {
+    console.log(req.body);
+    db.profile.create(
+    {
+      user_id: req.body.user_id,
+      age: req.body.age,
+      gender: req.body.gender,
+      phone: req.body.phone,
+      city: req.body.city,
+      state: req.body.state,
+      zip_code: req.body.zip_code,
+      country: req.body.country,
+      github: req.body.github,
+      linkedin: req.body.linkedin,
+      avatar: req.body.avatar,
+      status: 'Active'
+    })
+    .then(function(dbprofile)
+    {
+      res.json(dbprofile);
     });
   });
 

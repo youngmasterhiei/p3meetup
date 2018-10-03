@@ -7,10 +7,31 @@ import DisplayProfile from "../profile/DisplayProfile";
 import DisplayEvents from "../event/DisplayEvents";
 import Navbar from "../nav/Navbar";
 import 'bootstrap-4-grid';
+import auth from "../modules/Auth";
+
 
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+    
+     
+    
+        //   this.updateEventList = this.updateEventList.bind(this);
+    
+        // this.getEventDetails = this.getEventDetails.bind(this);
+        this.auth = new auth();
+        // this.getToken = this.getToken.bind(this);
+    }
+    // getToken(){
+    //     let token =;
+        
+
+    //     console.log(token + "this is the user id");
+    // };
+ 
     render() {
+
         return (
             <div className="app-container">
 

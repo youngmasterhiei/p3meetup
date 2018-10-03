@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
+
 class EditProfile extends Component {
   constructor(props) {
     super(props);
@@ -13,13 +15,14 @@ class EditProfile extends Component {
         state: "",
         age: "",
         gender: "",
-        gitHub: "",
-        linkedIn: ""
+        github: "",
+        linkedin: ""
         // events: {
         //     attended: "",
         //     registered: ""
         // }
-      }
+      },
+      id: localStorage.getItem('token')
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,20 +43,23 @@ class EditProfile extends Component {
     event.preventDefault();
 
     let profileInfo = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      // firstName: this.state.firstName,
+      // lastName: this.state.lastName,
       city: this.state.city,
       state: this.state.state,
       age: this.state.age,
       gender: this.state.gender,
-      gitHub: this.state.gitHub,
-      linkedIn: this.state.linkedIn
+      github: this.state.github,
+      linkedin: this.state.linkedin,
+      user_id: this.state.id
+      
 
     };
-    console.log(profileInfo);
+
+    // create an AJAX request
     axios({
       method: 'post',
-      url: '/api/profile',
+      url: '/auth/api/profile',
       data: profileInfo,
       config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
@@ -66,9 +72,17 @@ class EditProfile extends Component {
         console.log(response);
 
       });
-    // this.props.toggleList();
-    // this.onClick();
+ 
   };
+
+
+
+
+
+
+
+
+
 
   // onClick() {
   //   const { updateEventList } = this.props
@@ -111,12 +125,12 @@ class EditProfile extends Component {
           <p />
 
           <label>Github: </label>
-          <input className="InputField" type="text" name="gitHub" value={this.state.gitHub} onChange={this.handleChange}></input>
+          <input className="InputField" type="text" name="github" value={this.state.github} onChange={this.handleChange}></input>
 
           <p />
 
           <label>LinkedIn: </label>
-          <input className="InputField" type="text" name="linkedIn" value={this.state.linkedIn} onChange={this.handleChange}></input>
+          <input className="InputField" type="text" name="linkedin" value={this.state.linkedin} onChange={this.handleChange}></input>
 
           <p />
 
