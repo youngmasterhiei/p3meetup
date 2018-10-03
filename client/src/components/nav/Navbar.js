@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "../../styles.scss";
 
+
 class Navbar extends Component {
 
 
@@ -15,7 +16,11 @@ class Navbar extends Component {
                     <li className="Nav-links"><a href={"/about"}>About</a></li>
                     <li className="Nav-links"><a href={"/profile"}>Profile</a></li>
                     <li className="Nav-links"><a href={"/forum"}>Forum</a></li>
+                    <li className="Nav-links"><a href={"/event"}>Event</a></li>
+
                 </ul>
+
+             
             </div>
 
 
