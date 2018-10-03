@@ -22,7 +22,11 @@ class DisplayProfile extends Component {
 
 componentDidMount() {
     let id = this.state.id
-    
+    console.log(id + "id check");
+    if(this.state.id == null){
+console.log("no user id");
+    }
+    else{
     axios.get("/auth/api/profile/" +id)
         .then(res => {
             console.log(res.data);
@@ -32,6 +36,7 @@ componentDidMount() {
             console.log(this.state.profile);
 
         })
+    }
 }
 
 // First Name: {this.state.profile.firstName}
