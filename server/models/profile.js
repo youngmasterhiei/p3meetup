@@ -11,11 +11,7 @@ module.exports = function(sequelize, DataTypes)
             defaultValue: DataTypes.UUIDV4,
             allowNull:false
         },
-        user_id:
-        {
-          type: DataTypes.UUID,
-          allowNull: false
-        },
+       
         age:
         {
             type: DataTypes.INTEGER,
@@ -27,9 +23,8 @@ module.exports = function(sequelize, DataTypes)
         },
         gender:
         {
-            type: DataTypes.ENUM,
-            values: ['Male', 'Female', 'Trans-gender', 'Non-Binary'],
-            allowNull: true
+            type: DataTypes.STRING
+          
         },
         phone:
         {
@@ -95,6 +90,7 @@ module.exports = function(sequelize, DataTypes)
         //this requires snake casing
         underscored: true
       });
+   
 
     return profile;
   };

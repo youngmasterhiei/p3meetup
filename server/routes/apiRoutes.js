@@ -49,7 +49,7 @@ module.exports = function (app)
   });
 
   //get user profile information by user id
-  app.get("/api/profile/:id", function (req, res) 
+  app.get("/auth/api/profile/:id", function (req, res) 
   {
     db.profile.findOne(
       {
@@ -136,8 +136,9 @@ module.exports = function (app)
   });
 
 //create profile
-  app.post("/api/profile/", function(req,res)
+  app.post("/auth/api/profile/", function(req,res)
   {
+    console.log(req.body);
     db.profile.create(
     {
       user_id: req.body.user_id,

@@ -73,8 +73,7 @@ module.exports = function(sequelize, DataTypes)
  
 
 
-user.associate = function (models) {
-}
+
 
 return user
 }

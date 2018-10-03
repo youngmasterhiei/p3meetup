@@ -23,7 +23,7 @@ class DisplayProfile extends Component {
 componentDidMount() {
     let id = this.state.id
     
-    axios.get("api/profile/" +id)
+    axios.get("/auth/api/profile/" +id)
         .then(res => {
             console.log(res.data);
             console.log(this.state.profile);
@@ -51,8 +51,8 @@ render() {
                         <br /> State: {this.state.profile.state}
                         <br /> Age: {this.state.profile.age}
                         <br /> Gender: {this.state.profile.gender}
-                        <br /> GitHub: {this.state.profile.gitHub}
-                        <br /> LinkedIn: {this.state.profile.linkedIn}
+                        <br /> GitHub: {this.state.profile.github}
+                        <br /> LinkedIn: {this.state.profile.linkedin}
                     </li>
 
 
