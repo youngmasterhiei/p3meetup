@@ -1,13 +1,10 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
-//var db = require("./models/db.js");
 
 // var exphbs = require("express-handlebars");           
 
 var db = require("./models");
-
-
 var app = express();
 var PORT = process.env.PORT || 5000;
 // Middleware
