@@ -1,4 +1,4 @@
-const User = require("../models/user.js");
+const user = require("../models/users.js");
 const PassportLocalStrategy = require('passport-local').Strategy;
 var db = require("../models");
 
@@ -20,7 +20,7 @@ module.exports = new PassportLocalStrategy({
     password: password,
   };
 
-  db.User.create(
+  db.user.create(
     {
     // fname: req.body.fname,
     // lname: req.body.lname,

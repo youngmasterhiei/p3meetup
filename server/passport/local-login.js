@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require("../models/user.js");
+const user = require("../models/users.js");
 const PassportLocalStrategy = require('passport-local').Strategy;
 const config = require('../config/config.json');
 var db = require("../models");
@@ -23,15 +23,15 @@ module.exports = new PassportLocalStrategy({
     password: password.trim()
   };
 
-  return db.User.findOne(
+  return db.user.findOne(
     {
       where: { email: userData.email }
     })
-    .then(function (User) {
+    .then(function (user) {
       console.log(userData.password + " " + userData.email);
       userPass = userData.password;
-      console.log(User.dataValues.password);
-      dataPass = User.dataValues.password;
+      console.log(user.dataValues.password);
+      dataPass = user.dataValues.password;
 
       // if (!User) {
       //   const error = new Error('Incorrect email or password');
@@ -43,7 +43,7 @@ module.exports = new PassportLocalStrategy({
       // }
 
 
-      return db.User.build().validatePass(userData.password, dataPass, (err, result) => {
+      return db.user.build().validatePass(userData.password, dataPass, (err, result) => {
         console.log(err);
         console.log(result);
         if (result == true) {
@@ -60,13 +60,13 @@ module.exports = new PassportLocalStrategy({
 
 
         const payload = {
-          sub: User._id
+          sub: user._id
         };
 
         // create a token string
         const token = jwt.sign(payload, config.jwtSecret);
         const data = {
-          name: User.name
+          name: user.name
         };
 
         return done(null, token, data);

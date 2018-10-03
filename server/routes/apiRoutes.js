@@ -86,20 +86,20 @@ module.exports = function (app)
   //all post routes are here
  
   //create a user account
-  app.post("/api/user", function (req, res) 
-  {
-    db.user.create(
-      {
-      fname: req.body.fname,
-      lname: req.body.lname,
-      email: req.body.email,
-      password: req.body.password
-      })
-      .then(function (dbuser) 
-      {
-        res.json(dbuser);
-      });
-  });
+  // app.post("/api/user", function (req, res) 
+  // {
+  //   db.user.create(
+  //     {
+  //     fname: req.body.fname,
+  //     lname: req.body.lname,
+  //     email: req.body.email,
+  //     password: req.body.password
+  //     })
+  //     .then(function (dbuser) 
+  //     {
+  //       res.json(dbuser);
+  //     });
+  // });
 
   //rcreate a post
   app.post("/api/post/:id", function(req, res)

@@ -92,7 +92,7 @@ router.post('/signup', (req, res, next) => {
 
 
   return passport.authenticate('local-signup', (err) => {
-    console.log("hello from passport");
+    console.log("hello from passport in auth file");
     console.log(req.body)
     if (err) {
       console.log("err from pass")

@@ -1,7 +1,11 @@
+const Promise = require('bluebird')
+const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
+var db = require("../models");
+
+
 module.exports = function(sequelize, DataTypes) 
 {
-    const user = sequelize.define("user",
-    {
+    const user = sequelize.define("user", {
         id:
         {
             //there may be an issue if the column is not CHAR (36)
@@ -9,13 +13,13 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
-            allowNull:false
+            allowNull:true
         },
         fname:
         {
             type: DataTypes.TEXT,
-            allowNull: false,
-            notEmpty: true,
+            allowNull: true,
+            
             validate: 
             {
                 len: [1,50]
@@ -24,8 +28,7 @@ module.exports = function(sequelize, DataTypes)
         lname:
         {
             type: DataTypes.TEXT,
-            allowNull: false,
-            notEmpty: true,
+            allowNull: true,
             validate: 
             {
                 len: [1,50]
@@ -47,18 +50,31 @@ module.exports = function(sequelize, DataTypes)
             allowNull: false,
             notEmpty: true
         },
-        created_at: 
-        {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        updated_at: DataTypes.DATE,
-        deleted_at: DataTypes.DATE
-    }, 
-    {
-    //this requires snake casing
-    underscored: true
-    });
+    },
+        
+    
+ 
+{
+ hooks: {
+   beforeCreate: (user) => {
+     const salt = bcrypt.genSaltSync();
+     user.password = bcrypt.hashSync(user.password, salt);
+   }
+}
+ })
+ 
+ user.prototype.validatePass = function (userPass, enteredPass, callback) {
+   console.log("fuck");
+   console.log(userPass + "<db password   usermodel   user entered pass>" + enteredPass);
 
-  return user;
-};
+    return bcrypt.compare(userPass, enteredPass, callback);
+
+ };
+ 
+
+
+user.associate = function (models) {
+}
+
+return user
+}

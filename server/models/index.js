@@ -55,8 +55,8 @@ db.post.hasMany(db.comment);
 
 
 //user-profile relationship
-db.profile.belongsTo(db.user);
-db.user.hasOne(db.profile);
+// db.profile.belongsTo(db.User);
+// db.user.hasOne(db.profile);
 
 //post-comment relationship
 // db.comment.belongsTo(db.post);
