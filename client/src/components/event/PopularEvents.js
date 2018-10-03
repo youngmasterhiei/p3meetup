@@ -39,31 +39,29 @@ class PopularEvents extends Component {
 
 
         return (
-            <div className="">
-                <div className="container">
-                    <div className="row">
 
-                        <h2>Popular Events</h2>
-                        <br />
-                        <br />
-                        <br />
+            <div className="container-fluid margin_80_0">
+                <div className="main_title_2">
+                    <span><em></em></span>
+                    <h2>Popular Events</h2>
+                    <p>something catchy here is we want to add it</p>
+                </div>
+                <div id="reccomended" className="owl-carousel owl-theme">
 
-                        <ul> {this.state.event.map((event) => {
-                            return <EventCard event={event} key={event.id}
-                            />
-                        })
-
-                        }
-                        </ul>
-
-
-                    </div>
-
+                    <EventCard />
+                    <EventCard />
 
                 </div>
 
-
+                <div className="container">
+                    <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
+                </div>
+                <hr className="large" />
             </div>
+
+
+
+
 
 
         );

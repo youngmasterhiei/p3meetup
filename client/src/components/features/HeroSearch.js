@@ -46,20 +46,37 @@ class HeroSearch extends Component {
     render() {
 
         return (
-            <div className="App">
-                <div className="App-header">
-                    <div className="">
-                        <h1>Awesome Picture</h1>
-                        <br />
-
-                        <p>And I'm a Photographer</p>
-                        <br />
-
-                        <input className="InputField" type="text" name="event" value={this.state.event} onChange={this.handleChange}></input>
-                        <button onClick={this.handleSubmit}>Search Event</button>
+            <section className="hero_single version_2">
+                <div className="wrapper">
+                    <div className="container">
+                        <h3>Find Popular Events</h3>
+                        <p>From hackathons to other stuff we can write as a team</p>
+                        <form>
+                            <div className="row no-gutters custom-search-input-2">
+                                <div className="col-lg-4">
+                                    <div className="form-group">
+                                        <input className="form-control" type="text" placeholder="State, City..." />
+                                        <i className="icon_pin_alt" />
+                                    </div>
+                                </div>
+                                <div className="col-lg-4">
+                                    <div className="form-group">
+                                        <input className="form-control" type="text" name="dates" placeholder="When.." />
+                                        <i className="icon_calendar" />
+                                    </div>
+                                </div>
+                                <div className="col-lg-4">
+                                    <input type="submit" className="btn_search" defaultValue="Search" />
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
+            </section>
+
+
+
+
 
 
         );

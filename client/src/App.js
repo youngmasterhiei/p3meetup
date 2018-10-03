@@ -5,6 +5,11 @@ import Profile from "./components/pages/Profile";
 import Forum from "./components/pages/forum/Forum";
 import ForumEvents from "./components/pages/forum/Forum";
 
+// require('js/common_scripts');
+// require('js/main');
+// require('js/wow');
+
+
 import {BrowserRouter as Router,} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 class App extends Component {

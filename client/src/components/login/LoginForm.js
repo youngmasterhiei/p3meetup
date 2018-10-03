@@ -50,12 +50,17 @@ class LoginForm extends Component {
   render() {
     return (
       <div className="base-login-form">
-        <h1>Login</h1>
 
-        <form onSubmit={this.handleSubmit}>
+          <div className="login-header">
+            <h3 className="base-heading-md">Login</h3>
+          </div>
 
-          <label>Username: </label>
-          <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
+          <div className="form-container">
+
+            <form onSubmit={this.handleSubmit}>
+
+             <label>Username: </label>
+             <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
           <p />
 
 
@@ -66,6 +71,7 @@ class LoginForm extends Component {
 
           <button type="submit" >Submit</button>
         </form>
+      </div>
       </div>
 
     );
