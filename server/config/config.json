@@ -1,4 +1,5 @@
 {
+  "jwtSecret": "fuckpassport",
     "development": {
       "username": "root",
       "password": "target1",
