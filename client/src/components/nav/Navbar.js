@@ -22,7 +22,7 @@ class Navbar extends Component {
                 <ul id="top_menu">
 
             <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
-        <SignUpForm />
+        <SignUpForm toggleAuthenticateStatus={() => this.props.toggleAuthenticateStatus()} />
                     </ul>
                 <a href="#menu" className="btn_mobile">
                     <div className="hamburger hamburger--spin" id="hamburger">
@@ -35,9 +35,9 @@ class Navbar extends Component {
                     <ul>
                         <li><span><a href={"/home"}>Home</a></span></li>
                         <li><span><a href={"/about"}>About</a></span></li>
-                        <li><span><a href={"/profile"}>Events</a></span></li>
+                        <li><span><a href={"/profile"}>Profile</a></span></li>
                         <li><span><a href={"/event"}>Events</a></span></li>
-                        <li><span><a href={"/forum"}>Events</a></span></li>
+                        <li><span><a href={"/forum"}>Forum</a></span></li>
 
                     </ul>
                 </nav>

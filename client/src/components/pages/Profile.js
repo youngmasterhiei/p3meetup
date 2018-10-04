@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
-import '../../styles.scss';
+// import '../../styles.scss';
 import EditProfileDropDown from "../profile/EditProfileDropDown";
 import DisplayProfile from "../profile/DisplayProfile";
 
@@ -11,7 +11,7 @@ import auth from "../modules/Auth";
 
 
 
-class Home extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
     
@@ -38,7 +38,6 @@ class Home extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <header className="App-header">
-                            <img src={logo} className="App-logo" alt="logo" />
                             <Navbar />
                         </header>
                     </div>
@@ -46,7 +45,6 @@ class Home extends Component {
                 <div className="row">
                     <div className="col-md-4">
                         <img src={logo} className="App-logo" alt="logo" />
-                        <EditProfileDropDown />
                     </div>
                     <div className="col-md-4">
                         <br />
@@ -57,6 +55,7 @@ class Home extends Component {
                     <div className="col-md-4">
                     <br />
                     <h1>Skills</h1>
+                    <EditProfileDropDown />
 
                     </div>
 
@@ -66,7 +65,7 @@ class Home extends Component {
                     <div className="col-md-8">
                         <br />
                         <h1>Upcoming Events</h1>
-                        <DisplayEvents />
+                         <DisplayEvents />
                     </div>
                 </div>
             </div>
@@ -74,4 +73,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Profile;
