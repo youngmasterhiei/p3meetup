@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventCard from "./EventCard";
 import axios from 'axios';
 import EventDropDown from "./EventDropDown";
+import PopularEvents from './PopularEvents';
 
 
 class DisplayEvents extends Component {
@@ -46,10 +47,7 @@ class DisplayEvents extends Component {
           <div className="row">
 
 
-            <EventCard />
-            })
-
-            }
+            <PopularEvents />
 
 
           </div>
