@@ -1,48 +1,87 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Auth from '../modules/Auth';
+
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
 
+    const storedMessage = localStorage.getItem('successMessage');
+    let successMessage = '';
+
+    if (storedMessage) {
+      successMessage = storedMessage;
+      localStorage.removeItem('successMessage');
+    }
+
+    // set the initial component state
     this.state = {
-      email: "",
-      password: ""
+      errors: {},
+      successMessage,
+      user: {
+        email: '',
+        password: ''
+      }
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
   handleChange = event => {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
     this.setState({
-      [event.target.name]: event.target.value
-
+      user
     });
-    console.log("hello");
-
   }
   handleSubmit = event => {
+   // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-    let userInfo = {
-      email: this.state.email,
-      userPassword: this.state.password
-    };
-    console.log(userInfo.email);
-    console.log(userInfo.userPassword);
-    axios.get("api/User/" + userInfo.email)
-            .then(res => {
-                console.log(res.data);
 
-            })
-            .then(function (response) {
-                //handle success
-                console.log(response);
-            })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
-    }
+    // create a string for an HTTP body message
+    const email = encodeURIComponent(this.state.user.email);
+    const password = encodeURIComponent(this.state.user.password);
+    const formData = `email=${email}&password=${password}`;
+
+    // create an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/auth/login');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        // success
+
+        // change the component-container state
+        this.setState({
+          errors: {}
+        });
+
+        // save the token
+        Auth.authenticateUser(xhr.response.token);
+        console.log(xhr.response.token);
+
+        // update authenticated state
+        this.props.toggleAuthenticateStatus()
+
+        // redirect signed in user to dashboard
+      } else {
+        // failure
+
+        // change the component state
+        const errors = xhr.response.errors ? xhr.response.errors : {};
+        errors.summary = xhr.response.message;
+
+        this.setState({
+          errors
+        });
+      }
+    });
+    xhr.send(formData);
+  };
 
 
 
@@ -61,11 +100,14 @@ class LoginForm extends Component {
 
              <label>Username: </label>
              <input className="InputField" type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
+
+          <label>Username: </label>
+          <input className="InputField" type="email" name="email" value={this.state.user.email} onChange={this.handleChange}></input>
           <p />
 
 
           <label>Password: </label>
-          <input className="InputField" type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
+          <input className="InputField" type="password" name="password" value={this.state.user.password} onChange={this.handleChange}></input>
 
           <p />
 

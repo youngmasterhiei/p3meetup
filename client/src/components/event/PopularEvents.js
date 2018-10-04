@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCard from "./EventCard";
+import EventCards from "./EventCards";
 import axios from 'axios';
 
 
@@ -47,17 +47,19 @@ class PopularEvents extends Component {
                     <p>something catchy here is we want to add it</p>
                 </div>
                 <div id="reccomended" className="owl-carousel owl-theme">
+                        {/*<ul> {this.state.event.map((event) => {*/}
+                            {/*return <EventCards event={event} key={event.id}*/}
+                            {/*/>*/}
+                        {/*})*/}
 
-                    <EventCard />
-                    <EventCard />
 
-                </div>
 
                 <div className="container">
                     <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
                 </div>
                 <hr className="large" />
             </div>
+                            </div>
 
 
 

@@ -1,52 +1,81 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+
+// import axios from 'axios';
+// import Auth from '../modules/Auth';
+
 
 class SignUpForm extends Component {
   constructor(props) {
-    super(props);
+    super(props, );
 
+ 
+
+    // set the initial component state
     this.state = {
-      email: "",
-      password: "",
-      verifyPassword: ""
+      errors: {},
+      user: {
+        email: '',
+        password: ''
+      }
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
-  handleChange = event => {
+
+  handleChange(event) {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
     this.setState({
-      [event.target.name]: event.target.value
-
+      user
     });
-    console.log("hello");
-
   }
+
   handleSubmit = event => {
+    // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-let userInfo = {
-     userEmail : this.state.email,
-     userPassword : this.state.password
-};
-    console.log(userInfo.userEmail);
-    console.log(userInfo.userPassword);
-    axios({
-      method: 'post',
-      url: '/api/user',
-      data: userInfo,
-      config: { headers: {'Content-Type': 'multipart/form-data' }}
-      })
-      .then(function (response) {
-          //handle success
-          console.log(response);
-      })
-      .catch(function (response) {
-          //handle error
-          console.log(response);
-      });
+
+    // create a string for an HTTP body message
+    // const name = encodeURIComponent(this.state.user.name);
+    const email = encodeURIComponent(this.state.user.email);
+    const password = encodeURIComponent(this.state.user.password);
+    const formData = `email=${email}&password=${password}`;
+console.log(email + password);
+    // create an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/auth/signup');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        // success
+
+        // change the component-container state
+        this.setState({
+          errors: {}
+        });
+
+        // set a message
+        localStorage.setItem('successMessage', xhr.response.message);
+
+        // redirect user after sign up to login page
+        this.props.history.push('/login');
+      } else {
+        // failure
+
+        const errors = xhr.response.errors ? xhr.response.errors : {};
+        errors.summary = xhr.response.message;
+
+        this.setState({
+          errors
+        });
+      }
+    });
+    xhr.send(formData);
   }
-
-
 
 
 
@@ -95,8 +124,14 @@ let userInfo = {
         </div>
 
 
+
+
     );
   }
 }
+
+SignUpForm.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 export default SignUpForm;

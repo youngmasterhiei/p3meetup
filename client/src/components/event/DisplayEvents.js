@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCard from "./EventCard";
+import EventCards from "./EventCards";
 import axios from 'axios';
 import EventDropDown from "./EventDropDown";
 
@@ -46,13 +46,10 @@ class DisplayEvents extends Component {
           <div className="row">
 
 
-            <ul> {this.state.event.map((event) => {
-              return <EventCard event={event} key={event.id}
-              />
+            <EventCards />
             })
 
             }
-            </ul>
 
 
           </div>

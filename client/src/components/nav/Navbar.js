@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "../../styles.scss";
 import SignUpForm from "../login/SignUpForm";
 
+
 class Navbar extends Component {
 
 
@@ -10,12 +11,7 @@ class Navbar extends Component {
 
 
         return (
-            <header className="header menu_fixed" role="banner">
-             <div id="logo">
-            <a href="index.html">
-            <h1 className="primary-navigation">codeUP</h1>
-            </a>
-            </div>
+           <header>
             <ul id="top_menu">
                 <SignUpForm />
                 <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
