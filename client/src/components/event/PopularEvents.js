@@ -19,21 +19,21 @@ class PopularEvents extends Component {
 
 
     componentDidMount() {
-        axios.get("api/events")
+        axios.get("/auth/api/events")
             .then(res => {
                 console.log(res.data);
                 this.setState({ event: res.data });
             })
+            console.log(this.state.event)
     }
 
     updateEventList() {
-        axios.get("api/events")
+        axios.get("/auth/api/events")
             .then(res => {
                 console.log(res.data);
                 this.setState({ event: res.data });
             })
     };
-
 
     render() {
 
@@ -47,20 +47,23 @@ class PopularEvents extends Component {
                     <p>something catchy here is we want to add it</p>
                 </div>
                 <div id="reccomended" className="owl-carousel owl-theme">
-                    {/*<ul> {this.state.event.map((event) => {*/}
-                    {/*return <EventCards event={event} key={event.id}*/}
-                    {/*/>*/}
-                    {/*})*/}
+                    <ul> {this.state.event.map((event) => {
+                        return <EventCard event={event} key={event.id}
+                        />
+                    })
+
+                    }
+                    </ul>
 
 
+                    {/* <EventCard />
                     <EventCard />
                     <EventCard />
-                    <EventCard />
-                    <EventCard />
+                    <EventCard /> */}
 
 
 
-                   
+
                     <hr className="large" />
                 </div>
             </div>

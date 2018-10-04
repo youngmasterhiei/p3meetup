@@ -28,7 +28,7 @@ handleClickOutside(){
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
     }))
-    this.props.updateEventList();
+    // this.props.updateEventList();
   }
 
   render() {

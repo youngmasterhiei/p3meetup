@@ -14,29 +14,29 @@ module.exports = function(sequelize, DataTypes)
         creator_user_id:
         {
             type: DataTypes.UUID,
-            allowNull: false
+            allowNull: true
         },
         event_title:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         summary:
         {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         },
         max_attend:
         {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             len: [1,100]
         },
         //need some way to update this when max_attend is hit
         is_full:
         {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
+            allowNull: true,
             defaultValue: false
         },
         age_restrict:
@@ -47,24 +47,27 @@ module.exports = function(sequelize, DataTypes)
         },
         age_min:
         {
-            type: DataTypes.ENUM,
-            allowNull: false,
-            values: ['Any', '+13', '+18', '+21']
+            type: DataTypes.STRING,
+            allowNull: true
+            
         },
-        event_date_time:
+        date:
         {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
+        },
+        time:{
+            type: DataTypes.STRING
         },
         location_name:
         {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         addr1:
         {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         addr2:
         {
@@ -79,28 +82,28 @@ module.exports = function(sequelize, DataTypes)
         city:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
 
         },
         state:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         zip_code:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         country:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         created_at: 
         {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: true
         },
         updated_at: DataTypes.DATE,
         deleted_at: DataTypes.DATE

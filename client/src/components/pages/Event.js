@@ -8,6 +8,7 @@ import EventDetailsSingle from "../event/SingleEventDisplay/EventDetailsSingle";
 import FormEventSingle from "../event/SingleEventDisplay/EventForumSingle";
 import EventCard from "../event/EventCard";
 import EventPhotosSingle from "../event/SingleEventDisplay/EventPhotosSingle";
+import EventDropDown from "../event/EventDropDown";
 class Event extends Component {
     render() {
         return (
@@ -30,6 +31,8 @@ class Event extends Component {
                             <EventDetailsSingle />
                         </div>
                         <div className="row">
+                        <EventDropDown />
+
                             <FormEventSingle />
                         </div>
                         <div className="row">
