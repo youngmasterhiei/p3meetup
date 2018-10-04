@@ -47,13 +47,13 @@ class PopularEvents extends Component {
                     <p>something catchy here is we want to add it</p>
                 </div>
                 <div id="reccomended" className="owl-carousel owl-theme">
-                    <p> {this.state.event.map((event) => {
+                {this.state.event.map((event) => {
                         return <EventCard event={event} key={event.id}
                         />
                     })
 
                     }
-                    </p>
+                    </div>
 
 
                     {/* <EventCard />
@@ -65,7 +65,6 @@ class PopularEvents extends Component {
 
 
                     <hr className="large" />
-                </div>
             </div>
 
 
