@@ -8,18 +8,31 @@ class EventDetailsSingle extends Component {
         super(props);
 
         this.state = {
-            
+            event: [],
+            id: localStorage.getItem('event_id')
 
         };
+    }
 
 
+    componentDidMount() {
+        let id= this.state.id
+        let data = [];
+
+        axios.get("/auth/api/events/" +id)
+            .then(res => {
+                console.log(res.data[0]);
+                this.setState({ event: res.data[0] });
+                console.log(this.state.event + "fuck me")
+            })
+        
 
     }
 
 
 
-
     render() {
+        console.log(this.state.event + "asdfasdf");
 
 
         return (
@@ -33,11 +46,22 @@ class EventDetailsSingle extends Component {
         </Col>
         <Col lg="7">
             <a className="green-text"><h6 className="font-weight-bold mb-3"><Fa icon="cutlery" className="pr-2"></Fa>Food</h6></a>
-            <h3 className="font-weight-bold mb-3 p-0"><strong>Event Title</strong></h3>
+            <h3 className="font-weight-bold mb-3 p-0"><strong>{this.state.event.event_title}</strong></h3>
 <ul>
-<li>Where:</li>
-<li>When:</li>
-<li>Type:</li>
+<li>
+                       
+<br /> <li> Summary: {this.state.event.summary} </li>
+
+<br /> Max Attendance: {this.state.event.max_attend}
+<br /> Age Min: {this.state.event.age_min}
+<br /> Date: {this.state.event.date}
+<br /> Time: {this.state.event.time}
+<br /> Address: {this.state.event.addr1}
+<br /> City: {this.state.event.city}
+<br /> State: {this.state.event.state}
+<br /> Location Name: {this.state.event.location_name}
+
+</li>
 
 </ul>
 

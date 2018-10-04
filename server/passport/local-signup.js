@@ -25,7 +25,11 @@ module.exports = new PassportLocalStrategy({
     // fname: req.body.fname,
     // lname: req.body.lname,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    username: req.body.username,
+    fname: req.body.fname,
+    lname: req.body.lname
+
     });
   
 });

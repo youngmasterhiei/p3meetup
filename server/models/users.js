@@ -34,6 +34,16 @@ module.exports = function(sequelize, DataTypes)
                 len: [1,50]
             } 
         },
+        username:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            
+            validate: 
+            {
+                len: [1,50]
+            }
+        },
         email:
         {
             type: DataTypes.TEXT,

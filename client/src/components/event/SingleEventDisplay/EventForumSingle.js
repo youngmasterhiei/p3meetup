@@ -1,9 +1,65 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import { Container, Row, Col, Table, TableBody, TableHead } from 'mdbreact';
-import ScrollArea from 'react-scrollbar';
+import EventDiscussionBox from "./EventDiscussionBox";
 
 
 class EventForumSingle extends Component {
+
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            event: {
+      
+              comments: "",
+              prevComments: []
+             
+      
+      
+      
+            },
+            // creator_user_id: localStorage.getItem("token")
+      
+          };
+        // this.handleChange = this.handleChange.bind(this);
+        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+        this.handleCommentChange = this.handleCommentChange.bind(this);
+    }
+
+
+
+    handleCommentChange = event => {
+        this.setState({
+          [event.target.name]: event.target.value
+    
+        });
+      }
+
+      handleCommentSubmit = event => {
+        event.preventDefault();
+    
+    
+    
+    
+    
+    
+    
+    
+        let comment =  this.state.comments
+ 
+    
+        
+        console.log(comment);
+   
+      };
+
+
+
+
+
+
     render() {
         return (
             <Container style={{ maxWidth: '80%' }}>
@@ -12,38 +68,26 @@ class EventForumSingle extends Component {
                 </Row>
                 <Row>
 
-                    <ScrollArea
-                        speed={0.8}
-                        className="area"
-                        contentClassName="content"
-                        vertical={true}
-                    >
 
-                        <ul>
-                            <li>Thread
-                        <ul>
-                                    <li>John Smith: this is going to be great i cant wait.</li>
-                                    <li><button>reply</button></li>
-                                </ul>
-                            </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-                            <li>Mike Thomas : Wow im so excited </li>
-
-
+                    <Row>
+                    <ul>
+                    {this.state.comments.map((comments) => {
+                            return <EventDiscussionBox comments={comments} key={comments.id}
+                            />
+                        })
+              
+                        }
                         </ul>
-                        <textarea />
-                        <button>Submit</button>
+                    </Row>
+                        <form onSubmit={this.handleCommentSubmit} >
+                            <h1>Create an Comment</h1>
+                            <label>Title: </label>
+                            <textarea className="InputField" type="text"  name="userComment" value={this.state.userComment} onChange={this.handleCommentChange} placeholder="I'm so excited!!"></textarea>
 
-                    </ScrollArea>
+
+                            <button type="submit" >Submit</button>
+                        </form>
+
 
 
                 </Row>
