@@ -11,11 +11,21 @@ class Navbar extends Component {
 
 
         return (
-            <header>
+            <header className="header mm-slideout sticky">
+            <div id="logo">
+                <a href={"/home"}>
+            <h1 className="primary-navigation">
+            codeUP
+            </h1>
+
+            </a>
+            </div>
                 <ul id="top_menu">
                     <SignUpForm />
-                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
-                </ul>
+                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Register</a></li>
+                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Login</a></li>
+
+        </ul>
                 <a href="#menu" className="btn_mobile">
                     <div className="hamburger hamburger--spin" id="hamburger">
                         <div className="hamburger-box">
