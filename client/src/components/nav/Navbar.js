@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "../../styles.scss";
 import SignUpForm from "../login/SignUpForm";
 
-
 class Navbar extends Component {
 
 
@@ -21,11 +20,10 @@ class Navbar extends Component {
             </a>
             </div>
                 <ul id="top_menu">
-                    <SignUpForm />
-                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Register</a></li>
-                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Login</a></li>
 
-        </ul>
+            <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
+        <SignUpForm />
+                    </ul>
                 <a href="#menu" className="btn_mobile">
                     <div className="hamburger hamburger--spin" id="hamburger">
                         <div className="hamburger-box">

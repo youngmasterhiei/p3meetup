@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import logo from '../../logo.svg';
 import '../../styles.scss';
-//import 'jquery';
 
 
 //import '../../js/common_scripts';
