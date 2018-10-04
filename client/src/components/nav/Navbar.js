@@ -13,7 +13,7 @@ class Navbar extends Component {
         return (
             <header className="header mm-slideout sticky">
             <div id="logo">
-                <a href={"/home"}>
+                <a href={"/"}>
             <h1 className="primary-navigation">
             codeUP
             </h1>
