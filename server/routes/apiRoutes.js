@@ -26,7 +26,7 @@ module.exports = function (app)
   });
 
   //list of all events
-  app.get("/api/events", function (req, res) 
+  app.get("/auth/api/events", function (req, res) 
   {
     db.event.findAll({})
     .then(function (dbevent) 
@@ -161,7 +161,7 @@ module.exports = function (app)
   });
 
   //create event
-  app.post("/api/events", function (req, res) 
+  app.post("/auth/api/events", function (req, res) 
   {
     console.log('SAMSAWAN lets see some styff')
     console.log(req.body)
@@ -175,6 +175,7 @@ module.exports = function (app)
       age_restrict: req.body.age_restrict,
       age_min: req.body.age_min,
       event_date_time: req.body.event_date_time,
+      time: req.body.time,
       location_name: req.body.location_name,
       addr1: req.body.addr1,
       addr2: req.body.addr2,

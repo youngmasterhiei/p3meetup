@@ -6,20 +6,28 @@ class CreateEventForm extends Component {
 
     this.state = {
       event: {
-             
-             title: "",
-             description: "",
-             date: "",
-             time: "",
-             address: "",
-             name: ""
-      
-            
 
-            }
- };
- 
-    
+        event_title: "",
+        summary: "",
+        max_attend: "",
+        age_min: "",
+        date: "",
+        time: "",
+        addr1: "",
+        city: "",
+        state: "",
+        location_name: "",
+
+
+
+      },
+      creator_user_id: localStorage.getItem("token")
+
+    };
+
+
+
+
     this.handleEventChange = this.handleEventChange.bind(this);
     this.handleEventSubmit = this.handleEventSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -37,21 +45,32 @@ class CreateEventForm extends Component {
   //Form submit and axios post to DB
   handleEventSubmit = event => {
     event.preventDefault();
-    
+
+
+
+
+
+
+
+
     let eventInfo = {
-      title: this.state.title,
-      description: this.state.description,
+      creator_user_id: this.state.creator_user_id,
+      event_title: this.state.event_title,
+      summary: this.state.summary,
+      max_attend: this.state.max_attend,
+      age_min: this.state.age_min,
       date: this.state.date,
       time: this.state.time,
-      address: this.state.address,
-      name: this.state.name,
-      image: this.state.image
+      addr1: this.state.addr1,
+      city: this.state.city,
+      state: this.state.state,
+      location_name: this.state.location_name,
 
     };
     console.log(eventInfo);
     axios({
       method: 'post',
-      url: '/api/events',
+      url: '/auth/api/events',
       data: eventInfo,
       config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
@@ -64,32 +83,42 @@ class CreateEventForm extends Component {
         console.log(response);
 
       });
-      this.props.toggleList();
-      this.onClick();
+    this.props.toggleList();
+    this.onClick();
   };
 
 
   onClick() {
-    const { updateEventList } = this.props
-  
-    updateEventList();
+    // const { updateEventList } = this.props
+
+    // updateEventList();
   }
 
 
   render() {
- 
+
+
+
 
     return (
       <div className="app-form-container">
-  
+
 
         <form onSubmit={this.handleEventSubmit} >
           <h1>Create an Event</h1>
           <label>Title: </label>
-          <input className="InputField" type="text" name="title" value={this.state.email} onChange={this.handleEventChange} placeholder="hello"></input>
+          <input className="InputField" type="text" name="event_title" value={this.state.event_title} onChange={this.handleEventChange} placeholder="hello"></input>
 
-          <label>Description: </label>
-          <input className="InputField" type="text" name="description" value={this.state.description} onChange={this.handleEventChange}></input>
+          <label>Summary: </label>
+          <input className="InputField" type="text" name="summary" value={this.state.summary} onChange={this.handleEventChange}></input>
+
+          <label>Max Attendance: </label>
+          <input className="InputField" type="text" name="max_attend" value={this.state.max_attend} onChange={this.handleEventChange}></input>
+
+
+          <label>Age Min.: </label>
+          <input className="InputField" type="text" name="age_min" value={this.state.age_min} onChange={this.handleEventChange}></input>
+
 
           <label>Date: </label>
           <input className="InputField" type="text" name="date" value={this.state.date} onChange={this.handleEventChange}></input>
@@ -100,23 +129,23 @@ class CreateEventForm extends Component {
 
 
           <label>Address: </label>
-          <input className="InputField" type="text" name="address" value={this.state.address} onChange={this.handleEventChange}></input>
+          <input className="InputField" type="text" name="addr1" value={this.state.addr1} onChange={this.handleEventChange}></input>
+
+          <label>City: </label>
+          <input className="InputField" type="text" name="city" value={this.state.city} onChange={this.handleEventChange}></input>
+
+          <label>State: </label>
+          <input className="InputField" type="text" name="state" value={this.state.state} onChange={this.handleEventChange}></input>
+
+          <label>Location Name: </label>
+          <input className="InputField" type="text" name="location_name" value={this.state.location_name} onChange={this.handleEventChange}></input>
 
 
-          <label>Name: </label>
-          <input className="InputField" type="text" name="name" value={this.state.name} onChange={this.handleEventChange}></input>
-
-
-          <label>image: </label>
-          <input className="InputField" type="text" name="image" value={this.state.image} onChange={this.handleEventChange}></input>
-
-
-       
 
           <button type="submit" >Submit</button>
         </form>
       </div>
-      
+
 
     );
   }

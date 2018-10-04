@@ -38,7 +38,6 @@ class Home extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <header className="App-header">
-                            <img src={logo} className="App-logo" alt="logo" />
                             <Navbar />
                         </header>
                     </div>

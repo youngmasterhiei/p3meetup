@@ -8,6 +8,7 @@ import EventDetailsSingle from "../event/SingleEventDisplay/EventDetailsSingle";
 import FormEventSingle from "../event/SingleEventDisplay/EventForumSingle";
 import EventCard from "../event/EventCard";
 import EventPhotosSingle from "../event/SingleEventDisplay/EventPhotosSingle";
+import EventDropDown from "../event/EventDropDown";
 class Event extends Component {
     render() {
         return (
@@ -16,7 +17,6 @@ class Event extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <header className="App-header">
-                            <img src={logo} className="App-logo" alt="logo" />
                             <Navbar />
                         </header>
                     </div>
@@ -31,6 +31,8 @@ class Event extends Component {
                             <EventDetailsSingle />
                         </div>
                         <div className="row">
+                        <EventDropDown />
+
                             <FormEventSingle />
                         </div>
                         <div className="row">

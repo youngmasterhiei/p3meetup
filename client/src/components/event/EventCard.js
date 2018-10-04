@@ -9,6 +9,7 @@ class EventCard extends Component {
 
 
     render() {
+        console.log(this.props.event)
 
 
         return (
@@ -19,12 +20,13 @@ class EventCard extends Component {
                         <small>Event Type</small>
                     </figure>
                     <div className="wrapper">
-                        <h3><a href="#0">Event title</a></h3>
-                        <p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-                        <span className="event_date">Event Date: <strong>08/18/18</strong> </span>
+                        <h3><a href="#0">{this.props.event.event_title}</a></h3>
+                        
+                        <p>{this.props.event.summary}</p>
+                        <span className="event_date"><strong></strong> </span>
                     </div>
                     <ul>
-                        <li><small>Event Start Time:</small>
+                        <li><small>{this.props.event.time}</small>
                         </li><li><i className="icon_clock_alt" /> 1h 30min</li>
                         <li><div className="event_attaendes"><span>Event<em>Attendees</em></span><strong>7</strong></div></li>
                     </ul>

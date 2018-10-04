@@ -3,14 +3,10 @@ import React, { Component } from 'react';
 import '../../styles.scss';
 //import 'jquery';
 
-
 //import '../../js/common_scripts';
 //import '../../js/main.js';
-
-
-
+import axios from "axios";
 //import LoginForm from "../login/LoginForm";
-
 
 // import SignUpForm from "../login/SignUpForm";
 // import LoginForm from "../login/LoginForm";
@@ -39,7 +35,8 @@ class Home extends Component {
     constructor(props) {
      super(props);
      this.state = {
-       authenticated: false
+       authenticated: false,
+       event :[]
      }
    };
 
@@ -48,7 +45,12 @@ class Home extends Component {
     this.toggleAuthenticateStatus()
     Auth.deauthenticateUser();
 
-
+        axios.get("/auth/api/events")
+            .then(res => {
+                console.log(res.data);
+                this.setState({ event: res.data });
+            })
+    
 
 }
 toggleAuthenticateStatus() {
@@ -65,7 +67,7 @@ toggleAuthenticateStatus() {
 
             <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <HeroSearch />
-            <PopularEvents />
+            <PopularEvents event={this.state.event}/>
             <div className="container">
             <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
         </div>
