@@ -88,7 +88,9 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div className="base-login-form">
+
+
+      <div className="base-login-form" id="sign-in-dialog">
 
           <div className="login-header">
             <h3 className="base-heading-md">Login</h3>

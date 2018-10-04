@@ -83,7 +83,7 @@ console.log(email + password);
     return (
         <div id="sign-in-dialog" className="zoom-anim-dialog mfp-hide">
             <div className="small-dialog-header">
-                <h3>Sign In</h3>
+                <h3>Register</h3>
             </div>
             <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-wrapper">
@@ -113,7 +113,7 @@ console.log(email + password);
                     </div>
                     <div className="text-center"><input type="submit" defaultValue="Log In" className="btn_1 full-width" /></div>
                     <div className="text-center">
-                        Don’t have an account? <a href="#0">Register</a>
+                        Don’t have an account? <a href="#0">Login</a>
                     </div>
                     <div id="forgot_pw">
                         <div className="form-group">
@@ -127,6 +127,9 @@ console.log(email + password);
                 </div>
             </form>
         </div>
+
+
+
 
 
 
