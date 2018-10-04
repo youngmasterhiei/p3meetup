@@ -36,7 +36,7 @@ class Event extends Component {
                         <div className="row">
                         <EventDropDown />
 
-        {/*   <FormEventSingle />     */}
+          <FormEventSingle />     
                         </div>
                         <div className="row">
                             <PopularEvents />

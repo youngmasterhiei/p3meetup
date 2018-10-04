@@ -20,7 +20,7 @@ class EventForumSingle extends Component {
       
       
             },
-            // creator_user_id: localStorage.getItem("token")
+            event_id: localStorage.getItem("event_id")
       
           };
         // this.handleChange = this.handleChange.bind(this);
@@ -40,24 +40,34 @@ class EventForumSingle extends Component {
       handleCommentSubmit = event => {
         event.preventDefault();
     
-    
-    
-    
-    
-    
-    
-    
         let comment =  this.state.comments
  
-    
-        
         console.log(comment);
    
       };
 
+      componentDidMount() {
+        let id= this.state.id
 
+        axios.get("/auth/api/posts/" +id)
+            .then(res => {
+                console.log(res.data[0]);
+                this.setState({
+                    event: {
+              
+                      comments: res.data,
+                     
+              
+              
+              
+                    }
+              
+                  });
+                console.log(this.state.comments + "fuck me")
+            })
+        
 
-
+    }
 
 
     render() {
@@ -71,13 +81,13 @@ class EventForumSingle extends Component {
 
                     <Row>
                     <ul>
-                    {this.state.comments.map((comments) => {
+                    {this.state.event.comments.map((comments) => {
                             return <EventDiscussionBox comments={comments} key={comments.id}
                             />
                         })
               
                         }
-                        </ul>
+                    </ul>
                     </Row>
                         <form onSubmit={this.handleCommentSubmit} >
                             <h1>Create an Comment</h1>

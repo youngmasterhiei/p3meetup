@@ -62,7 +62,7 @@ module.exports = function (app)
   });
 
   //get all posts and associated comments for an event
-  app.get("/api/posts/:id", (req, res) => 
+  app.get("/auth/api/posts/:id", (req, res) => 
   {  
     db.post.findAll(
     {
