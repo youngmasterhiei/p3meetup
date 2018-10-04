@@ -2,9 +2,26 @@ import React, { Component } from 'react';
 
 class EventCard extends Component {
     
-   
- 
 
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          
+        };
+    
+        this.storeTitle = this.storeTitle.bind(this);
+    
+        // this.getEventDetails = this.getEventDetails.bind(this);
+    
+      }
+
+
+ 
+storeTitle(){
+    localStorage.setItem('event_id', this.props.event.id);
+
+}
     
 
 
@@ -20,7 +37,7 @@ class EventCard extends Component {
                         <small>Event Type</small>
                     </figure>
                     <div className="wrapper">
-                        <h3><a href="#0">{this.props.event.event_title}</a></h3>
+                        <h3 ><a onClick={this.storeTitle} href="/event">{this.props.event.event_title}</a></h3>
                         
                         <p>{this.props.event.summary}</p>
                         <span className="event_date"><strong></strong> </span>

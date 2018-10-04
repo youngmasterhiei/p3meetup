@@ -26,7 +26,10 @@ class SignUpForm extends Component {
 
       user: {
         email: '',
-        password: ''
+        password: '',
+        username: '',
+        fname: '',
+        lname: '',
       }
     };
 
@@ -54,8 +57,11 @@ class SignUpForm extends Component {
     // const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
-    console.log(email + password);
+    const username = encodeURIComponent(this.state.user.username);
+    const fname = encodeURIComponent(this.state.user.fname);
+    const lname = encodeURIComponent(this.state.user.lname);
+    const formData = `email=${email}&password=${password}&username=${username}&fname=${fname}&lname=${lname}`;
+    console.log(formData);
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/auth/signup');
@@ -248,6 +254,15 @@ class SignUpForm extends Component {
                       <div className="form-group">
                         <input type="password" name="confirm-password" id="confirm-password" tabIndex={2} className="form-control" placeholder="Confirm Password" />
                       </div>
+                      <div className="form-group">
+                        <input type="text" name="username" id="username" value={this.state.user.username} onChange={this.handleChange} tabIndex={1} className="form-control" placeholder="Username" />
+                      </div>
+                      <div className="form-group">
+                        <input type="text" name="fname" id="fname" value={this.state.user.fname} onChange={this.handleChange} tabIndex={1} className="form-control" placeholder="First Name" />
+                      </div>
+                      <div className="form-group">
+                      <input type="text" name="lname" id="lname" value={this.state.user.lname} onChange={this.handleChange} tabIndex={1} className="form-control" placeholder="Last Name" />
+                    </div>
                       <div className="form-group">
                         <div className="row">
                           <div className="col-md-12">

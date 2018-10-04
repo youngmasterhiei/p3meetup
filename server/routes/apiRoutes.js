@@ -36,7 +36,7 @@ module.exports = function (app)
   });
 
   //get event details by event id
-  app.get("/api/events/:id", function (req, res) 
+  app.get("/auth/api/events/:id", function (req, res) 
   {
     db.event.findAll(
       {
@@ -102,7 +102,7 @@ module.exports = function (app)
   // });
 
   //rcreate a post
-  app.post("/api/post/:id", function(req, res)
+  app.post("/auth/api/post/:id", function(req, res)
   {
     db.post.create(
       {
