@@ -7,6 +7,8 @@ import ForumEvents from "./components/pages/forum/Forum";
 import DashboardPage from "./components/pages/DashboardPage";
 import Auth from './components/modules/Auth';
 import Event from "./components/pages/Event";
+//import {BrowserRouter as Router,} from 'react-router-dom';
+//import Route from 'react-router-dom/Route';
 
 import {
   BrowserRouter as Router,
@@ -47,6 +49,12 @@ const PropsRoute = ({ component: Component, ...rest }) => (
     <Component {...props} {...rest} />
   )}/>
 )
+
+
+// require('js/common_scripts');
+// require('js/main');
+// require('js/wow');
+
 
 
 class App extends Component {

@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+/img
+/icon_fonts
+/fonts
 
 	../../.idea/
 /.idea
