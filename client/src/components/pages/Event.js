@@ -6,7 +6,7 @@ import Navbar from "../nav/Navbar";
 import 'bootstrap-4-grid';
 import EventDetailsSingle from "../event/SingleEventDisplay/EventDetailsSingle";
 import FormEventSingle from "../event/SingleEventDisplay/EventForumSingle";
-import EventCards from "../event/EventCards";
+import EventCard from "../event/EventCard";
 import EventPhotosSingle from "../event/SingleEventDisplay/EventPhotosSingle";
 class Event extends Component {
     render() {
@@ -34,7 +34,7 @@ class Event extends Component {
                             <FormEventSingle />
                         </div>
                         <div className="row">
-                            <EventCards />
+                            <EventCard />
                         </div>
                     </div>
                     <div className="col-md-3">

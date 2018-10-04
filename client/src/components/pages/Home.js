@@ -12,8 +12,8 @@ import '../../styles.scss';
 //import LoginForm from "../login/LoginForm";
 
 
-import SignUpForm from "../login/SignUpForm";
-import LoginForm from "../login/LoginForm";
+// import SignUpForm from "../login/SignUpForm";
+// import LoginForm from "../login/LoginForm";
 import LogoutFunction from '../login/LogoutFunction.jsx';
 
 import Auth from '../modules/Auth';
@@ -36,16 +36,39 @@ import PopularEvents from "../event/PopularEvents";
 
 
 class Home extends Component {
+    constructor(props) {
+     super(props);
+     this.state = {
+       authenticated: false
+     }
+   };
+
+   componentDidMount() {
+    // check if user is logged in on refresh
+    this.toggleAuthenticateStatus()
+    Auth.deauthenticateUser();
+
+
+
+}
+toggleAuthenticateStatus() {
+ // check authenticated status and toggle state based on that
+ this.setState({ authenticated: Auth.isUserAuthenticated() })
+}
+
+
 
     render() {
         return (
 
             <div className="home">
 
-            <Navbar />
+            <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <HeroSearch />
             <PopularEvents />
-
+            <div className="container">
+            <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
+        </div>
 
 
 
@@ -61,6 +84,11 @@ class Home extends Component {
         );
     }
 }
+
+LogoutFunction.contextTypes = {
+    router: PropTypes.object.isRequired
+  };
+
 
 export default Home;
 

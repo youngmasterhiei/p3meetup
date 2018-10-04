@@ -11,26 +11,29 @@ class Navbar extends Component {
 
 
         return (
-           <header>
-            <ul id="top_menu">
-                <SignUpForm />
-                <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
-    </ul>
-    <a href="#menu" className="btn_mobile">
-            <div className="hamburger hamburger--spin" id="hamburger">
-            <div className="hamburger-box">
-            <div className="hamburger-inner" />
-            </div>
-            </div>
-            </a>
-            <nav id="menu" className="main-menu">
-            <ul>
-                <li><span><a href="#0">Home</a></span></li>
-                <li><span><a href="#0">About</a></span></li>
-                 <li><span><a href="#0">Events</a></span></li>
-            </ul>
-        </nav>
-        </header>
+            <header>
+                <ul id="top_menu">
+                    <SignUpForm />
+                    <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
+                </ul>
+                <a href="#menu" className="btn_mobile">
+                    <div className="hamburger hamburger--spin" id="hamburger">
+                        <div className="hamburger-box">
+                            <div className="hamburger-inner" />
+                        </div>
+                    </div>
+                </a>
+                <nav id="menu" className="main-menu">
+                    <ul>
+                        <li><span><a href={"/home"}>Home</a></span></li>
+                        <li><span><a href={"/about"}>About</a></span></li>
+                        <li><span><a href={"/profile"}>Events</a></span></li>
+                        <li><span><a href={"/event"}>Events</a></span></li>
+                        <li><span><a href={"/forum"}>Events</a></span></li>
+
+                    </ul>
+                </nav>
+            </header>
 
 
 

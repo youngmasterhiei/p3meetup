@@ -85,16 +85,21 @@ console.log(email + password);
             <div className="small-dialog-header">
                 <h3>Sign In</h3>
             </div>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-wrapper">
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control"  required name="email" id="email" />
+                        <input type="email" className="form-control" name="email" value={this.state.user.email} onChange={this.handleChange} required  id="email" />
                         <i className="icon_mail_alt" />
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" name="password"  required id="password" defaultValue />
+                        <input type="password" className="form-control" name="password" value={this.state.user.password} onChange={this.handleChange} required id="password" defaultValue />
+                        <i className="icon_lock_alt" />
+                    </div>
+                    <div className="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" className="form-control" name="verifyPassword" value={this.state.user.password} onChange={this.handleChange} required id="password" defaultValue />
                         <i className="icon_lock_alt" />
                     </div>
                     <div className="clearfix add_bottom_15">
@@ -108,7 +113,7 @@ console.log(email + password);
                     </div>
                     <div className="text-center"><input type="submit" defaultValue="Log In" className="btn_1 full-width" /></div>
                     <div className="text-center">
-                        Don’t have an account? <a href="#0">Sign up</a>
+                        Don’t have an account? <a href="#0">Register</a>
                     </div>
                     <div id="forgot_pw">
                         <div className="form-group">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCards from "./EventCards";
+import EventCard from "./EventCard";
 import axios from 'axios';
 import EventDropDown from "./EventDropDown";
 
@@ -46,7 +46,7 @@ class DisplayEvents extends Component {
           <div className="row">
 
 
-            <EventCards />
+            <EventCard />
             })
 
             }
