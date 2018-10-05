@@ -20,18 +20,40 @@ module.exports = new PassportLocalStrategy({
     password: password,
   };
 
-  db.user.create(
-    {
-    // fname: req.body.fname,
-    // lname: req.body.lname,
-    email: req.body.email,
-    password: req.body.password,
-    username: req.body.username,
-    fname: req.body.fname,
-    lname: req.body.lname
-
-    });
+  //swapped the following 6 lines of code for the further below
+  //user create statement to also create a record for the user profile
+  // db.user.create(
+  //   {
+  //   // fname: req.body.fname,
+  //   // lname: req.body.lname,
+  //   email: req.body.email,
+  //   password: req.body.password
+  //   });
   
+    db.user.create(
+      {
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email: req.body.email,
+        password: req.body.password
+      })
+      .then(function (dbuser) 
+      {
+        //captures the newly created user_id
+        let new_user_id = dbuser.id;
+
+        //creates a profile that is null except for user_id
+        db.profile.create(
+          {
+            user_id: new_user_id
+          }
+        )
+        res.json(dbuser);
+      });
+
+
+
+
 });
 
 

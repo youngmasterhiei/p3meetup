@@ -4,8 +4,6 @@ module.exports = function(sequelize, DataTypes)
     {
         id:
         {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
@@ -24,19 +22,19 @@ module.exports = function(sequelize, DataTypes)
         reg_status:
         {
             type: DataTypes.ENUM,
-            allowNull: false,
+            allowNull: true,
             values: ['Not Registered', 'Registered']
         },
         attend_status:
         {
             type: DataTypes.ENUM,
-            allowNull: false,
+            allowNull: true,
             values: ['Attended', 'No Show']
         },
         reject_Status:
         {
             type: DataTypes.ENUM,
-            allowNull: false,
+            allowNull: true,
             values: ['Age', 'Location', 'Missing Skill']
         },
         created_at: 
