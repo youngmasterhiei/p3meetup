@@ -65,21 +65,30 @@ module.exports = function (app)
   //get all posts and associated comments for an event 
     //the id param is for the event id
     //TO ADD: poster username/email
-  app.get("/auth/api/posts/:id", function (req, res)
-  {  
-    db.post.findAll(
-    {
-      where: {event_id: req.params.id},
-      include: [
-        {
-          model: db.comment
-        }
-      ]
-    }).then(function (dbpost)
-    {
-      res.json(dbpost);
+    app.get("/auth/api/posts/:id", function (req, res)
+    {  
+      db.user.findAll(
+      { 
+        attributes: ['fname','lname','email'],
+        include: [
+          {
+            model: db.post,
+            attributes: ['poster_user_id','title','content','status'],
+            where: {event_id: req.params.id},
+            include: 
+            [
+                  {
+                    model: db.comment,
+                    attributes: ['commenter_user_id','title','content','status']
+                  }
+            ]
+          }
+        ]
+      }).then(function (dbpost)
+      {
+        res.json(dbpost);
+      });
     });
-  });
 
   //get events by location and/or date
   app.get("/auth/api/event_search", function (req, res)
@@ -99,6 +108,8 @@ module.exports = function (app)
         res.json(dbevent);
       });
   });
+
+  
 
   //all get routes end here
   /////////////////////////////// 
