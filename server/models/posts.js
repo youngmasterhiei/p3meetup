@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes)
         title:
         {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         content:
         {

@@ -13,11 +13,11 @@ module.exports = function (app)
   //all get routes are here
   
   //not sure what this is supposed to be used for though - possibly bring up user profile?
-  app.get("/api/user/:email", function (req, res) 
+  app.get("/auth/api/user/:id", function (req, res) 
   {
     db.user.findOne(
       {
-      where: { email: req.params.email }
+      where: { id: req.params.id }
       })
     .then(function (dbuser) 
     {
