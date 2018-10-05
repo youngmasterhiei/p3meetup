@@ -26,7 +26,6 @@ storeTitle(){
 
 
     render() {
-        console.log(this.props.event)
 
 
         return (

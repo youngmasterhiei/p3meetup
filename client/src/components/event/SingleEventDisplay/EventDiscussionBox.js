@@ -12,20 +12,36 @@ class EventDiscussionBox extends Component {
 
         };
 
+this.findUser = this.findUser.bind(this);
 
 
     }
+    // shouldComponentUpdate(newProps) {
+    //    
+    //   }
+    findUser(userId) {
 
+        axios.get("/auth/api/user/" + this.props.getPost.poster_user_id)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
 
+                    user: res.data
 
+                });
+                console.log(res.data)
+            })
+
+      };
+      
+    //   {this.props.getPost.poster_user_id}
 
     render() {
 
-
         return (
             <Container>
-            <li>  {this.props.event.username} : {this.props.event.comments}</li>
-
+                               {this.props.getPost.poster_user_id}<li> {this.props.getPost.title} </li>
+                               <li> {this.props.getPost.content}</li>
 
             </Container>
 

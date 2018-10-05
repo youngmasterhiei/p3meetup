@@ -13,9 +13,7 @@ import Event from "./components/pages/Event";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Redirect,
-  withRouter
 } from 'react-router-dom'
 import SignUpForm from './components/login/SignUpForm';
 
