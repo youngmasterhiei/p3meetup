@@ -40,7 +40,6 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.user = require('./users')(sequelize, Sequelize);
-db.skill = require('./skills.js')(sequelize, Sequelize);
 db.event = require('./events.js')(sequelize, Sequelize);
 db.post = require('./posts.js')(sequelize, Sequelize);
 db.profile = require('./profile.js')(sequelize, Sequelize);
@@ -53,6 +52,10 @@ db.event_post = require('./event_post.js')(sequelize, Sequelize);
 //comment-post relationship
 db.comment.belongsTo(db.post);
 db.post.hasMany(db.comment);
+db.comment.belongsTo(db.post);
+db.post.hasMany(db.comment);
+db.post.belongsTo(db.user);
+db.user.hasMany(db.post);
 
 
 //user-profile relationship
