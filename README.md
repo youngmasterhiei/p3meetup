@@ -1,6 +1,9 @@
 Project: CodeUp
 Authors: Dylan, James, Amir, Jason
 
+****rememeber small PRs please. avoiding merge conflicts******
+
+
 Need:
 -list of all field names/ids used in an axios ajax calls
 -list of all routes used on front end axios calls
