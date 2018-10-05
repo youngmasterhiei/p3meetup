@@ -52,12 +52,12 @@ render() {
 
                     <li>
                        
-                        <br /> City: {this.state.profile.city}
+             {/*           <br /> City: {this.state.profile.city}
                         <br /> State: {this.state.profile.state}
                         <br /> Age: {this.state.profile.age}
                         <br /> Gender: {this.state.profile.gender}
                         <br /> GitHub: {this.state.profile.github}
-                        <br /> LinkedIn: {this.state.profile.linkedin}
+    <br /> LinkedIn: {this.state.profile.linkedin}    */}
                     </li>
 
 

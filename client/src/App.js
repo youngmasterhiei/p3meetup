@@ -7,6 +7,7 @@ import ForumEvents from "./components/pages/forum/Forum";
 import DashboardPage from "./components/pages/DashboardPage";
 import Auth from './components/modules/Auth';
 import Event from "./components/pages/Event";
+import ViewOthersProfile from "./components/pages/ViewOthersProfile";
 //import {BrowserRouter as Router,} from 'react-router-dom';
 //import Route from 'react-router-dom/Route';
 
@@ -96,6 +97,11 @@ class App extends Component {
       <Route path="/profile" exact render={
         ()=> {
           return (<Profile />);
+        }
+      }/>
+      <Route path="/profile/user" exact render={
+        ()=> {
+          return (<ViewOthersProfile />);
         }
       }/>
 

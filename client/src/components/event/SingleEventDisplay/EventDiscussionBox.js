@@ -13,6 +13,7 @@ class EventDiscussionBox extends Component {
         };
 
 this.findUser = this.findUser.bind(this);
+this.viewProfile = this.viewProfile.bind(this);
 
 
     }
@@ -33,6 +34,14 @@ this.findUser = this.findUser.bind(this);
             })
 
       };
+
+      viewProfile() {
+        let id = this.props.getPost.poster_user_id;
+
+         localStorage.setItem('profileId', id)
+
+
+      };
       
     //   {this.props.getPost.poster_user_id}
 
@@ -40,7 +49,9 @@ this.findUser = this.findUser.bind(this);
 
         return (
             <Container>
-                               {this.props.getPost.poster_user_id}<li> {this.props.getPost.title} </li>
+
+
+                               <a onClick = {this.viewProfile} href={"/profile/user"}>{this.props.getPost.poster_user_id}</a><li> {this.props.getPost.title} </li>
                                <li> {this.props.getPost.content}</li>
 
             </Container>
