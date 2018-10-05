@@ -4,8 +4,6 @@ module.exports = function(sequelize, DataTypes)
     {
         id:
         {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
@@ -53,11 +51,13 @@ module.exports = function(sequelize, DataTypes)
         },
         date:
         {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: true,
         },
-        time:{
-            type: DataTypes.STRING
+        time:
+        {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         location_name:
         {
@@ -99,6 +99,31 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.TEXT,
             allowNull: true
+        },
+        skill1:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill2:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill3:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill4:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill5:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
         },
         created_at: 
         {

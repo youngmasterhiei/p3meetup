@@ -20,55 +20,55 @@ class DisplayProfile extends Component {
     }
 
 
-componentDidMount() {
-    let id = this.state.id
-    console.log(id + "id check");
-    if(this.state.id == null){
-console.log("no user id");
+    componentDidMount() {
+        let id = this.state.id
+        console.log(id + "id check");
+        if (this.state.id == null) {
+            console.log("no user id");
+        }
+        else {
+            axios.get("/auth/api/profile/" + id)
+                .then(res => {
+                    console.log(res.data);
+                    console.log(this.state.profile);
+
+                    this.setState({ profile: res.data });
+                    console.log(this.state.profile);
+
+                })
+        }
     }
-    else{
-    axios.get("/auth/api/profile/" +id)
-        .then(res => {
-            console.log(res.data);
-            console.log(this.state.profile);
 
-            this.setState({ profile: res.data });
-            console.log(this.state.profile);
+    // First Name: {this.state.profile.firstName}
+    // <br /> Last Name: {this.state.profile.lastName}
 
-        })
-    }
-}
-
-// First Name: {this.state.profile.firstName}
-// <br /> Last Name: {this.state.profile.lastName}
-
-render() {
+    render() {
 
 
-    return (
-        <div className="">
-            <div className="container">
-                <div className="row">
+        return (
+            <div className="">
+                <div className="container">
+                    <div className="row">
 
-                    <li>
-                       
-                        <br /> City: {this.state.profile.city}
-                        <br /> State: {this.state.profile.state}
-                        <br /> Age: {this.state.profile.age}
-                        <br /> Gender: {this.state.profile.gender}
-                        <br /> GitHub: {this.state.profile.github}
-                        <br /> LinkedIn: {this.state.profile.linkedin}
-                    </li>
+                        <li>
+
+                            <br /> City: {this.state.profile.city}
+                            <br /> State: {this.state.profile.state}
+                            <br /> Age: {this.state.profile.age}
+                            <br /> Gender: {this.state.profile.gender}
+                            <br /> GitHub: {this.state.profile.github}
+                            <br /> LinkedIn: {this.state.profile.linkedin}
+                        </li>
 
 
 
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-    );
-}
+        );
+    }
 }
 
 export default DisplayProfile;

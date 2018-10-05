@@ -8,8 +8,6 @@ module.exports = function(sequelize, DataTypes)
     const user = sequelize.define("user", {
         id:
         {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
@@ -19,7 +17,6 @@ module.exports = function(sequelize, DataTypes)
         {
             type: DataTypes.TEXT,
             allowNull: true,
-            
             validate: 
             {
                 len: [1,50]
@@ -33,16 +30,6 @@ module.exports = function(sequelize, DataTypes)
             {
                 len: [1,50]
             } 
-        },
-        username:
-        {
-            type: DataTypes.TEXT,
-            allowNull: true,
-            
-            validate: 
-            {
-                len: [1,50]
-            }
         },
         email:
         {
@@ -60,30 +47,33 @@ module.exports = function(sequelize, DataTypes)
             allowNull: false,
             notEmpty: true
         },
+        created_at: 
+        {
+            type: DataTypes.DATE,
+            allowNull: true
+        },
+        updated_at: DataTypes.DATE,
+        deleted_at: DataTypes.DATE
     },
-        
-    
+    {
+        underscored: true,
+        hooks: 
+        {
+            beforeCreate: (user) => 
+            {
+                const salt = bcrypt.genSaltSync();
+                user.password = bcrypt.hashSync(user.password, salt);
+            }
+        }
+    })
  
-{
- hooks: {
-   beforeCreate: (user) => {
-     const salt = bcrypt.genSaltSync();
-     user.password = bcrypt.hashSync(user.password, salt);
-   }
-}
- })
- 
- user.prototype.validatePass = function (userPass, enteredPass, callback) {
-   console.log("fuck");
-   console.log(userPass + "<db password   usermodel   user entered pass>" + enteredPass);
+    user.prototype.validatePass = function (userPass, enteredPass, callback) 
+    {
+        console.log("fuck");
+        console.log(userPass + "<db password   usermodel   user entered pass>" + enteredPass);
 
-    return bcrypt.compare(userPass, enteredPass, callback);
-
- };
- 
-
-
-
+        return bcrypt.compare(userPass, enteredPass, callback);
+    };
 
 return user
 }

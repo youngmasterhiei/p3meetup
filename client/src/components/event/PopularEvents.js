@@ -21,16 +21,13 @@ class PopularEvents extends Component {
     componentDidMount() {
         axios.get("/auth/api/events")
             .then(res => {
-                console.log(res.data);
                 this.setState({ event: res.data });
             })
-            console.log(this.state.event)
     }
 
     updateEventList() {
         axios.get("/auth/api/events")
             .then(res => {
-                console.log(res.data);
                 this.setState({ event: res.data });
             })
     };

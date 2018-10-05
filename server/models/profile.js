@@ -4,14 +4,11 @@ module.exports = function(sequelize, DataTypes)
     {
         id:
         {
-            //there may be an issue if the column is not CHAR (36)
-            //when testing need to see what datatype sequelize actually assigns
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
             allowNull:false
         },
-       
         age:
         {
             type: DataTypes.INTEGER,
@@ -24,7 +21,6 @@ module.exports = function(sequelize, DataTypes)
         gender:
         {
             type: DataTypes.STRING
-          
         },
         phone:
         {
@@ -58,6 +54,31 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.TEXT,
             allowNull: true
         },
+        skill1:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill2:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill3:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill4:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        skill5:
+        {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
         github:
         {
             type: DataTypes.STRING,
@@ -73,7 +94,7 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.BLOB,
             allowNull: true
         },
-        //need query place averaged value of entries from reputation into this field
+        //need query to place averaged value of entries from reputation into this field
         rating:
         {
             type: DataTypes.DECIMAL(10,2),
@@ -84,10 +105,16 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.ENUM,
             allowNull: true,
             values: ['Active', 'Inactive']
-        }
+        },
+        created_at: 
+        {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        updated_at: DataTypes.DATE,
+        deleted_at: DataTypes.DATE
       },
       {
-        //this requires snake casing
         underscored: true
       });
    
