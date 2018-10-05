@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, Row, Col, Card, CardBody, Mask, Fa, View, Badge} from 'mdbreact';
+import React from 'react';
+import { Container } from 'mdbreact';
 
 const EventPhotosSingle = () =>  {
   const newsStyle={borderBottom: '1px solid #e0e0e0', marginBottom: '1.5rem'}

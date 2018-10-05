@@ -11,82 +11,142 @@ class EventForumSingle extends Component {
         super(props);
 
         this.state = {
-            event: {
-      
-              comments: "",
-              prevComments: []
-             
-      
-      
-      
-            },
-            // creator_user_id: localStorage.getItem("token")
-      
-          };
+
+
+            title: "",
+            content: "",
+            poster_user_id: localStorage.getItem("token"),
+
+
+            getPost: [],
+            event_id: localStorage.getItem("event_id"),
+        };
+
         // this.handleChange = this.handleChange.bind(this);
-        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-        this.handleCommentChange = this.handleCommentChange.bind(this);
+        this.handlePostSubmit = this.handlePostSubmit.bind(this);
+        this.handlePostChange = this.handlePostChange.bind(this);
+        this.updateDiscussion = this.updateDiscussion.bind(this);
     }
 
 
 
-    handleCommentChange = event => {
+    handlePostChange = event => {
         this.setState({
-          [event.target.name]: event.target.value
-    
-        });
-      }
+            [event.target.name]: event.target.value
 
-      handleCommentSubmit = event => {
+        });
+    }
+
+    handlePostSubmit = event => {
         event.preventDefault();
-    
-    
-    
-    
-    
-    
-    
-    
-        let comment =  this.state.comments
- 
-    
-        
-        console.log(comment);
-   
+
+
+        let postInfo = {
+
+            poster_user_id: this.state.poster_user_id,
+            event_id: this.state.event_id,
+            title: this.state.title,
+            content: this.state.content
+
+
+        };
+        let id = this.state.event_id;
+        console.log(postInfo);
+        axios({
+            method: 'post',
+            url: '/auth/api/post/' + id,
+            data: postInfo,
+            config: { headers: { 'Content-Type': 'multipart/form-data' } }
+        })
+            .then(function (response) {
+                //handle success
+                console.log(response);
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+
+            });
+            this.updateDiscussion();
+    };
+
+    updateDiscussion() {
+        let id = this.state.event_id
+
+        axios.get("/auth/api/posts/" + id)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+
+                    getPost: res.data
+
+                });
+                console.log(this.state.getPost)
+            })
+
       };
 
 
 
 
 
+    componentDidMount() {
+        let id = this.state.event_id
+
+        axios.get("/auth/api/posts/" + id)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+
+                    getPost: res.data
+
+                });
+                console.log(this.state.getPost)
+            })
+    }
+
+ 
+
 
     render() {
+
+
         return (
             <Container style={{ maxWidth: '80%' }}>
                 <Row>
-                    <h1> Comments</h1>
+                    <h1> Post to DiscussionBoard</h1>
+                    <ul>
+                    {this.state.getPost.map((getPost) => {
+                        return <EventDiscussionBox getPost={getPost} key={getPost.id}
+                        />
+                    })
+
+                    }
+                    </ul>
                 </Row>
                 <Row>
 
 
                     <Row>
-                    <ul>
-                    {this.state.comments.map((comments) => {
-                            return <EventDiscussionBox comments={comments} key={comments.id}
-                            />
-                        })
-              
-                        }
-                        </ul>
+
+
+
                     </Row>
-                        <form onSubmit={this.handleCommentSubmit} >
-                            <h1>Create an Comment</h1>
+
+                    <form onSubmit={this.handlePostSubmit} >
+                        <div className="form-group text-center">
+
                             <label>Title: </label>
-                            <textarea className="InputField" type="text"  name="userComment" value={this.state.userComment} onChange={this.handleCommentChange} placeholder="I'm so excited!!"></textarea>
-
-
+                            <br />
+                            <input className="InputField" type="text" name="title" value={this.state.title} onChange={this.handlePostChange}></input>
+                            <br />
+                            <label> Comment:</label>
+                            <br />
+                            <textarea className="InputField" type="text" name="content" value={this.state.content} onChange={this.handlePostChange} placeholder="I'm so excited!!"></textarea>
+                            <br />
                             <button type="submit" >Submit</button>
-                        </form>
+                        </div>
+                    </form>
 
 
 

@@ -9,7 +9,7 @@ class DisplayOthersProfile extends Component {
 
         this.state = {
             profile: [],
-            username: localStorage.getItem('username')
+            profileId: localStorage.getItem('profileId')
 
         };
 
@@ -21,11 +21,11 @@ class DisplayOthersProfile extends Component {
 
 
 componentDidMount() {
-    let username = this.state.username
-    console.log(username + "id check");
+    let id = this.state.profileId
+    console.log(id + "id check");
  
     
-    axios.get("/auth/api/user/" +username)
+    axios.get("/auth/api/profile/" +id )
         .then(res => {
             console.log(res.data);
 

@@ -21,18 +21,12 @@ class EventDetailsSingle extends Component {
 
         axios.get("/auth/api/events/" +id)
             .then(res => {
-                console.log(res.data[0]);
                 this.setState({ event: res.data[0] });
-                console.log(this.state.event + "fuck me")
             })
         
-
     }
 
-
-
     render() {
-        console.log(this.state.event + "asdfasdf");
 
 
         return (
