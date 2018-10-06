@@ -299,8 +299,6 @@ module.exports = function (app)
        linkedin: req.body.linkedin,
        avatar: req.body.avatar,
        status: 'Active',
-       //did you add this????
-       user_id: req.body.id
      },
      {returning: true, where: {user_id: req.params.id}}
      )
