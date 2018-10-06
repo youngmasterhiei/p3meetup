@@ -69,25 +69,27 @@ module.exports = function (app)
     {  
       db.user.findAll(
       { 
-        attributes: ['id','fname','lname','email'],
+        attributes: ['id', 'fname', 'lname', 'email'],
         include: [
           {
             model: db.post,
-            attributes: ['id','user_id','title','content','status'],
+            attributes: ['id', 'user_id', 'title',' content', 'status'],
             where: {event_id: req.params.id},
-            order: '"created_at" DESC',
+            order: ['created_at', 'DESC'],
+            //limit: '<start record count>, <end record count>]
             include: 
             [
+              {
+                model: db.comment,
+                attributes: ['id', 'user_id', 'title', 'content', 'status'],
+                order: ['created_at', 'DESC'],
+                include:[
                   {
-                    model: db.comment,
-                    attributes: ['id','user_id','title','content','status'],
-                    include:[
-                      {
-                        model: db.user,
-                        attributes: ['id', 'fname', 'lname', 'email']
-                      }
-                    ]
+                    model: db.user,
+                    attributes: ['id', 'fname', 'lname', 'email']
                   }
+                ]
+              }
             ]
           }
         ]
@@ -107,6 +109,7 @@ module.exports = function (app)
           city: req.body.city,
           event_date: 
           {
+            //this is inclusive of end points
             between: [req.body.start_date, req.body.end_date]
           }
         },
@@ -296,6 +299,7 @@ module.exports = function (app)
        linkedin: req.body.linkedin,
        avatar: req.body.avatar,
        status: 'Active',
+       //did you add this????
        user_id: req.body.id
      },
      {returning: true, where: {user_id: req.params.id}}
