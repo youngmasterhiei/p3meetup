@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { Container, Row, Col, Table, TableBody, TableHead } from 'mdbreact';
+import { Container, Row } from 'mdbreact';
 import EventDiscussionBox from "./EventDiscussionBox";
 
 
@@ -15,7 +15,7 @@ class EventForumSingle extends Component {
 
             title: "",
             content: "",
-            poster_user_id: localStorage.getItem("token"),
+            user_id: localStorage.getItem("token"),
 
 
             getPost: [],
@@ -43,10 +43,10 @@ class EventForumSingle extends Component {
 
         let postInfo = {
 
-            poster_user_id: this.state.poster_user_id,
             event_id: this.state.event_id,
             title: this.state.title,
-            content: this.state.content
+            content: this.state.content,
+            user_id: this.state.user_id
 
 
         };
@@ -67,7 +67,7 @@ class EventForumSingle extends Component {
                 console.log(response);
 
             });
-            this.updateDiscussion();
+        this.updateDiscussion();
     };
 
     updateDiscussion() {
@@ -84,7 +84,7 @@ class EventForumSingle extends Component {
                 console.log(this.state.getPost)
             })
 
-      };
+    };
 
 
 
@@ -92,7 +92,7 @@ class EventForumSingle extends Component {
 
     componentDidMount() {
         let id = this.state.event_id
-
+        console.log("hello world")
         axios.get("/auth/api/posts/" + id)
             .then(res => {
                 console.log(res.data);
@@ -105,7 +105,7 @@ class EventForumSingle extends Component {
             })
     }
 
- 
+
 
 
     render() {
@@ -115,14 +115,14 @@ class EventForumSingle extends Component {
             <Container style={{ maxWidth: '80%' }}>
                 <Row>
                     <h1> Post to DiscussionBoard</h1>
-                    <ul>
-                    {this.state.getPost.map((getPost) => {
-                        return <EventDiscussionBox getPost={getPost} key={getPost.id}
-                        />
-                    })
+                    
+                        {this.state.getPost.map((getPost) => {
+                            return <EventDiscussionBox getPost={getPost} key={getPost.user_id}
+                            />
+                        })
 
-                    }
-                    </ul>
+                        }
+                    
                 </Row>
                 <Row>
 

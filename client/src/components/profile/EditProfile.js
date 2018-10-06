@@ -41,7 +41,7 @@ class EditProfile extends Component {
   //Form submit and axios post to DB
   handleEventSubmit = event => {
     event.preventDefault();
-
+    let id = this.state.id;
     let profileInfo = {
       // firstName: this.state.firstName,
       // lastName: this.state.lastName,
@@ -52,14 +52,14 @@ class EditProfile extends Component {
       github: this.state.github,
       linkedin: this.state.linkedin,
       user_id: this.state.id
-      
+
 
     };
 
     // create an AJAX request
     axios({
-      method: 'post',
-      url: '/auth/api/profile',
+      method: 'put',
+      url: '/auth/api/profile/' + id,
       data: profileInfo,
       config: { headers: { 'Content-Type': 'multipart/form-data' } }
     })
@@ -72,7 +72,7 @@ class EditProfile extends Component {
         console.log(response);
 
       });
- 
+
   };
 
 

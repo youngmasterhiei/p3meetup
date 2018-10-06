@@ -25,11 +25,11 @@ componentDidMount() {
     console.log(id + "id check");
  
     
-    axios.get("/auth/api/profile/" +id )
+    axios.get("/auth/api/profile/" + id )
         .then(res => {
             console.log(res.data);
 
-            this.setState({ profile: res.data });
+            this.setState({ profile: res.data[0] });
 
         })
     

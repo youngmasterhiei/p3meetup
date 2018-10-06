@@ -42,7 +42,7 @@ class Home extends Component {
    componentDidMount() {
     // check if user is logged in on refresh
     this.toggleAuthenticateStatus()
-    Auth.deauthenticateUser();
+    // Auth.deauthenticateUser();
 
         axios.get("/auth/api/events")
             .then(res => {

@@ -14,16 +14,16 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             allowNull: false
         },
-        commenter_user_id:
+        user_id:
         {
             type: DataTypes.UUID,
             allowNull: false
         },
-        commenter_email:
-        {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
+        // commenter_email:
+        // {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // },
         title:
         {
             type: DataTypes.TEXT,

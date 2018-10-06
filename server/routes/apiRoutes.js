@@ -53,13 +53,13 @@ module.exports = function (app)
           res.json(dbprofile);
       });
 
-    db.user.findAll(
-      {
-        where: {id: req.params.id}
-      }).then(function (dbuser)
-      {
-        res.json(dbuser);
-      });
+    // db.user.findAll(
+    //   {
+    //     where: {id: req.params.id}
+    //   }).then(function (dbuser)
+    //   {
+    //     res.json(dbuser);
+    //   });
   });
 
   //get all posts and associated comments for an event 
@@ -69,17 +69,18 @@ module.exports = function (app)
     {  
       db.user.findAll(
       { 
-        attributes: ['fname','lname','email'],
+        attributes: ['id','fname','lname','email'],
         include: [
           {
             model: db.post,
-            attributes: ['poster_user_id','title','content','status'],
+            attributes: ['user_id','title','content','status'],
             where: {event_id: req.params.id},
+            order: '"created_at" DESC',
             include: 
             [
                   {
                     model: db.comment,
-                    attributes: ['commenter_user_id','title','content','status']
+                    attributes: ['user_id','title','content','status']
                   }
             ]
           }
@@ -145,44 +146,44 @@ module.exports = function (app)
   //     });
   // });
 
-  //create a post for an event
+ //create a post for an event
     //the id param is for the event id
     //this should be happening from the event details page
-  app.post("/auth/api/post/:id", function(req, res)
-  {
-    db.post.create(
+    app.post("/auth/api/post/:id", function(req, res)
+    {
+      db.post.create(
+        {
+          //need to make sure this is the way to pull the right user id
+          user_id: req.body.user_id,
+          event_id: req.params.id, 
+          title: req.body.title,
+          content: req.body.content,
+          status: 'In Review'
+        })
+        .then(function(dbpost)
+        {
+          res.json(dbpost);
+        });
+    });
+  
+    //create a comment
+      //the id param is for the post id
+      //this should be happening from the event details page
+    app.post("/auth/api/comment/:id", function(req,res)
+    {
+      db.comment.create(
       {
-        //need to make sure this is the way to pull the right user id
-        poster_user_id: req.user.id,
-        event_id: req.params.id, 
+        post_id: req.params.id,
+        user_id: req.body.user_id,
         title: req.body.title,
         content: req.body.content,
         status: 'In Review'
       })
-      .then(function(dbpost)
+      .then(function(dbcomment)
       {
-        res.json(dbpost);
+        res.json(dbcomment);
       });
-  });
-
-  //create a comment
-    //the id param is for the post id
-    //this should be happening from the event details page
-  app.post("/auth/api/comment/:id", function(req,res)
-  {
-    db.comment.create(
-    {
-      post_id: req.params.id,
-      commenter_user_id: req.user.id,
-      title: req.body.title,
-      content: req.body.content,
-      status: 'In Review'
-    })
-    .then(function(dbcomment)
-    {
-      res.json(dbcomment);
     });
-  });
 
   //create event
   app.post("/auth/api/events", function (req, res) 
@@ -289,7 +290,8 @@ module.exports = function (app)
        github: req.body.github,
        linkedin: req.body.linkedin,
        avatar: req.body.avatar,
-       status: 'Active'
+       status: 'Active',
+       user_id: req.body.id
      },
      {returning: true, where: {user_id: req.params.id}}
      )

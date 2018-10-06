@@ -12,8 +12,10 @@ class EventDiscussionBox extends Component {
 
         };
 
-this.findUser = this.findUser.bind(this);
-this.viewProfile = this.viewProfile.bind(this);
+        this.findUser = this.findUser.bind(this);
+        this.replyToPost = this.replyToPost.bind(this);
+        this.getUserId = this.getUserId.bind(this);
+
 
 
     }
@@ -22,7 +24,7 @@ this.viewProfile = this.viewProfile.bind(this);
     //   }
     findUser(userId) {
 
-        axios.get("/auth/api/user/" + this.props.getPost.poster_user_id)
+        axios.get("/auth/api/user/" + this.props.getPost.user_id)
             .then(res => {
                 console.log(res.data);
                 this.setState({
@@ -33,26 +35,43 @@ this.viewProfile = this.viewProfile.bind(this);
                 console.log(res.data)
             })
 
-      };
+    };
 
-      viewProfile() {
-        let id = this.props.getPost.poster_user_id;
+    replyToPost() {
+     console.log("hello world and i like cheese")
 
-         localStorage.setItem('profileId', id)
+    };
 
+    getUserId(id) {
 
-      };
-      
+        localStorage.setItem("profileId", id)
+        console.log(id);
+       };
     //   {this.props.getPost.poster_user_id}
 
     render() {
 
+
+        // {this.state.getPost.map((getPost) => {
+        //     return <EventDiscussionBox getPost={getPost} key={getPost.user_id}
+        //     />
+        // })
+
+        // }
+
+
+
         return (
             <Container>
 
+                {this.props.getPost.posts.map(post => {return <ul>
+                        
+                        <li><a value={this.props.getPost.user_id} onClick={  () => this.getUserId(this.props.getPost.id)} href={"profile/user"}>{this.props.getPost.fname} {this.props.getPost.lname}</a> : {post.content}</li>
+                        <button onClick={this.replyToPost}>Comment</button>
 
-                               <a onClick = {this.viewProfile} href={"/profile/user"}>{this.props.getPost.poster_user_id}</a><li> {this.props.getPost.title} </li>
-                               <li> {this.props.getPost.content}</li>
+                    </ul>
+
+                })}
 
             </Container>
 

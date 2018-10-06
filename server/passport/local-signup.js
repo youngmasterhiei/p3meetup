@@ -48,7 +48,6 @@ module.exports = new PassportLocalStrategy({
             user_id: new_user_id
           }
         )
-        res.json(dbuser);
       });
 
 

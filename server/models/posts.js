@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes)
             defaultValue: DataTypes.UUIDV4,
             allowNull:false
         },
-        poster_user_id:
+        user_id:
         {
             type: DataTypes.UUID,
             allowNull: false

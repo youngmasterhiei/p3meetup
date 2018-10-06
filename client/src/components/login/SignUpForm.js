@@ -84,11 +84,11 @@ class SignUpForm extends Component {
       } else {
         // failure
 
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
+        // const errors = xhr.response.errors ? xhr.response.errors : {};
+        // errors.summary = xhr.response.message;
 
         this.setState({
-          errors
+          // errors
         });
       }
     });

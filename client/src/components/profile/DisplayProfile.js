@@ -32,7 +32,7 @@ class DisplayProfile extends Component {
                     console.log(res.data);
                     console.log(this.state.profile);
 
-                    this.setState({ profile: res.data });
+                    this.setState({ profile: res.data[0] });
                     console.log(this.state.profile);
 
                 })
