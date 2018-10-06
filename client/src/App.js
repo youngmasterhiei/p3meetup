@@ -67,15 +67,15 @@ class App extends Component {
       }
     };
   
-    componentDidMount() {
-      // check if user is logged in on refresh
-      this.toggleAuthenticateStatus()
-    }
+    // componentDidMount() {
+    //   // check if user is logged in on refresh
+    //   this.toggleAuthenticateStatus()
+    // }
   
-    toggleAuthenticateStatus() {
-      // check authenticated status and toggle state based on that
-      this.setState({ authenticated: Auth.isUserAuthenticated() })
-    }
+    // toggleAuthenticateStatus() {
+    //   // check authenticated status and toggle state based on that
+    //   this.setState({ authenticated: Auth.isUserAuthenticated() })
+    // }
 
 
   render() {

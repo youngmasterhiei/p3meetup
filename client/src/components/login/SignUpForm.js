@@ -124,7 +124,7 @@ class SignUpForm extends Component {
          console.log(xhr.response.token);
  
          // update authenticated state
-         this.props.toggleAuthenticateStatus()
+        //  this.props.toggleAuthenticateStatus()
  
          // redirect signed in user to dashboard
        } else {
