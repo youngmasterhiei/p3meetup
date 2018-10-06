@@ -24,3 +24,19 @@ ul.dropdown-lr {
   }
 }
 
+.discussionComments {
+  border: 0;
+  padding: 0;
+  background-color: #eee;
+  cursor: pointer;
+  font-weight: bold;
+
+}
+
+.discussionInputs {
+  width: 400%;
+}
+
+.discussionCommentTextarea{
+  width: 70%;
+}

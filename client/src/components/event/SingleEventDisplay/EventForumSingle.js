@@ -4,6 +4,7 @@ import { Container, Row } from 'mdbreact';
 import EventDiscussionBox from "./EventDiscussionBox";
 
 
+
 class EventForumSingle extends Component {
 
 
@@ -127,22 +128,17 @@ class EventForumSingle extends Component {
                 <Row>
 
 
-                    <Row>
-
-
-
-                    </Row>
 
                     <form onSubmit={this.handlePostSubmit} >
                         <div className="form-group text-center">
 
-                            <label>Title: </label>
+                            <label>Post Title: </label>
                             <br />
                             <input className="InputField" type="text" name="title" value={this.state.title} onChange={this.handlePostChange}></input>
                             <br />
-                            <label> Comment:</label>
+                            <label> Post:</label>
                             <br />
-                            <textarea className="InputField" type="text" name="content" value={this.state.content} onChange={this.handlePostChange} placeholder="I'm so excited!!"></textarea>
+                            <textarea className="discussionInputs" type="text" name="content" value={this.state.content} onChange={this.handlePostChange} placeholder="What are your thoughts?"></textarea>
                             <br />
                             <button type="submit" >Submit</button>
                         </div>

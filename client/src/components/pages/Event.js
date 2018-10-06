@@ -10,7 +10,7 @@ import EventPhotosSingle from "../event/SingleEventDisplay/EventPhotosSingle";
 import EventDropDown from "../event/EventDropDown";
 class Event extends Component {
 
-    
+
     render() {
         return (
             <div className="app-container">
@@ -32,9 +32,9 @@ class Event extends Component {
                             <EventDetailsSingle />
                         </div>
                         <div className="row">
-                        <EventDropDown />
+                            <EventDropDown />
 
-          <FormEventSingle />     
+                            <FormEventSingle />
                         </div>
                         <div className="row">
                             <PopularEvents />

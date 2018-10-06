@@ -73,14 +73,14 @@ module.exports = function (app)
         include: [
           {
             model: db.post,
-            attributes: ['user_id','title','content','status'],
+            attributes: ['id','user_id','title','content','status'],
             where: {event_id: req.params.id},
             order: '"created_at" DESC',
             include: 
             [
                   {
                     model: db.comment,
-                    attributes: ['user_id','title','content','status']
+                    attributes: ['id','user_id','title','content','status']
                   }
             ]
           }

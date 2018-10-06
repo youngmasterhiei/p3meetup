@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Mask, Fa, View, Button } from 'mdbreact';
-
+import { Container } from 'mdbreact';
+import CommentDropdown from './CommentDropdown';
 
 class EventDiscussionBox extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class EventDiscussionBox extends Component {
         };
 
         this.findUser = this.findUser.bind(this);
-        this.replyToPost = this.replyToPost.bind(this);
         this.getUserId = this.getUserId.bind(this);
 
 
@@ -37,16 +36,16 @@ class EventDiscussionBox extends Component {
 
     };
 
-    replyToPost() {
-     console.log("hello world and i like cheese")
+    // replyToPost() {
+    //  console.log("hello world and i like cheese")
 
-    };
+    // };
 
     getUserId(id) {
 
         localStorage.setItem("profileId", id)
         console.log(id);
-       };
+    };
     //   {this.props.getPost.poster_user_id}
 
     render() {
@@ -64,11 +63,11 @@ class EventDiscussionBox extends Component {
         return (
             <Container>
 
-                {this.props.getPost.posts.map(post => {return <ul>
-                        
-                        <li><a value={this.props.getPost.user_id} onClick={  () => this.getUserId(this.props.getPost.id)} href={"profile/user"}>{this.props.getPost.fname} {this.props.getPost.lname}</a> : {post.content}</li>
-                        <button onClick={this.replyToPost}>Comment</button>
+                {this.props.getPost.posts.map(post => {
+                    return <ul>
 
+                        <li><a value={this.props.getPost.user_id} onClick={() => this.getUserId(this.props.getPost.id)} href={"profile/user"}>{this.props.getPost.fname} {this.props.getPost.lname}</a> : {post.content} <CommentDropdown post_id = {post.id} />
+                        </li>
                     </ul>
 
                 })}

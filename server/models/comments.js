@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes)
         title:
         {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         content:
         {
