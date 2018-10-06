@@ -8,6 +8,14 @@ class CommentDropDown extends Component {
         super(props);
 
         this.state = {
+
+            
+
+                post_id: this.props.post_id,
+                event_id: localStorage.getItem("event_id"),
+                user_id: localStorage.getItem("token"),
+                content: ""
+            
         };
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,22 +46,21 @@ class CommentDropDown extends Component {
 
     handleCommentSubmit = event => {
         event.preventDefault();
-
+        let post_id = this.props.post_id;
 
         let commentInfo = {
 
             event_id: this.state.event_id,
-            post_id: this.state.title,
+            post_id: this.state.post_id,
             content: this.state.content,
             user_id: this.state.user_id
 
 
         };
-        let id = this.state.event_id;
         console.log(commentInfo);
         axios({
             method: 'post',
-            url: '/auth/api/post/' + id,
+            url: '/auth/api/comment/' + post_id,
             data: commentInfo,
             config: { headers: { 'Content-Type': 'multipart/form-data' } }
         })
@@ -66,10 +73,9 @@ class CommentDropDown extends Component {
                 console.log(response);
 
             });
-        this.updateDiscussion();
     };
 
-    checkProps(event){
+    checkProps(event) {
         event.preventDefault();
         console.log(this.props.post_id);
     }
@@ -80,18 +86,18 @@ class CommentDropDown extends Component {
 
         return (
             <div className="dropdown">
-                <form  >
                     <div className="form-group text-center">
 
 
+                    <form onSubmit={this.handleCommentSubmit} >
 
                         <label> Comment:</label>
                         <br />
-                        <textarea className="discussionCommentTextarea" type="text" name="content" value={this.state.comment} onChange={this.handleCommentChange} placeholder="What are your thoughts?!"></textarea>
+                        <textarea className="discussionCommentTextarea" type="text" name="content" value={this.state.content} onChange={this.handleCommentChange} placeholder="What are your thoughts?!"></textarea>
                         <br />
-                        <button onClick={this.checkProps} type="submit" >Submit</button>
+                        <button type="submit" >Submit</button>
+                        </form>
                     </div>
-                </form>
             </div>
 
         );

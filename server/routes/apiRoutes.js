@@ -80,7 +80,13 @@ module.exports = function (app)
             [
                   {
                     model: db.comment,
-                    attributes: ['id','user_id','title','content','status']
+                    attributes: ['id','user_id','title','content','status'],
+                    include:[
+                      {
+                        model: db.user,
+                        attributes: ['id', 'fname', 'lname', 'email']
+                      }
+                    ]
                   }
             ]
           }
@@ -169,13 +175,12 @@ module.exports = function (app)
     //create a comment
       //the id param is for the post id
       //this should be happening from the event details page
-    app.post("/auth/api/comment/:id", function(req,res)
+    app.post("/auth/api/comment/:post_id", function(req,res)
     {
       db.comment.create(
       {
-        post_id: req.params.id,
+        post_id: req.params.post_id,
         user_id: req.body.user_id,
-        title: req.body.title,
         content: req.body.content,
         status: 'In Review'
       })
