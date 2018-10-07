@@ -1,10 +1,9 @@
 var db = require("../models");
 
-module.exports = function (app) 
-{
+module.exports = function (app) {
   ///////////////////////////////
   //all get routes start here
-  
+
   // //not sure what this is supposed to be used for though - possibly bring up user profile?
   // app.get("/auth/api/user/:email", function (req, res) 
   // {
@@ -19,38 +18,32 @@ module.exports = function (app)
   // });
 
   //list of all events
-  app.get("/auth/api/events", function (req, res) 
-  {
+  app.get("/auth/api/events", function (req, res) {
     db.event.findAll({})
-    .then(function (dbevent) 
-    {
-      res.json(dbevent);
-    });
+      .then(function (dbevent) {
+        res.json(dbevent);
+      });
   });
 
   //get event details by event id
-  app.get("/auth/api/events/:id", function (req, res) 
-  {
+  app.get("/auth/api/events/:id", function (req, res) {
     db.event.findAll(
       {
         where: { id: req.params.id }
       })
-    .then(function (dbevent) 
-    {
-      res.json(dbevent);
-    });
+      .then(function (dbevent) {
+        res.json(dbevent);
+      });
   });
 
   //get user profile information by user id
-  app.get("/auth/api/profile/:id", function (req, res) 
-  {
+  app.get("/auth/api/profile/:id", function (req, res) {
     db.profile.findAll(
       {
-        where: {user_id: req.params.id}
-      }).then(function (dbprofile)
-      {
+        where: { user_id: req.params.id }
+      }).then(function (dbprofile) {
 
-          res.json(dbprofile);
+        res.json(dbprofile);
       });
 
     // db.user.findAll(
@@ -63,60 +56,56 @@ module.exports = function (app)
   });
 
   //get all posts and associated comments for an event 
-    //the id param is for the event id
-    //TO ADD: poster username/email
-    app.get("/auth/api/posts/:id", function (req, res)
-    {  
-      db.user.findAll(
-      { 
-        attributes: ['id','fname','lname','email'],
+  //the id param is for the event id
+  //TO ADD: poster username/email
+  app.get("/auth/api/posts/:id", function (req, res) {
+    db.user.findAll(
+      {
+        attributes: ['id', 'fname', 'lname', 'email'],
         include: [
           {
             model: db.post,
-            attributes: ['id','user_id','title','content','status'],
-            where: {event_id: req.params.id},
+            attributes: ['id', 'user_id', 'title', 'content', 'status'],
+            where: { event_id: req.params.id },
             order: '"created_at" DESC',
-            include: 
-            [
-                  {
-                    model: db.comment,
-                    attributes: ['id','user_id','title','content','status'],
-                    include:[
-                      {
-                        model: db.user,
-                        attributes: ['id', 'fname', 'lname', 'email']
-                      }
-                    ]
-                  }
-            ]
+            include:
+              [
+                {
+                  model: db.comment,
+                  attributes: ['id', 'user_id', 'title', 'content', 'status'],
+                  include: [
+                    {
+                      model: db.user,
+                      attributes: ['id', 'fname', 'lname', 'email']
+                    }
+                  ]
+                }
+              ]
           }
         ]
-      }).then(function (dbpost)
-      {
+      }).then(function (dbpost) {
         res.json(dbpost);
       });
-    });
+  });
 
   //get events by location and/or date
-  app.get("/auth/api/event_search", function (req, res)
-  {
+  app.get("/auth/api/event_search", function (req, res) {
     db.event.findAll(
       {
-        where: 
+        where:
         {
           city: req.body.city,
-          event_date: 
+          event_date:
           {
             between: [req.body.start_date, req.body.end_date]
           }
         },
-      }).then(function (dbevent)
-      {
+      }).then(function (dbevent) {
         res.json(dbevent);
       });
   });
 
-  
+
 
   //all get routes end here
   /////////////////////////////// 
@@ -124,7 +113,7 @@ module.exports = function (app)
 
   ///////////////////////////////
   //all post routes start here
- 
+
   //this code is now in the ../passport/local-signup.js file
   //create a user account and instantiate a profile record for the user
   //this prevents complications of potentially creating multiple profile records per user
@@ -152,47 +141,42 @@ module.exports = function (app)
   //     });
   // });
 
- //create a post for an event
-    //the id param is for the event id
-    //this should be happening from the event details page
-    app.post("/auth/api/post/:id", function(req, res)
-    {
-      db.post.create(
-        {
-          //need to make sure this is the way to pull the right user id
-          user_id: req.body.user_id,
-          event_id: req.params.id, 
-          title: req.body.title,
-          content: req.body.content,
-          status: 'In Review'
-        })
-        .then(function(dbpost)
-        {
-          res.json(dbpost);
-        });
-    });
-  
-    //create a comment
-      //the id param is for the post id
-      //this should be happening from the event details page
-    app.post("/auth/api/comment/:post_id", function(req,res)
-    {
-      db.comment.create(
+  //create a post for an event
+  //the id param is for the event id
+  //this should be happening from the event details page
+  app.post("/auth/api/post/:id", function (req, res) {
+    db.post.create(
+      {
+        //need to make sure this is the way to pull the right user id
+        user_id: req.body.user_id,
+        event_id: req.params.id,
+        title: req.body.title,
+        content: req.body.content,
+        status: 'In Review'
+      })
+      .then(function (dbpost) {
+        res.json(dbpost);
+      });
+  });
+
+  //create a comment
+  //the id param is for the post id
+  //this should be happening from the event details page
+  app.post("/auth/api/comment/:post_id", function (req, res) {
+    db.comment.create(
       {
         post_id: req.params.post_id,
         user_id: req.body.user_id,
         content: req.body.content,
         status: 'In Review'
       })
-      .then(function(dbcomment)
-      {
+      .then(function (dbcomment) {
         res.json(dbcomment);
       });
-    });
+  });
 
   //create event
-  app.post("/auth/api/events", function (req, res) 
-  {
+  app.post("/auth/api/events", function (req, res) {
     db.event.create(
       {
         creator_user_id: req.body.creator_user_id,
@@ -218,23 +202,20 @@ module.exports = function (app)
         skill4: req.body.skill4,
         skill5: req.body.skill5
       })
-      .then(function (dbevent) 
-      {
+      .then(function (dbevent) {
         res.json(dbevent);
       });
   });
 
   //register user for an event
-  app.post("/auth/api/user_event_register/:id", function (req, res)
-  {
+  app.post("/auth/api/user_event_register/:id", function (req, res) {
     db.user_event.create(
       {
         //amir will need to confirm how to get the user id for this kind of process
         user_id: req.user.id,
         event_id: req.params.id
 
-      }).then(function (dbuserevent)
-      {
+      }).then(function (dbuserevent) {
         res.json(dbuserevent);
       });
   });
@@ -254,120 +235,114 @@ module.exports = function (app)
   //     });
   // });
 
-//  //add skills
-//  app.post("/auth/api/skill_add", function (req, res)
-//  {
-//    db.skill.create(
-//      {
-//        name: req.body.name
-//      }
-//    )
-//    .then(function (dbskilladd)
-//    {
-//      res.json(dbskilladd);
-//    });
-//  });
+  //  //add skills
+  //  app.post("/auth/api/skill_add", function (req, res)
+  //  {
+  //    db.skill.create(
+  //      {
+  //        name: req.body.name
+  //      }
+  //    )
+  //    .then(function (dbskilladd)
+  //    {
+  //      res.json(dbskilladd);
+  //    });
+  //  });
 
- //all post routes end here
- ///////////////////////////////
+  //all post routes end here
+  ///////////////////////////////
 
- ///////////////////////////////
- //all put routes are here
+  ///////////////////////////////
+  //all put routes are here
 
 
- //update user profile based on user id
- app.put("/auth/api/profile/:id", function (req, res)
- {
-   db.profile.update(
-     {
-       age: req.body.age,
-       gender: req.body.gender,
-       phone: req.body.phone,
-       city: req.body.city,
-       state: req.body.state,
-       zip_code: req.body.zip_code,
-       country: req.body.country,
-       skill1: req.body.skill1,
-       skill2: req.body.skill2,
-       skill3: req.body.skill3,
-       skill4: req.body.skill4,
-       skill5: req.body.skill5,
-       github: req.body.github,
-       linkedin: req.body.linkedin,
-       avatar: req.body.avatar,
-       status: 'Active',
-       user_id: req.body.id
-     },
-     {returning: true, where: {user_id: req.params.id}}
-     )
-     //by using the return and array it should return the updated values to the page
-     .then(function ([ p_rowsUpdate, [updated_profile] ]) 
-     {
-       res.json(updated_profile);
-     })
-     .then(function()
-     {
-      db.user.update(
-        {
-          fname: req.body.fname,
-          lname: req.body.lname,
-          email: req.body.email
-        },
-        {returning: true, where: {user_id: req.params.id}}
-      )
-      .then(function ([u_rowsUpdate, [updated_user] ])
+  //update user profile based on user id
+  app.put("/auth/api/profile/:id", function (req, res) {
+    db.profile.update(
       {
-        res.json(updated_user);
-      });
-     });
- });
+        age: req.body.age,
+        gender: req.body.gender,
+        phone: req.body.phone,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code,
+        country: req.body.country,
+        skill1: req.body.skill1,
+        skill2: req.body.skill2,
+        skill3: req.body.skill3,
+        skill4: req.body.skill4,
+        skill5: req.body.skill5,
+        github: req.body.github,
+        linkedin: req.body.linkedin,
+        avatar: req.body.avatar,
+        status: 'Active',
+        user_id: req.body.id
+      },
+      { returning: true, where: { user_id: req.params.id } }
+    )
+      //by using the return and array it should return the updated values to the page
+      /*      .then(function ([ p_rowsUpdate, [updated_profile] ]) 
+           {
+             res.json(updated_profile);
+           }) */
+      // .then(function () {
+      //   db.user.update(
+      //     {
+      //       fname: req.body.fname,
+      //       lname: req.body.lname,
+      //       email: req.body.email
+      //     },
+      //     { returning: true, where: { user_id: req.params.id } }
+      //   )
+          .then(function (updated_user) {
+            res.json(updated_user);
+          });
+      //});
+  });
 
- //update existing event records
- app.put("/auth/api/event/:id", function (req, res)
- {
-   db.event.update(
-     {
-      creator_user_id: req.user.id,
-      event_title: req.body.event_title,
-      summary: req.body.summary,
-      max_attend: req.body.max_attend,
-      is_full: req.body.is_full,
-      age_restrict: req.body.age_restrict,
-      age_min: req.body.age_min,
-      date: req.body.date,
-      time: req.body.time,
-      location_name: req.body.location_name,
-      addr1: req.body.addr1,
-      addr2: req.body.addr2,
-      addr3: req.body.addr3,
-      city: req.body.city,
-      state: req.body.state,
-      zip_code: req.body.zip_code,
-      country: req.body.country,
-      skill1: req.body.skill1,
-      skill2: req.body.skill2,
-      skill3: req.body.skill3,
-      skill4: req.body.skill4,
-      skill5: req.body.skill5
-     },
-     {
-       where: {id: req.params.id}
-     }
-   )
-   .then(function (dbevent)
-   {
-      res.json(dbevent);
-   })
- });
-//all put routes end here
-///////////////////////////////
+  //update existing event records
+  app.put("/auth/api/event/:id", function (req, res) {
+    db.event.update(
+      {
+        creator_user_id: req.user.id,
+        event_title: req.body.event_title,
+        summary: req.body.summary,
+        max_attend: req.body.max_attend,
+        is_full: req.body.is_full,
+        age_restrict: req.body.age_restrict,
+        age_min: req.body.age_min,
+        date: req.body.date,
+        time: req.body.time,
+        location_name: req.body.location_name,
+        addr1: req.body.addr1,
+        addr2: req.body.addr2,
+        addr3: req.body.addr3,
+        city: req.body.city,
+        state: req.body.state,
+        zip_code: req.body.zip_code,
+        country: req.body.country,
+        skill1: req.body.skill1,
+        skill2: req.body.skill2,
+        skill3: req.body.skill3,
+        skill4: req.body.skill4,
+        skill5: req.body.skill5
+      },
+      {
+        where: { id: req.params.id }
+      }
+    )
+      .then(function (dbevent) {
+        res.json(dbevent);
+      })
+  });
+  //all put routes end here
+  ///////////////////////////////
 
-///////////////////////////////
-//all destroy routes start here
+  ///////////////////////////////
+  //all destroy routes start here
 
   //remmove user registration
-  app.delete("/auth/api/user_event_deregister/:id", function (req, res)
-  {
+  app.delete("/auth/api/user_event_deregister/:id", function (req, res) {
     db.user_event.destroy(
       {
         where:
@@ -375,8 +350,7 @@ module.exports = function (app)
           user_id: req.user.id,
           event_id: req.params.id
         }
-      }).then(function (dbuserevent)
-      {
+      }).then(function (dbuserevent) {
         res.json(dbuserevent);
       });
   });
@@ -397,7 +371,7 @@ module.exports = function (app)
   //     });
   // });
 
-//all destroy routes end here
-///////////////////////////////
+  //all destroy routes end here
+  ///////////////////////////////
 
 };

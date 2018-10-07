@@ -6,16 +6,13 @@ import Auth from '../modules/Auth';
 class LogoutFunction extends React.Component {
 
   componentDidMount() {
-    // deauthenticate user
-    Auth.deauthenticateUser();
-    // change the current URL to / after logout
-    this.props.history.push('/');
+
   }
 
   render() {
     return (
       <div>
-        <p>Logging out...</p>
+      <li><a href="#logout" id="" title="Sign In">Log Out</a></li>
       </div>
     )
   }

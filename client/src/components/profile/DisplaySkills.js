@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-class DisplayProfile extends Component {
+class DisplaySkills extends Component {
 
 
     constructor(props) {
@@ -11,12 +11,12 @@ class DisplayProfile extends Component {
             profile: "",
             id: localStorage.getItem("token"),
             isInEditMode: false,
-            age: "",
-            city: "",
-            state: "",
-            gender: "",
-            github: "",
-            linkedin: ""
+            skill1: "",
+            skill2: "",
+            skill3: "",
+            skill4: "",
+            skill5: "",
+            
         };
         
         //   this.updateEventList = this.updateEventList.bind(this);
@@ -35,12 +35,11 @@ class DisplayProfile extends Component {
         let profile = this.state.profile;
         this.setState({
             isInEditMode: !this.state.isInEditMode,
-            age: profile.age,
-            city: profile.city,
-            state: profile.state,
-            gender: profile.gender,
-            github: profile.github,
-            linkedin: profile.linkedin,
+            skill1: profile.skill1,
+            skill2: profile.skill2,
+            skill3: profile.skill3,
+            skill4: profile.skill4,
+            skill5: profile.skill5
             
         })
     }
@@ -67,12 +66,11 @@ class DisplayProfile extends Component {
                     let profile = res.data[0];
 
                     this.setState({
-                        age: profile.age,
-                        city: profile.city,
-                        state: profile.state,
-                        gender: profile.gender,
-                        github: profile.github,
-                        linkedin: profile.linkedin,
+                        skill1: profile.skill1,
+                        skill2: profile.skill2,
+                        skill3: profile.skill3,
+                        skill4: profile.skill4,
+                        skill5: profile.skill5,
                         profile: profile
                     })
 
@@ -91,12 +89,11 @@ class DisplayProfile extends Component {
         let updatedProfile = {
             // firstName: this.state.firstName,
             // lastName: this.state.lastName,
-            city: this.state.city,
-            state: this.state.state,
-            age: this.state.age,
-            gender: this.state.gender,
-            github: this.state.github,
-            linkedin: this.state.linkedin,
+            skill2: this.state.skill2,
+            skill3: this.state.skill3,
+            skill1: this.state.skill1,
+            skill4: this.state.skill4,
+            skill5: this.state.skill5,
             user_id: this.state.id
 
 
@@ -130,17 +127,16 @@ class DisplayProfile extends Component {
 
                         <li>
 
-                            <br /> City: {this.state.city}
-                            <br /> State: {this.state.state}
-                            <br /> Age: {this.state.age}
-                            <br /> Gender: {this.state.gender}
-                            <br /> GitHub: {this.state.github}
-                            <br /> LinkedIn: {this.state.linkedin}
+                            <br /> Skill #1: {this.state.skill1}
+                            <br /> Skill #2: {this.state.skill2}
+                            <br /> Skill #3: {this.state.skill3}
+                            <br /> Skill #4: {this.state.skill4}
+                            <br /> Skill #5: {this.state.skill5}
                         </li>
 
 
                     </div>
-                    <button onClick={this.editButtonFunction}>Edit Profile</button>
+                    <button onClick={this.editButtonFunction}>Edit Skills</button>
 
                 </div>
             </div>
@@ -152,12 +148,11 @@ class DisplayProfile extends Component {
             <div>
                 <li>
 
-                    <br /> City: <input type="text" defaultValue={this.state.city} onChange={this.handleInputChange} name="city" />
-                    <br /> State: <input type="text" defaultValue={this.state.state} onChange={this.handleInputChange} name="state" />
-                    <br /> Age: <input type="text" defaultValue={this.state.age} onChange={this.handleInputChange} name="age" />
-                    <br /> Gender: <input type="text" defaultValue={this.state.gender} onChange={this.handleInputChange} name="gender" />
-                    <br /> GitHub: <input type="text" defaultValue={this.state.github} onChange={this.handleInputChange} name="github" />
-                    <br /> LinkedIn: <input type="text" defaultValue={this.state.linkedin} onChange={this.handleInputChange} name="linkedin" />
+                    <br /> Skill #1: <input type="text" defaultValue={this.state.skill1} onChange={this.handleInputChange} name="skill1" />
+                    <br /> Skill #2: <input type="text" defaultValue={this.state.skill2} onChange={this.handleInputChange} name="skill2" />
+                    <br /> Skill #3: <input type="text" defaultValue={this.state.skill3} onChange={this.handleInputChange} name="skill3" />
+                    <br /> Skill #4: <input type="text" defaultValue={this.state.skill4} onChange={this.handleInputChange} name="skill4" />
+                    <br /> Skill #5: <input type="text" defaultValue={this.state.skill5} onChange={this.handleInputChange} name="skill5" />
 
                 </li>
 
@@ -180,4 +175,4 @@ class DisplayProfile extends Component {
     }
 }
 
-export default DisplayProfile;
+export default DisplaySkills;

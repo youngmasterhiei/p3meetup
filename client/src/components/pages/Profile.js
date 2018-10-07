@@ -3,6 +3,7 @@ import logo from '../../logo.svg';
 // import '../../styles.scss';
 import EditProfileDropDown from "../profile/EditProfileDropDown";
 import DisplayProfile from "../profile/DisplayProfile";
+import DisplaySkills from "../profile/DisplaySkills";
 
 import DisplayEvents from "../event/DisplayEvents";
 import Navbar from "../nav/Navbar";
@@ -14,22 +15,22 @@ import auth from "../modules/Auth";
 class Profile extends Component {
     constructor(props) {
         super(props);
-    
-     
-    
+
+
+
         //   this.updateEventList = this.updateEventList.bind(this);
-    
+
         // this.getEventDetails = this.getEventDetails.bind(this);
         this.auth = new auth();
         // this.getToken = this.getToken.bind(this);
     }
     // getToken(){
     //     let token =;
-        
+
 
     //     console.log(token + "this is the user id");
     // };
- 
+
     render() {
 
         return (
@@ -53,9 +54,9 @@ class Profile extends Component {
 
                     </div>
                     <div className="col-md-4">
-                    <br />
-                    <h1>Skills</h1>
-                    <EditProfileDropDown />
+                        <br />
+                        <h1>Skills</h1>
+                        <DisplaySkills />
 
                     </div>
 
@@ -65,7 +66,7 @@ class Profile extends Component {
                     <div className="col-md-8">
                         <br />
                         <h1>Upcoming Events</h1>
-                         <DisplayEvents />
+                        <DisplayEvents />
                     </div>
                 </div>
             </div>
