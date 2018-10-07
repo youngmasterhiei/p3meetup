@@ -220,7 +220,7 @@ class SignUpForm extends Component {
                     </form>
 
 
-                    <form onSubmit={this.handleRegisterSubmit && this.props.checkAuth}   id="register-form" role="form" style={{ display: 'none' }}>
+                    <form onSubmit={this.handleRegisterSubmit}   id="register-form" role="form" style={{ display: 'none' }}>
 
 
                       <div className="form-group">
