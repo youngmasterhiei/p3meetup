@@ -36,6 +36,8 @@ class SignUpForm extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+
 
 
   }
@@ -144,15 +146,32 @@ class SignUpForm extends Component {
    };
 
 
- 
+   toggleModal(){
+    
+    this.setState(prevState => ({
+      listOpen: !prevState.listOpen
+    }))
+    // this.props.updateEventList();
+  }
 
+  
 
   render() {
     return (
+<div>
+      <ul id="top_menu">
+
+      <li><a href="#sign-in-dialog" id="sign-in" title="Sign In">Sign In</a></li>
+
+
+
+
+              </ul>
+
 
 
             
-      <div id="sign-in-dialog" className="zoom-anim-dialog mfp-hide">
+      <div id="sign-in-dialog"  className="zoom-anim-dialog mfp-hide">
         <div className="row sign-in-container">
           <div className="col-md-12">
             <div className="panel panel-login">
@@ -184,7 +203,8 @@ class SignUpForm extends Component {
                       <div className="form-group">
                         <div className="row">
                           <div className="col-md-12">
-                            <input type="submit" name="login-submit" id="login-submit" tabIndex={4}  className=" form-control btn btn-login " defaultValue="Log In" />
+                            <button type="submit"   name="login-submit" href="/home" id="login-submit" tabIndex={4} data-dismiss="sign-in-dialog" className=" form-control btn btn-login " defaultValue="Log In" />
+                            
                           </div>
                         </div>
                       </div>
@@ -200,7 +220,7 @@ class SignUpForm extends Component {
                     </form>
 
 
-                    <form onSubmit={this.handleRegisterSubmit} id="register-form" role="form" style={{ display: 'none' }}>
+                    <form onSubmit={this.handleRegisterSubmit && this.props.checkAuth}   id="register-form" role="form" style={{ display: 'none' }}>
 
 
                       <div className="form-group">
@@ -241,7 +261,7 @@ class SignUpForm extends Component {
 
 
 
-
+</div>
 
 
 

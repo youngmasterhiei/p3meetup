@@ -1,18 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Auth from '../modules/Auth';
 
 
 class LogoutFunction extends React.Component {
 
-  componentDidMount() {
 
+  constructor(props) {
+    super(props, );
+
+ 
+    this.deauthenticateUser = this.deauthenticateUser.bind(this);
+
+
+  }
+
+
+
+  deauthenticateUser() {
+    localStorage.setItem('token', ""); 
+    this.props.checkAuth();
   }
 
   render() {
     return (
       <div>
-      <li><a href="#logout" id="" title="Sign In">Log Out</a></li>
+      <li><a onClick={this.deauthenticateUser } href="" id="" title="Log Out">Log Out</a></li>
       </div>
     )
   }

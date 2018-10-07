@@ -14,8 +14,15 @@ class Auth {
    *
    * @returns {boolean}
    */
-  static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+  static isUserAuthenticated(result) {
+    if( localStorage.getItem('token') === ""){
+      // console.log("not logged in");
+      result = false;
+    }
+    else{
+      // console.log("user logged in");
+      result = true;
+    }
   }
 
   /**

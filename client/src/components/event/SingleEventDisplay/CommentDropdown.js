@@ -36,7 +36,7 @@ handleClickOutside(){
     return (
       <div className="dropdown">
         <button className="discussionComments"  onClick={() => this.toggleList()}>Reply</button>
-        <div className="">{this.state.listOpen && <DiscussioncommentBox post_id={this.props.post_id} toggleList={this.toggleList.bind(this)}   /> }</div>
+        <div className="">{this.state.listOpen && <DiscussioncommentBox toggleList={this.toggleList.bind(this)} post_id={this.props.post_id} toggleList={this.toggleList.bind(this)}   /> }</div>
 
 
       </div>

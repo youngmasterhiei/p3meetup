@@ -26,7 +26,7 @@ class EventForumSingle extends Component {
         // this.handleChange = this.handleChange.bind(this);
         this.handlePostSubmit = this.handlePostSubmit.bind(this);
         this.handlePostChange = this.handlePostChange.bind(this);
-        this.updateDiscussion = this.updateDiscussion.bind(this);
+        // this.updateDiscussion = this.updateDiscussion.bind(this);
     }
 
 
@@ -68,28 +68,26 @@ class EventForumSingle extends Component {
                 console.log(response);
 
             });
-        this.updateDiscussion();
+            
     };
 
-    updateDiscussion() {
+    componentWillUpdate (){
         let id = this.state.event_id
 
+        // create an AJAX request
         axios.get("/auth/api/posts/" + id)
             .then(res => {
-                console.log(res.data);
                 this.setState({
 
                     getPost: res.data
 
                 });
-                console.log(this.state.getPost)
-            })
+
+    
+
+    });
 
     };
-
-
-
-
 
     componentDidMount() {
         let id = this.state.event_id
@@ -109,6 +107,9 @@ class EventForumSingle extends Component {
 
 
 
+
+
+
     render() {
 
 
@@ -118,7 +119,7 @@ class EventForumSingle extends Component {
                     <h1> Post to DiscussionBoard</h1>
                     
                         {this.state.getPost.map((getPost) => {
-                            return <EventDiscussionBox getPost={getPost} key={getPost.user_id}
+                            return <EventDiscussionBox updateDiscussion= {this.updateDiscussion} getPost={getPost} key={getPost.user_id}
                             />
                         })
 
@@ -129,7 +130,7 @@ class EventForumSingle extends Component {
 
 
 
-                    <form onSubmit={this.handlePostSubmit} >
+                    <form onSubmit={this.handlePostSubmit } >
                         <div className="form-group text-center">
 
                             <label>Post Title: </label>

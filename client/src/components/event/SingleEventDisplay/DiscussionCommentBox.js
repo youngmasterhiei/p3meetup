@@ -73,6 +73,7 @@ class CommentDropDown extends Component {
                 console.log(response);
 
             });
+            this.props.toggleList();
     };
 
     checkProps(event) {
