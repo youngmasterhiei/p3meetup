@@ -46,13 +46,14 @@ class DisplayEvents extends Component {
         <div className="container">
           <div className="row">
 
+          <EventDropDown updateEventList={this.updateEventList.bind(this)}/>
 
-            <PopularEvents />
 
 
           </div>
             <div className="row">
-            <EventDropDown updateEventList={this.updateEventList.bind(this)}/>
+            <PopularEvents />
+
             </div>
 
         </div>

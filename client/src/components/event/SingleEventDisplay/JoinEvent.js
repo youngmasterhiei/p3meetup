@@ -32,15 +32,15 @@ class JoinEvent extends Component {
 
     handleEventSignup = event => {
 
-            
+
     };
 
 
     componentDidMount() {
 
 
-                
-            
+
+
     }
 
 
@@ -53,11 +53,11 @@ class JoinEvent extends Component {
 
 
         return (
-          <div>
-          <h4>People Attending: </h4>
+            <div>
+                <h4>People Attending: </h4>
 
-<button>Signup for Event</button>
-          </div>
+                <button>Signup for Event</button>
+            </div>
         );
     }
 }

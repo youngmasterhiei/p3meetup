@@ -22,6 +22,7 @@ import 'bootstrap-4-grid';
 import HeroSearch from "../features/HeroSearch";
 //import AboutSection from "../features/AboutSection";
 import PopularEvents from "../event/PopularEvents";
+import EventDropDown from '../event/EventDropDown';
 //import SignUpForm from "../login/SignUpForm";
 
 
@@ -66,6 +67,7 @@ toggleAuthenticateStatus() {
 
             <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
             <HeroSearch />
+            <EventDropDown />
             <PopularEvents event={this.state.event}/>
             <div className="container">
             <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
