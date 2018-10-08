@@ -25,6 +25,20 @@ module.exports = function (app) {
       });
   });
 
+  //list events by location
+  app.get("/auth/api/search/:city", function (req, res)
+  {
+    db.event.finAll(
+      {
+        where: {city: req.params.city}
+      }
+    ).then(function(dbevent)
+    {
+      res.json(dbevent);
+    });
+  });
+
+
   //get event details by event id
   app.get("/auth/api/events/:id", function (req, res) {
     db.event.findAll(
