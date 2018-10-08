@@ -304,7 +304,7 @@ module.exports = function (app) {
   app.put("/auth/api/event/:id", function (req, res) {
     db.event.update(
       {
-        creator_user_id: req.user.id,
+        creator_user_id: req.body.id,
         event_title: req.body.event_title,
         summary: req.body.summary,
         max_attend: req.body.max_attend,

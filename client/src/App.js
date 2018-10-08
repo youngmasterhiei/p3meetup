@@ -11,6 +11,8 @@ import ViewOthersProfile from "./components/pages/ViewOthersProfile";
 //import {BrowserRouter as Router,} from 'react-router-dom';
 //import Route from 'react-router-dom/Route';
 
+import createHistory from 'history/createBrowserHistory';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -54,6 +56,7 @@ const PropsRoute = ({ component: Component, ...rest }) => (
 // require('js/main');
 // require('js/wow');
 
+export const history = createHistory();
 
 
 class App extends Component {
@@ -80,7 +83,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router history={history}>
       <div className="App">
       <Route path="/" exact render={
         ()=> {

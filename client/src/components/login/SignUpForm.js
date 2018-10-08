@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Auth from '../modules/Auth';
+import {history} from "../../App";
 
 
 // import axios from 'axios';
@@ -66,10 +67,13 @@ class SignUpForm extends Component {
     const formData = `email=${email}&password=${password}&username=${username}&fname=${fname}&lname=${lname}`;
     console.log(formData);
     // create an AJAX request
+    this.props.history.push('/home');
+
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/auth/signup');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
+
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
@@ -84,8 +88,9 @@ class SignUpForm extends Component {
 
         // redirect user after sign up to login page
         // this.props.history.push('/login');
+
       } else {
-        // failure
+        // failures
 
         // const errors = xhr.response.errors ? xhr.response.errors : {};
         // errors.summary = xhr.response.message;
@@ -95,7 +100,8 @@ class SignUpForm extends Component {
         });
       }
     });
-    xhr.send(formData);
+
+
   };
 
 
@@ -143,7 +149,7 @@ class SignUpForm extends Component {
        }
      });
      xhr.send(formData);
-   };
+    };
 
 
    toggleModal(){
