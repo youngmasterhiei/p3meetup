@@ -49,15 +49,17 @@ db.user_event = require('./user_event.js')(sequelize, Sequelize);
 // db.event_skill = require('./event_skill.js')(sequelize, Sequelize);
 db.event_post = require('./event_post.js')(sequelize, Sequelize);
 
-//comment-post relationship
-db.comment.belongsTo(db.post);
-db.post.hasMany(db.comment);
-db.comment.belongsTo(db.post);
-db.post.hasMany(db.comment);
-db.post.belongsTo(db.user);
-db.user.hasMany(db.post);
-db.user.hasMany(db.comment)
-db.comment.belongsTo(db.user);
+//comment-post-user relationship
+  //belongTo statements
+  db.comment.belongsTo(db.post);
+  db.comment.belongsTo(db.user);
+  db.post.belongsTo(db.user);
+  //hasMany statements
+  db.post.hasMany(db.comment);
+  db.user.hasMany(db.post);
+  db.user.hasMany(db.comment)
+  // db.comment.belongsTo(db.post);
+  // db.post.hasMany(db.comment);
 
 
 //user-profile relationship
