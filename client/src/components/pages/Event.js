@@ -8,10 +8,21 @@ import FormEventSingle from "../event/SingleEventDisplay/EventForumSingle";
 import PopularEvents from "../event/PopularEvents";
 import EventPhotosSingle from "../event/SingleEventDisplay/EventPhotosSingle";
 import EventDropDown from "../event/EventDropDown";
+import JoinEvent from '../event/SingleEventDisplay/JoinEvent';
 class Event extends Component {
 
 
+
+    
     render() {
+
+
+
+
+
+
+
+
         return (
             <div className="app-container">
 

@@ -19,24 +19,13 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.UUID,
             allowNull: false
         },
-        reg_status:
-        {
-            type: DataTypes.ENUM,
-            allowNull: true,
-            values: ['Not Registered', 'Registered']
-        },
+  
         attend_status:
         {
-            type: DataTypes.ENUM,
-            allowNull: true,
-            values: ['Attended', 'No Show']
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         },
-        reject_Status:
-        {
-            type: DataTypes.ENUM,
-            allowNull: true,
-            values: ['Age', 'Location', 'Missing Skill']
-        },
+  
         created_at: 
         {
             type: DataTypes.DATE,

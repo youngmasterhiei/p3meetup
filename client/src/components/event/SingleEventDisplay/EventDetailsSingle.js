@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Mask, Fa, View, Button } from 'mdbreact';
+import JoinEvent from "./JoinEvent";
 
 
 class EventDetailsSingle extends Component {
@@ -14,14 +15,14 @@ class EventDetailsSingle extends Component {
             userId: localStorage.getItem('token'),
             creatorId: "",
             title: "",
-            summary:"",
+            summary: "",
             time: "",
-            max_attend:"",
-            age_min:"",
-            addr1:"",
-            city:"",
+            max_attend: "",
+            age_min: "",
+            addr1: "",
+            city: "",
             state: "",
-            date:""
+            date: ""
 
 
         };
@@ -40,13 +41,13 @@ class EventDetailsSingle extends Component {
             title: event.event_title,
             summary: event.summary,
             time: event.time,
-            max_attend:event.max_attend,
+            max_attend: event.max_attend,
             age_min: event.age_min,
-            addr1:event.addr1,
+            addr1: event.addr1,
             city: event.city,
             state: event.state,
             date: event.date
-            
+
         })
     }
 
@@ -65,18 +66,18 @@ class EventDetailsSingle extends Component {
 
         axios.get("/auth/api/events/" + id)
             .then(res => {
-              
-                console.log("this is what we get: "+ res.data[0])
+
+                console.log("this is what we get: " + res.data[0])
                 let event = res.data[0];
 
                 this.setState({
-                    creatorId: event.creator_user_id, 
+                    creatorId: event.creator_user_id,
                     title: event.event_title,
                     summary: event.summary,
                     time: event.time,
-                    max_attend:event.max_attend,
+                    max_attend: event.max_attend,
                     age_min: event.age_min,
-                    addr1:event.addr1,
+                    addr1: event.addr1,
                     city: event.city,
                     state: event.state,
                     date: event.date
@@ -100,12 +101,12 @@ class EventDetailsSingle extends Component {
             title: this.state.title,
             summary: this.state.summary,
             time: this.state.time,
-            max_attend:this.state.max_attend,
+            max_attend: this.state.max_attend,
             age_min: this.state.age_min,
-            addr1:this.state.addr,
+            addr1: this.state.addr,
             city: this.state.city,
             state: this.state.state,
-            date:this.state.date
+            date: this.state.date
 
         };
 
@@ -128,7 +129,34 @@ class EventDetailsSingle extends Component {
 
     };
 
+
+    isUserCreator(result) {
+        if (this.state.userId === this.state.creatorId) {
+            result = true;
+            console.log(result)
+        }
+        else {
+            result = false;
+        }
+    }
+
+
     renderDefaultView = () => {
+
+
+
+        let button;
+
+        if (this.state.userId === this.state.creatorId) {
+            button = <Button color="success" size="md" className="waves-light " onClick={this.editButtonFunction}>Edit Event Details</Button>
+             ;
+        } else {
+            button = <JoinEvent />
+
+        }
+
+
+
         return (
             <Container>
                 <Row>
@@ -160,7 +188,11 @@ class EventDetailsSingle extends Component {
                         </ul>
 
                         <p>by <a><strong>Creator</strong></a>, 19/08/2018</p>
-                        <Button color="success" size="md" className="waves-light " onClick={this.editButtonFunction}>Edit Event Details</Button>
+
+                                    {button}
+
+
+
                     </Col>
                 </Row>
 
