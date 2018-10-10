@@ -60,13 +60,27 @@ class EventDiscussionBox extends Component {
 
 
 
+
+
+
+
+
+
+
+
         return (
             <Container>
 
                 {this.props.getPost.posts.map(post => {
                     return <ul>
 
-                        <li><a value={this.props.getPost.user_id} onClick={() => this.getUserId(this.props.getPost.id)} href={"profile/user"}>{this.props.getPost.fname} {this.props.getPost.lname}</a> : {post.content} <CommentDropdown post_id={post.id} />
+                        <li>
+                        
+                        <div class="comment_right clearfix">
+
+                        By: <a value={this.props.getPost.user_id} onClick={() => this.getUserId(this.props.getPost.id)} href={"profile/user"}>{this.props.getPost.fname} {this.props.getPost.lname}</a> : {post.content} <CommentDropdown post_id={post.id} />
+                        
+                        </div>
                         </li>
 
                         {this.props.getPost.posts[0].comments.map(comment => {

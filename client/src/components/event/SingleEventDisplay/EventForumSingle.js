@@ -68,10 +68,10 @@ class EventForumSingle extends Component {
                 console.log(response);
 
             });
-            
+
     };
 
-    componentWillUpdate (){
+    componentWillUpdate() {
         let id = this.state.event_id
 
         // create an AJAX request
@@ -83,9 +83,9 @@ class EventForumSingle extends Component {
 
                 });
 
-    
 
-    });
+
+            });
 
     };
 
@@ -117,32 +117,33 @@ class EventForumSingle extends Component {
             <Container style={{ maxWidth: '80%' }}>
                 <Row>
                     <h1> Post to DiscussionBoard</h1>
-                    
-                        {this.state.getPost.map((getPost) => {
-                            return <EventDiscussionBox updateDiscussion= {this.updateDiscussion} getPost={getPost} key={getPost.user_id}
-                            />
-                        })
 
-                        }
-                    
+                    {this.state.getPost.map((getPost) => {
+                        return <EventDiscussionBox updateDiscussion={this.updateDiscussion} getPost={getPost} key={getPost.user_id}
+                        />
+                    })
+
+                    }
+
                 </Row>
                 <Row>
 
+              
 
 
-                    <form onSubmit={this.handlePostSubmit } >
-                        <div className="form-group text-center">
 
+
+                    <form onSubmit={this.handlePostSubmit} >
+                        <div class="form-group">
                             <label>Post Title: </label>
-                            <br />
-                            <input className="InputField" type="text" name="title" value={this.state.title} onChange={this.handlePostChange}></input>
-                            <br />
-                            <label> Post:</label>
-                            <br />
-                            <textarea className="discussionInputs" type="text" name="content" value={this.state.content} onChange={this.handlePostChange} placeholder="What are your thoughts?"></textarea>
-                            <br />
-                            <button type="submit" >Submit</button>
+                            <input className="InputField" type="text" name="title" className="discussionInputs form-control" value={this.state.title} onChange={this.handlePostChange}></input>
                         </div>
+                        <div class="form-group">
+
+                            <label> Post:</label>
+                            <textarea className="discussionInputs" type="text" name="content" rows="6" className="discussionInputs form-control" value={this.state.content} onChange={this.handlePostChange} placeholder="What are your thoughts?"></textarea>
+                        </div>
+                        <button type="submit" className="btn_1 rounded add_bottom_30" >Submit</button>
                     </form>
 
 

@@ -149,9 +149,9 @@ class EventDetailsSingle extends Component {
 
         if (this.state.userId === this.state.creatorId) {
             button = <Button color="success" size="md" className="waves-light " onClick={this.editButtonFunction}>Edit Event Details</Button>
-             ;
+                ;
         } else {
-            button = <JoinEvent />
+
 
         }
 
@@ -167,6 +167,7 @@ class EventDetailsSingle extends Component {
                         </View>
                     </Col>
                     <Col lg="7">
+
                         <a className="green-text"><h6 className="font-weight-bold mb-3"><Fa icon="cutlery" className="pr-2"></Fa>Food</h6></a>
                         <h3 className="font-weight-bold mb-3 p-0"><strong>{this.state.event.event_title}</strong></h3>
                         <ul>
@@ -186,14 +187,94 @@ class EventDetailsSingle extends Component {
                             </li>
 
                         </ul>
-
+                {button}
                         <p>by <a><strong>Creator</strong></a>, 19/08/2018</p>
+                        </Col>
+                        <Col lg="12">
 
-                                    {button}
+
+                            <section id="description">
+
+
+                            <h3>Event Overview <small></small></h3>
+                            <p>
+                                Iudico omnesque vis at, ius an laboramus adversarium. An eirmod doctus admodum est, vero numquam et mel, an duo modo error. No affert timeam mea, legimus ceteros his in. Aperiri honestatis sit at. Eos aeque fuisset ei, case denique eam ne. Augue invidunt
+                                has ad, ullum debitis mea ei, ne aliquip dignissim nec.
+                        </p>
+                            <ul className="cbp_tmtimeline">
+                                <li>
+                                    <time className="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        1
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_1.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Meet and Greet</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time className="cbp_tmtime" datetime="11:30"><span>30 Min.</span><span>11:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        2
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_2.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Assign Teams</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time className="cbp_tmtime" datetime="13:30"><span>3 hours</span><span>13:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        3
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_3.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Code!</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="cbp_tmtime" datetime="14:30"><span>1 hours</span><span>14:30</span>
+                                    </time>
+                                    <div class="cbp_tmicon">
+                                        4
+                                </div>
+                                    <div class="cbp_tmlabel">
+                                        <div class="hidden-xs">
+                                            <img src="img/tour_plan_4.jpg" alt="" class="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Project Reviews and Nightcaps</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr />
+
+                            </section>
+                        </Col>
 
 
 
-                    </Col>
+                
                 </Row>
 
             </Container>
@@ -206,6 +287,8 @@ class EventDetailsSingle extends Component {
     renderEditView = () => {
         return (
             <Container>
+
+
                 <Row>
                     <Col lg="5">
                         <View className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
@@ -213,7 +296,7 @@ class EventDetailsSingle extends Component {
                             <a><Mask overlay="white-slight" /></a>
                         </View>
                     </Col>
-                    <Col lg="7">
+                                        <Col lg="7">
                         <a className="green-text"><h6 className="font-weight-bold mb-3"><Fa icon="cutlery" className="pr-2"></Fa>Food</h6></a>
                         <h3 className="font-weight-bold mb-3 p-0"><strong>{this.state.event.event_title}</strong></h3>
                         <ul>
@@ -239,7 +322,85 @@ class EventDetailsSingle extends Component {
                         <button onClick={this.updateComponentValue}> OK </button>
 
                         <p>by <a><strong>Creator</strong></a>, 19/08/2018</p>
-                    </Col>
+                            </Col>
+<Col lg="12">
+<section id="description">
+                            <h3>Event Overview <small></small></h3>
+                            <p>
+                                Iudico omnesque vis at, ius an laboramus adversarium. An eirmod doctus admodum est, vero numquam et mel, an duo modo error. No affert timeam mea, legimus ceteros his in. Aperiri honestatis sit at. Eos aeque fuisset ei, case denique eam ne. Augue invidunt
+                                has ad, ullum debitis mea ei, ne aliquip dignissim nec.
+                        </p>
+                            <ul className="cbp_tmtimeline">
+                                <li>
+                                    <time className="cbp_tmtime" datetime="09:30"><span>30 min.</span><span>09:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        1
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_1.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Meet and Greet</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time className="cbp_tmtime" datetime="11:30"><span>30 Min.</span><span>11:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        2
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_2.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Assign Teams</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time className="cbp_tmtime" datetime="13:30"><span>3 hours</span><span>13:30</span>
+                                    </time>
+                                    <div className="cbp_tmicon">
+                                        3
+                                </div>
+                                    <div className="cbp_tmlabel">
+                                        <div className="hidden-xs">
+                                            <img src="img/tour_plan_3.jpg" alt="" className="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Code!</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <time class="cbp_tmtime" datetime="14:30"><span>1 hours</span><span>14:30</span>
+                                    </time>
+                                    <div class="cbp_tmicon">
+                                        4
+                                </div>
+                                    <div class="cbp_tmlabel">
+                                        <div class="hidden-xs">
+                                            <img src="img/tour_plan_4.jpg" alt="" class="rounded-circle thumb_visit" />
+                                        </div>
+                                        <h4>Project Reviews and Nightcaps</h4>
+                                        <p>
+                                            Vero consequat cotidieque ad eam. Ea duis errem qui, impedit blandit sed eu. Ius diam vivendo ne.
+                                    </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <hr />
+
+                        </section>
+                        </Col>
+                 
                 </Row>
 
             </Container>
