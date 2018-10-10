@@ -167,6 +167,7 @@ module.exports = function (app) {
       {
         post_id: req.params.post_id,
         user_id: req.body.user_id,
+        title: req.body.title,
         content: req.body.content,
         status: 'In Review'
       })
@@ -278,7 +279,7 @@ module.exports = function (app) {
         status: 'Active',
         user_id: req.body.id
       },
-      { returning: true, where: { user_id: req.params.id } }
+      { /*returning: true, */where: { user_id: req.params.id } }
     )
       //by using the return and array it should return the updated values to the page
       /*      .then(function ([ p_rowsUpdate, [updated_profile] ]) 

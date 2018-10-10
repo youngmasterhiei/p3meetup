@@ -125,6 +125,11 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.TEXT,
             allowNull: true,
         },
+        image:
+        {
+            type: DataTypes.BLOB('long'),
+            allowNull: true
+        },
         created_at: 
         {
             type: DataTypes.DATE,
