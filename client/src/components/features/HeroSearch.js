@@ -55,8 +55,8 @@ class HeroSearch extends Component {
                         <form>
                             <div className="row no-gutters custom-search-input-2">
                                 <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <input className="form-control" type="text" placeholder="State, City..." />
+                                    <div className="form-group">State
+                                        <input className="form-control" type="text" placeholder="Enter a city.  Example: Cleveland, Baltimore, New York..." />
                                         <i className="icon_pin_alt" />
                                     </div>
                                 </div>
