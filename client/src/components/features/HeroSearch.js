@@ -26,9 +26,10 @@ class HeroSearch extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        let search = this.state.userSearch
+        //regex replaces any and all spaces with &20
+        let search = this.state.userSearch.replace(/\s+/g, '&20')
         console.log(search);
-        axios.get("api/events/" + search)
+        axios.get("/auth/api/search/" + search)
             .then(res => {
                 console.log(res.data);
 
@@ -53,19 +54,19 @@ class HeroSearch extends Component {
                         <p>From hackathons to other stuff we can write as a team</p>
                         <form>
                             <div className="row no-gutters custom-search-input-2">
-                                <div className="col-lg-4">
+                                <div className="col-lg-6">
                                     <div className="form-group">
                                         <input className="form-control" type="text" placeholder="State, City..." />
                                         <i className="icon_pin_alt" />
                                     </div>
                                 </div>
-                                <div className="col-lg-4">
+                                {/* <div className="col-lg-4">
                                     <div className="form-group">
                                         <input className="form-control" type="text" name="dates" placeholder="When.." />
                                         <i className="icon_calendar" />
                                     </div>
-                                </div>
-                                <div className="col-lg-4">
+                                </div> */}
+                                <div className="col-lg-6">
                                     <input type="submit" className="btn_search" defaultValue="Search" />
                                 </div>
                             </div>
