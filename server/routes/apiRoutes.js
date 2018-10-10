@@ -167,6 +167,7 @@ module.exports = function (app) {
       {
         post_id: req.params.post_id,
         user_id: req.body.user_id,
+        title: req.body.title,
         content: req.body.content,
         status: 'In Review'
       })
