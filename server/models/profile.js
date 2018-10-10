@@ -91,7 +91,7 @@ module.exports = function(sequelize, DataTypes)
         },
         image:
         {
-            type: DataTypes.BLOB,
+            type: DataTypes.BLOB('long'),
             allowNull: true
         },
         //need query to place averaged value of entries from reputation into this field
