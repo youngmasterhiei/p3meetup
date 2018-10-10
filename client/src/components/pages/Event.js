@@ -31,6 +31,8 @@ class Event extends Component {
                     <div className="col-md-12">
                             <Navbar />
                             <SingleEventHero />
+                            <EventDropDown />
+
                             
                     </div>
                 </div>
@@ -39,7 +41,8 @@ class Event extends Component {
                     <ul className="clearfix">
                         <li><a href="#description" className="active">Description</a></li>
                         <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#sidebar">Booking</a></li>
+                        <li><a href="#discussion">Discussion Board</a></li>
+                        <li><a href="#discussion">Discussion Board</a></li>
                     </ul>
                 </div>
             </nav>
@@ -52,9 +55,9 @@ class Event extends Component {
                             <EventDetailsSingle />
                         </div>
                         <div className="row">
-                            <EventDropDown />
-
+                            <section id="discussion">
                             <FormEventSingle />
+                            </section>
                         </div>
                         <div className="row">
                             <PopularEvents />
