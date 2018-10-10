@@ -28,7 +28,7 @@ module.exports = function (app) {
   //list events by location
   app.get("/auth/api/search/:city", function (req, res)
   {
-    db.event.finAll(
+    db.event.findAll(
       {
         where: {city: req.params.city}
       }
