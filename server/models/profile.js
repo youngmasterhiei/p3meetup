@@ -89,7 +89,7 @@ module.exports = function(sequelize, DataTypes)
             type: DataTypes.STRING,
             allowNull: true
         },
-        avatar:
+        image:
         {
             type: DataTypes.BLOB,
             allowNull: true
