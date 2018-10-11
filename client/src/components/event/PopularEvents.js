@@ -37,20 +37,18 @@ class PopularEvents extends Component {
 
         return (
 
-            <div className="container-fluid margin_80_0">
-                <div className="main_title_2">
-                    <span><em></em></span>
+
+            <div className="col-lg-9 " id="list_sidebar ">
+                <div className="isotope-wrapper ">
+
                     <h2>Popular Events</h2>
                     <p>something catchy here is we want to add it</p>
-                </div>
-                <div id="reccomended" className="owl-carousel owl-theme">
-                {this.state.event.map((event) => {
+                    {this.state.event.map((event) => {
                         return <EventCard event={event} key={event.id}
                         />
                     })
 
                     }
-                    </div>
 
 
                     {/* <EventCard />
@@ -58,11 +56,10 @@ class PopularEvents extends Component {
                     <EventCard />
                     <EventCard /> */}
 
-
-
-
-                    <hr className="large" />
+                </div>
             </div>
+
+
 
 
 

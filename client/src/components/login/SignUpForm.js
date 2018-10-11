@@ -96,6 +96,8 @@ class SignUpForm extends Component {
       }
     });
     xhr.send(formData);
+    window.location.href = "http://localhost:3000/home"
+
   };
 
 

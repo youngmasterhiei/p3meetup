@@ -33,30 +33,30 @@ import EventDropDown from '../event/EventDropDown';
 
 class Home extends Component {
     constructor(props) {
-     super(props);
-     this.state = {
-       authenticated: false,
-       event :[]
-     }
-   };
+        super(props);
+        this.state = {
+            authenticated: false,
+            event: []
+        }
+    };
 
-   componentDidMount() {
-    // check if user is logged in on refresh
-    this.toggleAuthenticateStatus()
-    // Auth.deauthenticateUser();
+    componentDidMount() {
+        // check if user is logged in on refresh
+        this.toggleAuthenticateStatus()
+        // Auth.deauthenticateUser();
 
         axios.get("/auth/api/events")
             .then(res => {
                 console.log(res.data);
                 this.setState({ event: res.data });
             })
-    
 
-}
-toggleAuthenticateStatus() {
- // check authenticated status and toggle state based on that
- this.setState({ authenticated: Auth.isUserAuthenticated() })
-}
+
+    }
+    toggleAuthenticateStatus() {
+        // check authenticated status and toggle state based on that
+        this.setState({ authenticated: Auth.isUserAuthenticated() })
+    }
 
 
 
@@ -65,13 +65,17 @@ toggleAuthenticateStatus() {
 
             <div className="home">
 
-            <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
-            <HeroSearch />
-            <EventDropDown />
-            <PopularEvents event={this.state.event}/>
-            <div className="container">
-            <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
-        </div>
+                <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
+                <HeroSearch />
+                <EventDropDown />
+       
+
+
+                        <PopularEvents event={this.state.event} />
+        
+                <div className="container">
+                    <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
+                </div>
 
 
 
@@ -90,7 +94,7 @@ toggleAuthenticateStatus() {
 
 LogoutFunction.contextTypes = {
     router: PropTypes.object.isRequired
-  };
+};
 
 
 export default Home;
