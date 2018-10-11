@@ -105,7 +105,25 @@ module.exports = function (app) {
       });
   });
 
-
+  //get list of registered people by event id
+  app.get("/auth/api/attendees/:id", function (req, res)
+  {
+    db.user_event.findAll(
+      {
+        attributes: [],
+        where: {event_id: req.params.id},
+        include: [
+          {
+            model:db.user,
+            attributes: ['id', 'fname', 'lname']
+          }
+        ]
+      }
+    ).then(function(dbuserevent)
+    {
+      res.json(dbuserevent);
+    });
+  });
 
   //all get routes end here
   /////////////////////////////// 
@@ -213,7 +231,7 @@ module.exports = function (app) {
     db.user_event.create(
       {
         //amir will need to confirm how to get the user id for this kind of process
-        user_id: req.user.id,
+        user_id: req.body.user_id,
         event_id: req.params.id
 
       }).then(function (dbuserevent) {

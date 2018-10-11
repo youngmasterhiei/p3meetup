@@ -64,5 +64,9 @@ db.comment.belongsTo(db.user);
 db.profile.belongsTo(db.user);
 //db.user.hasOne(db.profile);
 
+//user-event relationship
+db.user_event.belongsTo(db.user);
+db.user.hasMany(db.user_event);
+
 module.exports = db;
 //module.exports = sequelize;
