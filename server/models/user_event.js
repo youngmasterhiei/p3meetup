@@ -23,7 +23,8 @@ module.exports = function(sequelize, DataTypes)
         attend_status:
         {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true,
+            defaultValue: true
         },
   
         created_at: 
