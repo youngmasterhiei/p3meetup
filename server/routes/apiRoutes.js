@@ -125,6 +125,26 @@ module.exports = function (app) {
     });
   });
 
+
+  //get list of all events registered for by a user id
+  app.get("/auth/api/events_for_user/:id", function (req, res)
+  {
+    db.event.findAll(
+      {
+        attributes: ['id', 'event_title', 'date'],
+        include: [
+          {
+            model: db.user_event,
+            where: {user_id: req.params.id},
+            attributes: []
+          }
+        ]
+      }).then(function(dbeventsforusers)
+      {
+        res.json(dbeventsforusers);
+      });
+  });
+
   //all get routes end here
   /////////////////////////////// 
 
