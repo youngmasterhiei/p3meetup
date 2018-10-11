@@ -130,6 +130,7 @@ class SignUpForm extends Component {
         //  this.props.toggleAuthenticateStatus()
  
          // redirect signed in user to dashboard
+         window.location.href = "http://localhost:3000/home"
        } else {
          // failure
  
