@@ -35,6 +35,10 @@ componentDidMount() {
     
 }
 
+
+
+
+
 // First Name: {this.state.profile.firstName}
 // <br /> Last Name: {this.state.profile.lastName}
 
@@ -43,24 +47,27 @@ render() {
 
     return (
         <div className="">
-            <div className="container">
-                <div className="row">
-
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6">
+                    <img src={this.state.profile.country} className="App-logo" alt="logo" />
+                </div>
+                <div className="col-md-6">
                     <li>
-                       
-                        <br /> City: {this.state.profile.city}
-                        <br /> State: {this.state.profile.state}
-                        <br /> Age: {this.state.profile.age}
-                        <br /> Gender: {this.state.profile.gender}
-                        <br /> GitHub: {this.state.profile.github}
-                        <br /> LinkedIn: {this.state.profile.linkedin}
-                    </li>
 
+                    <br /> City: {this.state.profile.city}
+                    <br /> State: {this.state.profile.state}
+                    <br /> Age: {this.state.profile.age}
+                    <br /> Gender: {this.state.profile.gender}
+                    <br /> GitHub: {this.state.profile.github}
+                    <br /> LinkedIn: {this.state.profile.linkedin}
+                    </li>
 
 
                 </div>
             </div>
         </div>
+    </div>
 
 
     );

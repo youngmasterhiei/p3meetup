@@ -16,9 +16,10 @@ class DisplayProfile extends Component {
             state: "",
             gender: "",
             github: "",
-            linkedin: ""
+            linkedin: "",
+            image: ""
         };
-        
+
         //   this.updateEventList = this.updateEventList.bind(this);
 
         // this.getEventDetails = this.getEventDetails.bind(this);
@@ -41,7 +42,8 @@ class DisplayProfile extends Component {
             gender: profile.gender,
             github: profile.github,
             linkedin: profile.linkedin,
-            
+            image: profile.image
+
         })
     }
 
@@ -73,7 +75,8 @@ class DisplayProfile extends Component {
                         gender: profile.gender,
                         github: profile.github,
                         linkedin: profile.linkedin,
-                        profile: profile
+                        profile: profile,
+                        image: profile.country
                     })
 
                     console.log(this.state.profile);
@@ -97,7 +100,8 @@ class DisplayProfile extends Component {
             gender: this.state.gender,
             github: this.state.github,
             linkedin: this.state.linkedin,
-            user_id: this.state.id
+            user_id: this.state.id,
+            image: this.state.image
 
 
         };
@@ -127,30 +131,38 @@ class DisplayProfile extends Component {
             <div className="">
                 <div className="container">
                     <div className="row">
+                        <div className="col-md-6">
+                            <img src={this.state.image} className="App-logo" alt="logo" />
+                        </div>
+                        <div className="col-md-6">
+                            <li>
 
-                        <li>
-
-                            <br /> City: {this.state.city}
-                            <br /> State: {this.state.state}
-                            <br /> Age: {this.state.age}
-                            <br /> Gender: {this.state.gender}
-                            <br /> GitHub: {this.state.github}
-                            <br /> LinkedIn: {this.state.linkedin}
-                        </li>
+                                <br /> City: {this.state.city}
+                                <br /> State: {this.state.state}
+                                <br /> Age: {this.state.age}
+                                <br /> Gender: {this.state.gender}
+                                <br /> GitHub: {this.state.github}
+                                <br /> LinkedIn: {this.state.linkedin}
+                            </li>
 
 
+                            <button onClick={this.editButtonFunction}>Edit Profile</button>
+                        </div>
                     </div>
-                    <button onClick={this.editButtonFunction}>Edit Profile</button>
-
                 </div>
             </div>
         )
     }
 
     renderEditView = () => {
-        return <div>
-            <div>
-                <li>
+        return <div className="">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6">
+                    <img src={this.state.image} className="App-logo" alt="logo" />
+                </div>
+                <div className="col-md-6">
+                    <li>
 
                     <br /> City: <input type="text" defaultValue={this.state.city} onChange={this.handleInputChange} name="city" />
                     <br /> State: <input type="text" defaultValue={this.state.state} onChange={this.handleInputChange} name="state" />
@@ -159,14 +171,20 @@ class DisplayProfile extends Component {
                     <br /> GitHub: <input type="text" defaultValue={this.state.github} onChange={this.handleInputChange} name="github" />
                     <br /> LinkedIn: <input type="text" defaultValue={this.state.linkedin} onChange={this.handleInputChange} name="linkedin" />
 
-                </li>
+                    </li>
 
+
+                     <button onClick={this.changeEditMode}> X </button>
+                     <button onClick={this.updateComponentValue}> OK </button>                </div>
             </div>
-            <button onClick={this.changeEditMode}> X </button>
-            <button onClick={this.updateComponentValue}> OK </button>
         </div>
+    </div>
     }
 
+
+
+    // <button onClick={this.changeEditMode}> X </button>
+    // <button onClick={this.updateComponentValue}> OK </button>
     // First Name: {this.state.profile.firstName}
     // <br /> Last Name: {this.state.profile.lastName}
 

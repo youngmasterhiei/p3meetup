@@ -70,7 +70,9 @@ class Home extends Component {
                 <EventDropDown />
                 <br />
                 <div className="row">
-                    <div className="col-lg-4">
+                <div className="col-lg-1">
+                </div>
+                    <div className="col-lg-3">
                         <aside className="col-lg-8" id="sidebar">
                             <div id="filters_col">
                                 <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters </a>

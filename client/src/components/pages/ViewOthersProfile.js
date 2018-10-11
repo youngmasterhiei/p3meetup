@@ -8,32 +8,33 @@ import Navbar from "../nav/Navbar";
 import 'bootstrap-4-grid';
 import auth from "../modules/Auth";
 import DisplayOthersProfile from '../ViewOthersProfile/DisplayOthersProfile';
+import DisplayOthersSkills from '../ViewOthersProfile/DisplayOthersSkills';
 
 
 
 class Profile extends Component {
     constructor(props) {
         super(props);
-    
-     
-    
+
+
+
         //   this.updateEventList = this.updateEventList.bind(this);
-    
+
         // this.getEventDetails = this.getEventDetails.bind(this);
         this.auth = new auth();
         // this.getToken = this.getToken.bind(this);
     }
     // getToken(){
     //     let token =;
-        
+
 
     //     console.log(token + "this is the user id");
     // };
- 
+
     render() {
 
         return (
-            <div className="app-container">
+            <div className="mm-page mm-slideout">
 
                 <div className="row">
                     <div className="col-md-12">
@@ -43,19 +44,19 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">
-                        <img src={logo} className="App-logo" alt="logo" />
-                    </div>
-                    <div className="col-md-4">
+
+                    <div className="col-md-8">
                         <br />
-                        <h1>Profile</h1>
+                        <br />
+                        <br />
+
                         <DisplayOthersProfile />
 
                     </div>
                     <div className="col-md-4">
-                    <br />
-                    <h1>Skills</h1>
-
+                        <br />
+                        <h1>Skills</h1>
+                        <DisplayOthersSkills />
                     </div>
 
 
@@ -63,8 +64,7 @@ class Profile extends Component {
                 <div className="row">
                     <div className="col-md-8">
                         <br />
-                        <h1>Upcoming Events</h1>
-                         <DisplayEvents />
+                        <DisplayEvents />
                     </div>
                 </div>
             </div>

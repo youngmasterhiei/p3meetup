@@ -44,12 +44,12 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">
-                        <img src={logo} className="App-logo" alt="logo" />
-                    </div>
-                    <div className="col-md-4">
+
+                    <div className="col-md-8">
                         <br />
-                        <h1>Profile</h1>
+                        <br />
+                        <br />
+
                         <DisplayProfile />
 
                     </div>
