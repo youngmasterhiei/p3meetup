@@ -68,15 +68,126 @@ class Home extends Component {
                 <Navbar toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
                 <HeroSearch />
                 <EventDropDown />
-       
+                <br />
+                <div className="row">
+                    <div className="col-lg-4">
+                        <aside className="col-lg-8" id="sidebar">
+                            <div id="filters_col">
+                                <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters </a>
+                                <div className="collapse show" id="collapseFilters">
+                                <div className="filter_type">
+                                <h6>Event Type</h6>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck" checked/>All
+                                            <small>(945)</small>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>Hackathon
+                                            <small>(45)</small>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>Code Meetup
+                                            <small>(30)</small>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>Industry Events
+                                            <small>(25)</small>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="filter_type">
+									<h6></h6>
+									<input type="text" id="range" name="range" value=""/>
+                                </div>
+                                <div className="filter_type">
+                                <h6>Populariy </h6>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>
+                                            <span className="cat_star">
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                            </span>
+                                            <small>(25)</small>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>
+                                            <span className="cat_star">
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                            </span>
+                                            <small>(26)</small>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" className="icheck"/>
+                                            <span className="cat_star">
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                                <i className="icon_star"></i>
+                                            </span>
+                                            <small>(25)</small>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="filter_type">
+                            <h6>Rating</h6>
+                            <ul>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" className="icheck"/>Superb 9+
+                                        <small>(25)</small>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" className="icheck"/>Very Good 8+
+                                        <small>(26)</small>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" className="icheck"/>Good 7+
+                                        <small>(25)</small>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="checkbox" className="icheck"/>Pleasant 6+
+                                        <small>(12)</small>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
 
-
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div className="col-lg-8">
                         <PopularEvents event={this.state.event} />
-        
-                <div className="container">
-                    <p className="btn_home_align"><a href="#0" className="btn_1 rounded">View all Events</a></p>
-                </div>
+                    </div>
 
+                </div>
 
 
             </div>

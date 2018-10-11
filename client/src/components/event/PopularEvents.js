@@ -38,7 +38,7 @@ class PopularEvents extends Component {
         return (
 
 
-            <div className="col-lg-9 " id="list_sidebar ">
+            <div className="col-lg-10 " id="list_sidebar ">
                 <div className="isotope-wrapper ">
 
                     <h2>Popular Events</h2>

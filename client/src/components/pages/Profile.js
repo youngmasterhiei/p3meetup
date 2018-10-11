@@ -34,7 +34,7 @@ class Profile extends Component {
     render() {
 
         return (
-            <div className="app-container">
+            <div className="mm-page mm-slideout">
 
                 <div className="row">
                     <div className="col-md-12">
@@ -65,7 +65,6 @@ class Profile extends Component {
                 <div className="row">
                     <div className="col-md-8">
                         <br />
-                        <h1>Upcoming Events</h1>
                         <DisplayEvents />
                     </div>
                 </div>
